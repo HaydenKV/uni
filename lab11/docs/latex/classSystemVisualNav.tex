@@ -1,0 +1,274 @@
+\doxysection{System\+Visual\+Nav Class Reference}
+\hypertarget{classSystemVisualNav}{}\label{classSystemVisualNav}\index{SystemVisualNav@{SystemVisualNav}}
+Inheritance diagram for System\+Visual\+Nav\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSystemVisualNav}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemVisualNav_ad9175f51bbbbf93c02986b5a7d73b290}\label{classSystemVisualNav_ad9175f51bbbbf93c02986b5a7d73b290} 
+{\bfseries System\+Visual\+Nav} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\item 
+\Hypertarget{classSystemVisualNav_a36e9556751262af7cc3b7c19c950a0d3}\label{classSystemVisualNav_a36e9556751262af7cc3b7c19c950a0d3} 
+virtual \mbox{\hyperlink{classSystemVisualNav}{System\+Visual\+Nav}} \texorpdfstring{$\ast$}{*} {\bfseries clone} () const
+\item 
+virtual void \mbox{\hyperlink{classSystemVisualNav_a2c77819f08f8948bbf96ec818c4512bc}{predict}} (double time) override
+\begin{DoxyCompactList}\small\item\em Predict the system state at a given time. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemVisualNav_af08b87d617a68101438f068512b5ddbe}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemVisualNav_a31b00f1f8e297eeca9c9856cffb007d1}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u, Eigen\+::\+Matrix\+Xd \&J) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics and its Jacobian. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemVisualNav_a9c40732d9a089e59bc3556776cf03d90}{input}} (double t, const Eigen\+::\+Vector\+Xd \&x) const override
+\begin{DoxyCompactList}\small\item\em Compute the system input. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \mbox{\hyperlink{classSystemVisualNav_a157e069ae99e7ad04e89ab51ed2677d0}{process\+Noise\+Density}} (double dt) const override
+\begin{DoxyCompactList}\small\item\em Compute the process noise density. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ Eigen\+::\+Index $>$ \mbox{\hyperlink{classSystemVisualNav_a0ad90e0cb51ffaf2cd8d5fab1756ec75}{process\+Noise\+Index}} () const override
+\begin{DoxyCompactList}\small\item\em Get the indices of state variables affected by process noise. \end{DoxyCompactList}\item 
+\Hypertarget{classSystemVisualNav_a2d8dfb8c982f768e72457edbeb292879}\label{classSystemVisualNav_a2d8dfb8c982f768e72457edbeb292879} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Position\+Density} () const
+\item 
+\Hypertarget{classSystemVisualNav_afba0b439fbab45a39cee8a741c5ccbac}\label{classSystemVisualNav_afba0b439fbab45a39cee8a741c5ccbac} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Orientation\+Density} () const
+\item 
+\Hypertarget{classSystemVisualNav_a93cfe756497a0f0fa680808853d89528}\label{classSystemVisualNav_a93cfe756497a0f0fa680808853d89528} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Translational\+Velocity\+Density} () const
+\item 
+\Hypertarget{classSystemVisualNav_a7c8087a9abf9ffd26bf42fee41e9cb2a}\label{classSystemVisualNav_a7c8087a9abf9ffd26bf42fee41e9cb2a} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Angular\+Velocity\+Density} () const
+\item 
+\Hypertarget{classSystemVisualNav_ae4e21e85b7c7b405dc21e82389a5e3c0}\label{classSystemVisualNav_ae4e21e85b7c7b405dc21e82389a5e3c0} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries camera\+Position\+Density} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam) const
+\item 
+\Hypertarget{classSystemVisualNav_a7cbec162705c6ca21ee1ad2508375a85}\label{classSystemVisualNav_a7cbec162705c6ca21ee1ad2508375a85} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries camera\+Orientation\+Euler\+Density} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam) const
+\item 
+\Hypertarget{classSystemVisualNav_a3e8d85d55bd467c6ce16fec1d26016ed}\label{classSystemVisualNav_a3e8d85d55bd467c6ce16fec1d26016ed} 
+virtual std\+::size\+\_\+t {\bfseries number\+Landmarks} () const
+\item 
+\Hypertarget{classSystemVisualNav_a9c42db8f40f52baf02b6f9f7228a3a0c}\label{classSystemVisualNav_a9c42db8f40f52baf02b6f9f7228a3a0c} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries landmark\+Position\+Density} (std\+::size\+\_\+t idx\+Landmark) const
+\item 
+\Hypertarget{classSystemVisualNav_a079bbc24700a1e37d9a09d2ecfb88693}\label{classSystemVisualNav_a079bbc24700a1e37d9a09d2ecfb88693} 
+virtual std\+::size\+\_\+t {\bfseries landmark\+Position\+Index} (std\+::size\+\_\+t idx\+Landmark) const
+\item 
+\Hypertarget{classSystemVisualNav_acc6539af7d351c56447e66f8ea62969c}\label{classSystemVisualNav_acc6539af7d351c56447e66f8ea62969c} 
+cv\+::\+Mat \& {\bfseries view} ()
+\item 
+\Hypertarget{classSystemVisualNav_adbaed2f37aa1196bd0656979947515a1}\label{classSystemVisualNav_adbaed2f37aa1196bd0656979947515a1} 
+const cv\+::\+Mat \& {\bfseries view} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSystemEstimator_ad83d8c162de6eae4c5574dca76fd640a}{System\+Estimator}} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemEstimator}{System\+Estimator} object with initial density. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Estimator} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemEstimator}{System\+Estimator} object. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a90d91f0f25867921e651e8309501dea6}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_ada815e3dd0b16aeabb3a21bc9fc2a7ce}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics and its Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemVisualNav_a81747715c253732e061ff4c2747cd9f8}\label{classSystemVisualNav_a81747715c253732e061ff4c2747cd9f8} 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Vector3$<$ Scalar $>$ {\bfseries camera\+Position} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+\Hypertarget{classSystemVisualNav_a1c38cafce80f106400ab7fe30745dd3b}\label{classSystemVisualNav_a1c38cafce80f106400ab7fe30745dd3b} 
+static Eigen\+::\+Vector3d {\bfseries camera\+Position} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J)
+\item 
+\Hypertarget{classSystemVisualNav_a46144b39e0d98db42b3e3c75546eb497}\label{classSystemVisualNav_a46144b39e0d98db42b3e3c75546eb497} 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Matrix3$<$ Scalar $>$ {\bfseries camera\+Orientation} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+\Hypertarget{classSystemVisualNav_a0f1d776f2ebb1bcd8c45d6781b8559b3}\label{classSystemVisualNav_a0f1d776f2ebb1bcd8c45d6781b8559b3} 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Vector3$<$ Scalar $>$ {\bfseries camera\+Orientation\+Euler} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+\Hypertarget{classSystemVisualNav_a63c4b82de57215e54a73b001d46ff78b}\label{classSystemVisualNav_a63c4b82de57215e54a73b001d46ff78b} 
+static Eigen\+::\+Vector3d {\bfseries camera\+Orientation\+Euler} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemVisualNav_a4a7d891dda887992a80b7561f89e53b5}\label{classSystemVisualNav_a4a7d891dda887992a80b7561f89e53b5} 
+cv\+::\+Mat {\bfseries view\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries dt\+Max\+Est} = 1e-\/2
+\begin{DoxyCompactList}\small\item\em Maximum time step for process model prediction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current system time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries density}
+\begin{DoxyCompactList}\small\item\em The current state density estimate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classSystemEstimator_a679b3f0bf1392323eea3aa1b18eaaa03}{augmented\+Dynamics\+Est}} (double t, const Eigen\+::\+Matrix\+Xd \&X) const
+\begin{DoxyCompactList}\small\item\em Compute the augmented dynamics estimate. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a249d9ae42fa67c8a82ad5c9b87491b5a}{RK4\+SDEHelper}} (const Eigen\+::\+Vector\+Xd \&xdw, double dt, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Helper function for Runge-\/\+Kutta 4th order method for SDEs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classSystemVisualNav_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSystemVisualNav_af08b87d617a68101438f068512b5ddbe}\index{SystemVisualNav@{SystemVisualNav}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_af08b87d617a68101438f068512b5ddbe} 
+Eigen\+::\+Vector\+Xd System\+Visual\+Nav\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system dynamics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the dynamics at. \\
+\hline
+{\em x} & The state to evaluate the dynamics at. \\
+\hline
+{\em u} & The input to evaluate the dynamics at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe}{System\+Base}}.
+
+\Hypertarget{classSystemVisualNav_a31b00f1f8e297eeca9c9856cffb007d1}\index{SystemVisualNav@{SystemVisualNav}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_a31b00f1f8e297eeca9c9856cffb007d1} 
+Eigen\+::\+Vector\+Xd System\+Visual\+Nav\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{, }\item[{Eigen\+::\+Matrix\+Xd \&}]{J}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system dynamics and its Jacobian. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the dynamics at. \\
+\hline
+{\em x} & The state to evaluate the dynamics at. \\
+\hline
+{\em u} & The input to evaluate the dynamics at. \\
+\hline
+{\em J} & Output parameter for the Jacobian matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8}{System\+Base}}.
+
+\Hypertarget{classSystemVisualNav_a9c40732d9a089e59bc3556776cf03d90}\index{SystemVisualNav@{SystemVisualNav}!input@{input}}
+\index{input@{input}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_a9c40732d9a089e59bc3556776cf03d90} 
+Eigen\+::\+Vector\+Xd System\+Visual\+Nav\+::input (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the input at. \\
+\hline
+{\em x} & The state to evaluate the input at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed input signal. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f}{System\+Base}}.
+
+\Hypertarget{classSystemVisualNav_a2c77819f08f8948bbf96ec818c4512bc}\index{SystemVisualNav@{SystemVisualNav}!predict@{predict}}
+\index{predict@{predict}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_a2c77819f08f8948bbf96ec818c4512bc} 
+void System\+Visual\+Nav\+::predict (\begin{DoxyParamCaption}\item[{double}]{time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Predict the system state at a given time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time to predict the system state for. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classSystemEstimator_afdea327c9daacaad2eb496f454b75a8a}{System\+Estimator}}.
+
+\Hypertarget{classSystemVisualNav_a157e069ae99e7ad04e89ab51ed2677d0}\index{SystemVisualNav@{SystemVisualNav}!processNoiseDensity@{processNoiseDensity}}
+\index{processNoiseDensity@{processNoiseDensity}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{processNoiseDensity()}{processNoiseDensity()}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_a157e069ae99e7ad04e89ab51ed2677d0} 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ System\+Visual\+Nav\+::process\+Noise\+Density (\begin{DoxyParamCaption}\item[{double}]{dt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the process noise density. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & The time step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The process noise density. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemEstimator_af89b075a120ff794abd6a42fe95c44a6}{System\+Estimator}}.
+
+\Hypertarget{classSystemVisualNav_a0ad90e0cb51ffaf2cd8d5fab1756ec75}\index{SystemVisualNav@{SystemVisualNav}!processNoiseIndex@{processNoiseIndex}}
+\index{processNoiseIndex@{processNoiseIndex}!SystemVisualNav@{SystemVisualNav}}
+\doxysubsubsection{\texorpdfstring{processNoiseIndex()}{processNoiseIndex()}}
+{\footnotesize\ttfamily \label{classSystemVisualNav_a0ad90e0cb51ffaf2cd8d5fab1756ec75} 
+std\+::vector$<$ Eigen\+::\+Index $>$ System\+Visual\+Nav\+::process\+Noise\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the indices of state variables affected by process noise. 
+
+\begin{DoxyReturn}{Returns}
+The indices of affected state variables. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemEstimator_aa276332cdb668a97daaaeb732bedb706}{System\+Estimator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/System\+Visual\+Nav.\+h\item 
+src/System\+Visual\+Nav.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,206 @@
+\doxysection{Measurement\+Outdoor\+Flow\+Bundle.\+h}
+\hypertarget{MeasurementOutdoorFlowBundle_8h_source}{}\label{MeasurementOutdoorFlowBundle_8h_source}\index{src/MeasurementOutdoorFlowBundle.h@{src/MeasurementOutdoorFlowBundle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MEASUREMENTOUTDOORFLOWBUNDLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MEASUREMENTOUTDOORFLOWBUNDLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <opencv2/core/types.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemEstimator_8h}{SystemEstimator.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pose_8hpp}{Pose.hpp}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Measurement_8h}{Measurement.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }MeasurementOutdoorFlowBundle\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMeasurement_af524d8e57d33c6b748c27a5059cbcf63}{Measurement}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ MeasurementOutdoorFlowBundle(\textcolor{keywordtype}{double}\ time,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ cv::Mat\ \&\ imgk\_raw,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ cv::Mat\ \&\ imgkm1\_raw,}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ rQOikm1);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementOutdoorFlowBundle_a51bec3cb250b19a4e615899dd2f55608}{simulate}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementOutdoorFlowBundle_af953e25a696bc703cff7369655173f48}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementOutdoorFlowBundle_af953e25a696bc703cff7369655173f48}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::VectorXd\ \&\ g)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementOutdoorFlowBundle_af953e25a696bc703cff7369655173f48}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Helper\ functions\ for\ log\ likelihood\ and\ visualisation}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00029\ \ \ \ \ Eigen::Matrix<Scalar,\ 3,\ Eigen::Dynamic>\ predictFlowImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pkm1,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pk)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00034\ \ \ \ \ Scalar\ logLikelihoodImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ predictedFeatures(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Note:\ costOdometry\ is\ used\ only\ in\ Lab\ 11.}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00041\ \ \ \ \ Scalar\ costOdometryImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ etak,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etakm1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etak,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etakm1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etak,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etakm1,\ Eigen::VectorXd\ \&\ g)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etak,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etakm1,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ trackedPreviousFeatures()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ trackedCurrentFeatures()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<unsigned\ char>\ \&\ inlierMask()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera\_;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ rQOikm1\_;\ \ \ \ \ \ \textcolor{comment}{//\ Measured\ features\ for\ previous\ frame\ (distorted\ pixels)}}
+\DoxyCodeLine{00055\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ rQOik\_;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Measured\ features\ for\ current\ frame\ \ (distorted\ pixels)}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ rQbarOikm1\_;\ \ \ \textcolor{comment}{//\ Undistorted\ features\ for\ previous\ frame\ (undistorted\ pixels\ or\ normalized\ per\ Camera\ API)}}
+\DoxyCodeLine{00058\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ rQbarOik\_;\ \ \ \ \ \textcolor{comment}{//\ Undistorted\ features\ for\ current\ frame}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<unsigned\ char>\ mask\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inlier\ mask}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ pkm1\_;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inlier\ undistorted\ homogeneous\ points\ in\ previous\ frame\ [ū\ v̄\ 1]\string^T}}
+\DoxyCodeLine{00063\ \ \ \ \ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ pk\_;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inlier\ undistorted\ homogeneous\ points\ in\ current\ frame\ \ [ū\ v̄\ 1]\string^T}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ sigma\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Feature\ error\ stdev\ (pixels)}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00069\ Eigen::Matrix<Scalar,\ 3,\ Eigen::Dynamic>}
+\DoxyCodeLine{00070\ MeasurementOutdoorFlowBundle::predictFlowImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pkm1,}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pk)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00074\ \ \ \ \ (void)pk;\ \textcolor{comment}{//\ not\ used\ for\ the\ prediction\ branch\ decision\ (only\ pkm1\ ray\ \&\ pose\ are\ needed)}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ assert(x.rows()\ >=\ 18);}
+\DoxyCodeLine{00077\ \ \ \ \ assert(x.cols()\ ==\ 1);}
+\DoxyCodeLine{00078\ \ \ \ \ assert(pkm1.cols()\ ==\ pk.cols());}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{using\ }Mat3\ =\ Eigen::Matrix<Scalar,3,3>;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{using\ }Vec3\ =\ Eigen::Matrix<Scalar,3,1>;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ State\ layout:\ [nu(6)=0..5,\ eta\_k(6)=6..11,\ eta\_km1(6)=12..17]}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,6,1>\ etak\ \ \ =\ x.template\ segment<6>(6);}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,6,1>\ etakm1\ =\ x.template\ segment<6>(12);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Poses\ and\ fixed\ Tbc}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnb\_k\ \ \ (\ rpy2rot(etak\ \ .\textcolor{keyword}{template}\ tail<3>()),\ etak\ \ .\textcolor{keyword}{template}\ head<3>()\ );}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnb\_km1\ (\ rpy2rot(etakm1.template\ tail<3>()),\ etakm1.template\ head<3>()\ );}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tbc\ =\ camera\_.Tbc;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnc\_k\ \ \ =\ Tnb\_k\ \ \ *\ Tbc;\ \ \textcolor{comment}{//\ world-\/>cam\ at\ k}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnc\_km1\ =\ Tnb\_km1\ *\ Tbc;\ \ \textcolor{comment}{//\ world-\/>cam\ at\ k-\/1}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,3,3>\ R\_WCk\ \ \ =\ Tnc\_k\ \ .\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,3,1>\ r\_WCk\ \ \ =\ Tnc\_k\ \ .\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,3,3>\ R\_WCkm1\ =\ Tnc\_km1.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,3,1>\ r\_WCkm1\ =\ Tnc\_km1.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Matrix<Scalar,3,3>\ R\_CkCkm1\ =\ R\_WCk.transpose()\ *\ R\_WCkm1;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Build\ K\string^\{-\/1\}\ explicitly\ (avoids\ autodiff\ .inverse)}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fx\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(0,0);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fy\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(1,1);}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cx\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(0,2);}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cy\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(1,2);}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ Mat3\ Kinv;}
+\DoxyCodeLine{00109\ \ \ \ \ Kinv\ <<\ Scalar(1.0\ /\ fx),\ Scalar(0),\ \ \ \ \ \ \ \ \ \ \ Scalar(-\/cx\ /\ fx),}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar(0),\ \ \ \ \ \ \ \ Scalar(1.0\ /\ fy),\ \ \ \ Scalar(-\/cy\ /\ fy),}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ Scalar(0),\ \ \ \ \ \ \ \ Scalar(0),\ \ \ \ \ \ \ \ \ \ \ Scalar(1);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ Eigen::Matrix<Scalar,3,Eigen::Dynamic>\ pk\_hat(3,\ pkm1.cols());}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ eps2\ =\ 1e-\/12;\ \ \ \textcolor{comment}{//\ guard\ for\ near-\/horizon}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ pkm1.cols();\ ++j)}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pkm1\ holds\ UNDISTORTED\ pixels\ [ū,\ v̄,\ 1];\ turn\ into\ a\ ray\ via\ K\string^\{-\/1\}}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3\ pUbar\_km1(\ Scalar(pkm1(0,j)),\ Scalar(pkm1(1,j)),\ Scalar(1)\ );}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3\ dC\_km1\ \ \ =\ Kinv\ *\ pUbar\_km1;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ direction\ in\ C\_\{k-\/1\}}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3\ dW\_km1\ \ \ =\ R\_WCkm1\ *\ dC\_km1;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ direction\ in\ world}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Branch\ in\ double\ to\ keep\ autodiff\ stable,\ then\ compute\ Scalar\ path}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ denom\ \ \ \ \ \ =\ dW\_km1.z();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ denom\_val\ \ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(denom);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ denom2\_val\ =\ denom\_val\ *\ denom\_val;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \ \ nondeg\ \ \ \ \ =\ (denom2\_val\ >\ eps2);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nondeg)\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ s\ \ \ \ \ \ =\ -\/r\_WCkm1.z()\ /\ denom;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ s\_val\ \ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(s);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ \ \ front\ \ =\ (s\_val\ >\ 0.0);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (front)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3\ PW\ \ \ =\ r\_WCkm1\ +\ s\ *\ dW\_km1;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Vec3\ PC\_k\ =\ R\_WCk.transpose()\ *\ (PW\ -\/\ r\_WCk);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pk\_hat.col(j)\ \ \ =\ PC\_k;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ homogeneous\ in\ C\_k\ (z\ is\ depth)}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Sky/degenerate\ →\ plane\ at\ infinity:\ rotate\ direction\ only}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ pk\_hat.col(j)\ =\ R\_CkCkm1\ *\ dC\_km1;}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordflow}{return}\ pk\_hat;}
+\DoxyCodeLine{00146\ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00149\ Scalar\ MeasurementOutdoorFlowBundle::logLikelihoodImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00150\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00151\ \ \ \ \ assert(pkm1\_.cols()\ ==\ pk\_.cols());}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{comment}{//\ Predict\ *undistorted*\ rays\ in\ C\_k}}
+\DoxyCodeLine{00154\ \ \ \ \ Eigen::Matrix<Scalar,3,Eigen::Dynamic>\ pk\_hat\ =\ predictFlowImpl(x,\ pkm1\_,\ pk\_);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Dehomogenize\ to\ normalized\ image\ coords}}
+\DoxyCodeLine{00157\ \ \ \ \ Eigen::Matrix<Scalar,2,Eigen::Dynamic>\ rNorm\_hat(2,\ pk\_hat.cols());}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ eps\ =\ Scalar(1e-\/9);}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ pk\_hat.cols();\ ++j)\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ Scalar\ z\ =\ pk\_hat(2,j);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Eigen::numext::abs(z)\ <\ eps)\ z\ =\ (z\ >=\ Scalar(0))\ ?\ eps\ :\ -\/eps;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ rNorm\_hat(0,j)\ =\ pk\_hat(0,j)\ /\ z;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ rNorm\_hat(1,j)\ =\ pk\_hat(1,j)\ /\ z;}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ Map\ normalized\ -\/>\ UNDISTORTED\ *pixels*}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fx\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(0,0);}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fy\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(1,1);}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cx\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(0,2);}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cy\ =\ camera\_.cameraMatrix.at<\textcolor{keywordtype}{double}>(1,2);}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ Eigen::Matrix<Scalar,2,Eigen::Dynamic>\ rUbar\_hat(2,\ rNorm\_hat.cols());}
+\DoxyCodeLine{00173\ \ \ \ \ rUbar\_hat.row(0)\ =\ rNorm\_hat.row(0).array()\ *\ Scalar(fx)\ +\ Scalar(cx);}
+\DoxyCodeLine{00174\ \ \ \ \ rUbar\_hat.row(1)\ =\ rNorm\_hat.row(1).array()\ *\ Scalar(fy)\ +\ Scalar(cy);}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ Measured\ UNDISTORTED\ pixels\ are\ pk\_.topRows<2>()}}
+\DoxyCodeLine{00177\ \ \ \ \ Eigen::Matrix<Scalar,2,Eigen::Dynamic>\ rUbar\_meas\ =\ pk\_.template\ topRows<2>().template\ cast<Scalar>();}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ inv\_s2\ =\ Scalar(1)\ /\ Scalar(sigma\_\ *\ sigma\_);\ \ \ \textcolor{comment}{//\ σ\ in\ pixels}}
+\DoxyCodeLine{00180\ \ \ \ \ Scalar\ logLik\ =\ Scalar(0);}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ rUbar\_hat.cols();\ ++j)\ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ dx\ =\ rUbar\_hat(0,j)\ -\/\ rUbar\_meas(0,j);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ dy\ =\ rUbar\_hat(1,j)\ -\/\ rUbar\_meas(1,j);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ logLik\ -\/=\ Scalar(0.5)\ *\ (dx*dx\ +\ dy*dy)\ *\ inv\_s2;}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{return}\ logLik;}
+\DoxyCodeLine{00187\ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{comment}{//\ Note:\ costOdometry\ is\ used\ only\ in\ Lab\ 11,\ not\ Assignment\ 2.}}
+\DoxyCodeLine{00190\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00191\ Scalar\ MeasurementOutdoorFlowBundle::costOdometryImpl(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ etak,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ etakm1)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00192\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00193\ \ \ \ \ Eigen::VectorX<Scalar>\ x(18);}
+\DoxyCodeLine{00194\ \ \ \ \ x.setZero();}
+\DoxyCodeLine{00195\ \ \ \ \ x.template\ segment<6>(6)\ \ =\ etak;}
+\DoxyCodeLine{00196\ \ \ \ \ x.template\ segment<6>(12)\ =\ etakm1;}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/logLikelihoodImpl(x);}
+\DoxyCodeLine{00198\ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

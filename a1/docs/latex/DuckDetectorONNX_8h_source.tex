@@ -1,0 +1,36 @@
+\doxysection{Duck\+Detector\+ONNX.\+h}
+\hypertarget{DuckDetectorONNX_8h_source}{}\label{DuckDetectorONNX_8h_source}\index{src/DuckDetectorONNX.h@{src/DuckDetectorONNX.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DUCKDETECTORONNX\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DUCKDETECTORONNX\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <onnxruntime\_cxx\_api.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}DuckDetectorBase.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }DuckDetectorONNX\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classDuckDetectorBase}{DuckDetectorBase}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{explicit}\ DuckDetectorONNX(\textcolor{keyword}{const}\ std::string\ \&\ model\_path);}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ cv::Mat\ detect(\textcolor{keyword}{const}\ cv::Mat\ \&\ image)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ Ort::Env\ env;}
+\DoxyCodeLine{00019\ \ \ \ \ Ort::SessionOptions\ session\_options;}
+\DoxyCodeLine{00020\ \ \ \ \ Ort::Session\ session\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{00021\ \ \ \ \ Ort::MemoryInfo\ memory\_info;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ input\_names[];}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ output\_names[];}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::size\_t\ num\_inputs;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::size\_t\ num\_outputs;}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::int64\_t>\ input\_shape;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

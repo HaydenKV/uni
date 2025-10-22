@@ -1,0 +1,56 @@
+\doxysection{Duck\+Detector\+ONNX Class Reference}
+\hypertarget{classDuckDetectorONNX}{}\label{classDuckDetectorONNX}\index{DuckDetectorONNX@{DuckDetectorONNX}}
+Inheritance diagram for Duck\+Detector\+ONNX\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDuckDetectorONNX}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDuckDetectorONNX_a00b103893f1a262e59a780ba6d6b19e3}\label{classDuckDetectorONNX_a00b103893f1a262e59a780ba6d6b19e3} 
+{\bfseries Duck\+Detector\+ONNX} (const std\+::string \&model\+\_\+path)
+\item 
+virtual cv\+::\+Mat \mbox{\hyperlink{classDuckDetectorONNX_a1b053b257adec7362c6a2b19f0831ef1}{detect}} (const cv\+::\+Mat \&image) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classDuckDetectorBase}{Duck\+Detector\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::vector$<$ cv\+::\+Point2f $>$ \& {\bfseries last\+\_\+centroids} () const noexcept
+\item 
+const std\+::vector$<$ double $>$ \& {\bfseries last\+\_\+areas} () const noexcept
+\item 
+void {\bfseries preprocess} (const cv\+::\+Mat \&img, std\+::vector$<$ float $>$ \&input\+\_\+tensor\+\_\+values)
+\item 
+void {\bfseries postprocess} (const std\+::vector$<$ float $>$ \&class\+\_\+scores\+\_\+data, const std\+::vector$<$ float $>$ \&mask\+\_\+probs\+\_\+data, const std\+::vector$<$ std\+::int64\+\_\+t $>$ \&class\+\_\+scores\+\_\+shape, const std\+::vector$<$ std\+::int64\+\_\+t $>$ \&mask\+\_\+probs\+\_\+shape, cv\+::\+Mat \&imgout)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classDuckDetectorBase}{Duck\+Detector\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ cv\+::\+Point2f $>$ {\bfseries centroids\+\_\+}
+\item 
+std\+::vector$<$ double $>$ {\bfseries areas\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classDuckDetectorONNX_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDuckDetectorONNX_a1b053b257adec7362c6a2b19f0831ef1}\index{DuckDetectorONNX@{DuckDetectorONNX}!detect@{detect}}
+\index{detect@{detect}!DuckDetectorONNX@{DuckDetectorONNX}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily \label{classDuckDetectorONNX_a1b053b257adec7362c6a2b19f0831ef1} 
+cv\+::\+Mat Duck\+Detector\+ONNX\+::detect (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{image}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classDuckDetectorBase}{Duck\+Detector\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Duck\+Detector\+ONNX.\+h\item 
+src/Duck\+Detector\+ONNX.\+cpp\end{DoxyCompactItemize}

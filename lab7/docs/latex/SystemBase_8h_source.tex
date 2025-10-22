@@ -1,0 +1,33 @@
+\doxysection{System\+Base.\+h}
+\hypertarget{SystemBase_8h_source}{}\label{SystemBase_8h_source}\index{src/SystemBase.h@{src/SystemBase.h}}
+\mbox{\hyperlink{SystemBase_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SYSTEMBASE\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SYSTEMBASE\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSystemBase_a83e167c0dc00f221543c06fdf69b846e}{SystemBase}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classSystemBase_a83e167c0dc00f221543c06fdf69b846e}{SystemBase}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSystemBase_a4959bd9849715e69f0387214e3a7f356}{\string~SystemBase}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSystemBase_a9645cf56eee3efdb7ef397fcfa3fb4f4}{predict}}(\textcolor{keywordtype}{double}\ time)\ =\ 0;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f}{input}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBase_a7362e3ac2dcc51acefcaf68dcc087f90}{time\_}};\ \ }
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

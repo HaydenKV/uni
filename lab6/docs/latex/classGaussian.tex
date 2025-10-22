@@ -1,0 +1,988 @@
+\doxysection{Gaussian\texorpdfstring{$<$}{<} Scalar \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGaussian}{}\label{classGaussian}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+
+
+Represents a \doxylink{classGaussian}{Gaussian} distribution.  
+
+
+
+
+{\ttfamily \#include $<$Gaussian.\+hpp$>$}
+
+Inheritance diagram for Gaussian\texorpdfstring{$<$}{<} Scalar \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classGaussian}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Other\+Scalar$>$ }\\\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Other\+Scalar $>$ \mbox{\hyperlink{classGaussian_ab380b28fc7afc9e5ed3afc16377f8ffa}{cast}} () const
+\begin{DoxyCompactList}\small\item\em Casts the \doxylink{classGaussian}{Gaussian} distribution to a different scalar type. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Index \mbox{\hyperlink{classGaussian_a416b1486d74f1567aca071a779404f3d}{dim}} () const override
+\begin{DoxyCompactList}\small\item\em Get the dimension of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_a39e92048ba667390e2c29e5edc3c0689}{mean}} () const override
+\begin{DoxyCompactList}\small\item\em Get the mean vector of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_aeaef85731458efa56e4f2bbf1adb388f}{sqrt\+Cov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the square root of the covariance matrix. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_afe7297cb30034030e79a647b4f26caed}{cov}} () const override
+\begin{DoxyCompactList}\small\item\em Get the covariance matrix of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_a506cad2a4b25b31cfb0866a779cdf12a}{info\+Mat}} () const override
+\begin{DoxyCompactList}\small\item\em Get the information matrix of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_a2d59f2aecd35ff0c47658925d794da17}{info\+Vec}} () const override
+\begin{DoxyCompactList}\small\item\em Get the information vector of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_a00c7a2df5dd3f20b13cbffbc48b920d6}{sqrt\+Info\+Mat}} () const override
+\begin{DoxyCompactList}\small\item\em Get the square root of the information matrix. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_a2c94bc42fa33b200869486ce1c3bd3e3}{sqrt\+Info\+Vec}} () const override
+\begin{DoxyCompactList}\small\item\em Get the square root of the information vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Index\+Type$>$ }\\\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a542115dee7d78b24db88546e40c0cd87}{marginal}} (const Index\+Type \&idx) const
+\begin{DoxyCompactList}\small\item\em Compute the marginal distribution of a subset of variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Index\+TypeA, typename Index\+TypeB$>$ }\\\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a3e9b58a0969b0aede9f810afc318a917}{conditional}} (const Index\+TypeA \&idxA, const Index\+TypeB \&idxB, const Eigen\+::\+VectorX$<$ Scalar $>$ \&xB) const
+\begin{DoxyCompactList}\small\item\em Compute the conditional distribution given a subset of variables. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Index\+TypeA, typename Index\+TypeB$>$ }\\\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a599adbcb17bb04cd5838c98193fb2004}{conditional}} (const Index\+TypeA \&idxA, const Index\+TypeB \&idxB, const \mbox{\hyperlink{classGaussian}{Gaussian}} \&px\+B\+\_\+y) const
+\begin{DoxyCompactList}\small\item\em Compute the conditional distribution given a subset of variables and their conditional distribution. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a6105b84cff5cbf642812bb4db2c47ece}{affine\+Transform}} (Func h) const
+\begin{DoxyCompactList}\small\item\em Propagate the \doxylink{classGaussian}{Gaussian} distribution through a nonlinear function. \end{DoxyCompactList}\item 
+virtual Scalar \mbox{\hyperlink{classGaussian_ae2b32cb1627b3cf0cb46e21a6c8f782c}{log}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x) const override
+\begin{DoxyCompactList}\small\item\em Compute the log-\/likelihood of a given point under the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classGaussian_a338a329ad040caa11df6387cb4c6bb95}{log}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, Eigen\+::\+VectorX$<$ Scalar $>$ \&g) const
+\begin{DoxyCompactList}\small\item\em Compute the log-\/likelihood of a given point and its gradient under the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classGaussian_ac60f746f189e902faac832d1b9b32434}{log}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, Eigen\+::\+VectorX$<$ Scalar $>$ \&g, Eigen\+::\+MatrixX$<$ Scalar $>$ \&H) const
+\begin{DoxyCompactList}\small\item\em Compute the log-\/likelihood of a given point, its gradient, and Hessian under the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a6712694fd5780a754703fffe164416f6}{join}} (const \mbox{\hyperlink{classGaussian}{Gaussian}} \&other) const
+\begin{DoxyCompactList}\small\item\em Join two \doxylink{classGaussian}{Gaussian} distributions into a joint distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a228392294d03cf2edf1328290accda2b}{operator\texorpdfstring{$\ast$}{*}}} (const \mbox{\hyperlink{classGaussian}{Gaussian}} \&other) const
+\begin{DoxyCompactList}\small\item\em Create a new \doxylink{classGaussian}{Gaussian} distribution by appending another \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian}{Gaussian}} \& \mbox{\hyperlink{classGaussian_a21e2c0d710a1f04fd637b59cf22dcad9}{operator\texorpdfstring{$\ast$}{*}=}} (const \mbox{\hyperlink{classGaussian}{Gaussian}} \&other)
+\begin{DoxyCompactList}\small\item\em Append another \doxylink{classGaussian}{Gaussian} distribution to this one. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGaussian_a5cfc431373d485b389f54d6702e3c28b}{is\+Within\+Confidence\+Region}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, double n\+Sigma=3.\+0) const override
+\begin{DoxyCompactList}\small\item\em Check if a given point is within the confidence region of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix4$<$ Scalar $>$ \mbox{\hyperlink{classGaussian_ac656d83cf800b1e5611ebcf69367fe91}{quadric\+Surface}} (double n\+Sigma=3.\+0) const
+\begin{DoxyCompactList}\small\item\em Compute the quadric surface coefficients for a given number of standard deviations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Gaussian\+Base} () override=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+Eigen\+::\+VectorX$<$ double $>$ \mbox{\hyperlink{classGaussianBase_a80dd97c033cc01bbff9a8fec2446aa82}{simulate}} () const
+\begin{DoxyCompactList}\small\item\em Simulates a sample from the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGaussianBase_a5f1a37da126fc89dcf7c0457ec6c6ca8}{is\+Within\+Confidence\+Region}} (const Eigen\+::\+VectorX$<$ double $>$ \&x, double n\+Sigma=3.\+0) const=0
+\begin{DoxyCompactList}\small\item\em Check if a given point is within the confidence region of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ double, 2, Eigen\+::\+Dynamic $>$ \mbox{\hyperlink{classGaussianBase_a8ae8a883329fc03d4b2fcc30163dd552}{confidence\+Ellipse}} (double n\+Sigma=3.\+0, int n\+Samples=100) const
+\begin{DoxyCompactList}\small\item\em Computes points on the boundary of the confidence ellipse. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classGaussianBase_aaeec2dd1eb35e0df204bfaf3b820204f}{log\+Integral}} (double a, double b) const
+\begin{DoxyCompactList}\small\item\em Computes the log of the integral of the \doxylink{classGaussian}{Gaussian} distribution between two points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classDensityBase}{Density\+Base$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Density\+Base} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}} (const Eigen\+::\+VectorX$<$ double $>$ \&x) const=0
+\begin{DoxyCompactList}\small\item\em Computes the log of the probability density function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDensityBase_a3980cb1edaa1b1e26d2ccefe75e1dcba}{eval}} (const Eigen\+::\+VectorX$<$ double $>$ \&x) const
+\begin{DoxyCompactList}\small\item\em Evaluates the probability density function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a5bae4c0120073660541d2b3e7e3e0656}{from\+Sqrt\+Moment}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&mu, const Eigen\+::\+MatrixX$<$ Scalar $>$ \&S)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from square root moment parameters. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_ac246f9cccd7ebc2893f83873f726c2ab}{from\+Moment}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&mu, const Eigen\+::\+MatrixX$<$ Scalar $>$ \&P)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from moment parameters. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a132209b8c2b7879be2ad13a67d415367}{from\+Sqrt\+Info}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&nu, const Eigen\+::\+MatrixX$<$ Scalar $>$ \&Xi)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from square root information parameters. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_abfd47d269b59e1e8008f0ab783d79547}{from\+Info}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&eta, const Eigen\+::\+MatrixX$<$ Scalar $>$ \&Lambda)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from information parameters. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a20582914304ddba5138706991e8a3dd0}{from\+Sqrt\+Moment}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&S)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from square root covariance matrix with zero mean. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_ab1ac7a715496d7d91a349d551852801f}{from\+Moment}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&P)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from covariance matrix with zero mean. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a55c640e5f16531b480911b1cd5b85123}{from\+Sqrt\+Info}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&Xi)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from square root information matrix with zero information vector. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_a7c540ec12961bdefd7e1cdca72556474}{from\+Info}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&Lambda)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from information matrix with zero information vector. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian_acb63e110439b9c29d945e9de640347d9}{from\+Samples}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&X)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{classGaussian}{Gaussian} object from a set of samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6}{chi2inv}} (double p, double nu)
+\begin{DoxyCompactList}\small\item\em Computes the inverse of the chi-\/squared distribution function. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}{normcdf}} (double w)
+\begin{DoxyCompactList}\small\item\em Computes the cumulative distribution function of the standard normal distribution. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}{erfcx}} (double x)
+\begin{DoxyCompactList}\small\item\em Computes the scaled complementary error function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGaussian_a2d527db93ddb976f33b001a00ecc8814}{Gaussian}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian_a91bdbd19aacfde3e783b971887905a27}{Gaussian}} (std\+::size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{classGaussian}{Gaussian} distribution with specified dimension. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian_a9a67ff6810507ced2a22de3839fc8c5f}{Gaussian}} (const Eigen\+::\+MatrixX$<$ Scalar $>$ \&S)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{classGaussian}{Gaussian} distribution with zero mean and given square root covariance matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGaussian_ab5e94c615611f3de94e2341cee1b1ec6}{Gaussian}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&mu, const Eigen\+::\+MatrixX$<$ Scalar $>$ \&S)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{classGaussian}{Gaussian} distribution with given mean and square root covariance matrix. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Other\+Scalar$>$ }\\\mbox{\hyperlink{classGaussian_adb37a73b84399bcad9f9c0e9320ebfae}{Gaussian}} (const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Other\+Scalar $>$ \&p)
+\begin{DoxyCompactList}\small\item\em Convert a \doxylink{classGaussian}{Gaussian} distribution from one scalar type to another. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGaussian_ab3ed81bd4af4737c00adf67b89796e51}\label{classGaussian_ab3ed81bd4af4737c00adf67b89796e51} 
+Eigen\+::\+VectorX$<$ Scalar $>$ {\bfseries mu\+\_\+}
+\begin{DoxyCompactList}\small\item\em The mean vector of the \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\item 
+\Hypertarget{classGaussian_a4c4aadcb551042a9deeb961b2e0ab11e}\label{classGaussian_a4c4aadcb551042a9deeb961b2e0ab11e} 
+Eigen\+::\+MatrixX$<$ Scalar $>$ {\bfseries S\+\_\+}
+\begin{DoxyCompactList}\small\item\em The square root of the covariance matrix (upper triangular). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Other\+Scalar$>$ }\\class \mbox{\hyperlink{classGaussian_a58c9db6030879d73e5eb59448f85a36e}{Gaussian}}
+\begin{DoxyCompactList}\small\item\em Declare \doxylink{classGaussian}{Gaussian} class as a friend for all scalar types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Scalar = double$>$\newline
+class Gaussian$<$ Scalar $>$}
+Represents a \doxylink{classGaussian}{Gaussian} distribution. 
+
+This class implements a \doxylink{classGaussian}{Gaussian} (normal) distribution with support for various operations such as marginalization, conditioning, and transformation. It inherits from \doxylink{classGaussianBase}{Gaussian\+Base} and provides additional functionality specific to \doxylink{classGaussian}{Gaussian} distributions.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Scalar} & The scalar type used for calculations, default is double. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-constructors}
+\Hypertarget{classGaussian_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classGaussian_a2d527db93ddb976f33b001a00ecc8814}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian()}{Gaussian()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{classGaussian_a2d527db93ddb976f33b001a00ecc8814} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\mbox{\hyperlink{classGaussian}{\+::\+Gaussian}} (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Default constructor for \doxylink{classGaussian}{Gaussian} distribution. 
+
+Constructs a \doxylink{classGaussian}{Gaussian} distribution without initializing mean or covariance. \Hypertarget{classGaussian_a91bdbd19aacfde3e783b971887905a27}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian()}{Gaussian()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{classGaussian_a91bdbd19aacfde3e783b971887905a27} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\mbox{\hyperlink{classGaussian}{\+::\+Gaussian}} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{n}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+Constructor for \doxylink{classGaussian}{Gaussian} distribution with specified dimension. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The dimension of the \doxylink{classGaussian}{Gaussian} distribution.\\
+\hline
+\end{DoxyParams}
+Constructs a \doxylink{classGaussian}{Gaussian} distribution with zero mean and uninitialized covariance of the specified dimension. \Hypertarget{classGaussian_a9a67ff6810507ced2a22de3839fc8c5f}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian()}{Gaussian()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{classGaussian_a9a67ff6810507ced2a22de3839fc8c5f} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\mbox{\hyperlink{classGaussian}{\+::\+Gaussian}} (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{S}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+Construct a \doxylink{classGaussian}{Gaussian} distribution with zero mean and given square root covariance matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S} & The square root covariance matrix (upper triangular). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classGaussian_ab5e94c615611f3de94e2341cee1b1ec6}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian()}{Gaussian()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{classGaussian_ab5e94c615611f3de94e2341cee1b1ec6} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\mbox{\hyperlink{classGaussian}{\+::\+Gaussian}} (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{mu}{, }\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{S}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Construct a \doxylink{classGaussian}{Gaussian} distribution with given mean and square root covariance matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & The mean vector of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+{\em S} & The square root covariance matrix (upper triangular).\\
+\hline
+\end{DoxyParams}
+This constructor initializes a \doxylink{classGaussian}{Gaussian} distribution with the specified mean vector and square root covariance matrix. It ensures that the dimensions of the input parameters are consistent. \Hypertarget{classGaussian_adb37a73b84399bcad9f9c0e9320ebfae}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian()}{Gaussian()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{classGaussian_adb37a73b84399bcad9f9c0e9320ebfae} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Other\+Scalar$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\mbox{\hyperlink{classGaussian}{\+::\+Gaussian}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Other\+Scalar $>$ \&}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+Convert a \doxylink{classGaussian}{Gaussian} distribution from one scalar type to another. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\+Scalar} & The scalar type of the source \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & The source \doxylink{classGaussian}{Gaussian} distribution to convert from.\\
+\hline
+\end{DoxyParams}
+This constructor creates a new \doxylink{classGaussian}{Gaussian} distribution by converting the mean vector and square root covariance matrix from the source scalar type to the current scalar type.
+
+\begin{DoxyNote}{Note}
+This constructor performs type checking to ensure the dimensions of the converted distribution are consistent. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{classGaussian_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGaussian_a6105b84cff5cbf642812bb4db2c47ece}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!affineTransform@{affineTransform}}
+\index{affineTransform@{affineTransform}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{affineTransform()}{affineTransform()}}
+{\footnotesize\ttfamily \label{classGaussian_a6105b84cff5cbf642812bb4db2c47ece} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Func$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::affine\+Transform (\begin{DoxyParamCaption}\item[{Func}]{h}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Propagate the \doxylink{classGaussian}{Gaussian} distribution through a nonlinear function. 
+
+This method transforms the current \doxylink{classGaussian}{Gaussian} distribution p(x) through a given function y = h(x) by propagating information through the affine transformation. It returns a new \doxylink{classGaussian}{Gaussian} distribution representing p(y).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Func} & The type of the function object. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em h} & The function object representing the nonlinear transformation. It should take two arguments\+: the input vector and a reference to the Jacobian matrix. The function should return the transformed vector and populate the Jacobian matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} distribution representing p(y). 
+\end{DoxyReturn}
+\Hypertarget{classGaussian_ab380b28fc7afc9e5ed3afc16377f8ffa}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!cast@{cast}}
+\index{cast@{cast}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{cast()}{cast()}}
+{\footnotesize\ttfamily \label{classGaussian_ab380b28fc7afc9e5ed3afc16377f8ffa} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Other\+Scalar$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Other\+Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::cast (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Casts the \doxylink{classGaussian}{Gaussian} distribution to a different scalar type. 
+
+This method creates a new \doxylink{classGaussian}{Gaussian} distribution with a different scalar type, while maintaining the same distribution parameters.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Other\+Scalar} & The target scalar type for the cast operation. \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object with the specified scalar type. 
+\end{DoxyReturn}
+\Hypertarget{classGaussian_a3e9b58a0969b0aede9f810afc318a917}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!conditional@{conditional}}
+\index{conditional@{conditional}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{conditional()}{conditional()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a3e9b58a0969b0aede9f810afc318a917} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Index\+TypeA, typename Index\+TypeB$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::conditional (\begin{DoxyParamCaption}\item[{const Index\+TypeA \&}]{idxA}{, }\item[{const Index\+TypeB \&}]{idxB}{, }\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{xB}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the conditional distribution given a subset of variables. 
+
+Given the joint density p(x), this method returns the conditional density p(x(idx\+A) \texorpdfstring{$\vert$}{|} x(idx\+B) = xB).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index\+TypeA} & The type of the index container for set A (e.\+g., std\+::vector$<$int$>$, Eigen\+::\+Vector\+Xi, Eigen\+::\+Array\+Xi) \\
+\hline
+{\em Index\+TypeB} & The type of the index container for set B (e.\+g., std\+::vector$<$int$>$, Eigen\+::\+Vector\+Xi, Eigen\+::\+Array\+Xi) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em idxA} & The indices of the variables to condition on (set A) \\
+\hline
+{\em idxB} & The indices of the conditioning variables (set B) \\
+\hline
+{\em xB} & The values of the conditioning variables \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The conditional \doxylink{classGaussian}{Gaussian} distribution of x(idx\+A) given x(idx\+B) = xB
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The resulting distribution will have a dimension equal to the size of idxA. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a599adbcb17bb04cd5838c98193fb2004}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!conditional@{conditional}}
+\index{conditional@{conditional}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{conditional()}{conditional()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a599adbcb17bb04cd5838c98193fb2004} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Index\+TypeA, typename Index\+TypeB$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::conditional (\begin{DoxyParamCaption}\item[{const Index\+TypeA \&}]{idxA}{, }\item[{const Index\+TypeB \&}]{idxB}{, }\item[{const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$ \&}]{px\+B\+\_\+y}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the conditional distribution given a subset of variables and their conditional distribution. 
+
+Given the joint density p(x) and the conditional density p(x(idx\+B) \texorpdfstring{$\vert$}{|} y) for some data y, this method returns the conditional density p(x(idx\+A) \texorpdfstring{$\vert$}{|} y).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index\+TypeA} & The type of the index container for set A (e.\+g., std\+::vector$<$int$>$, Eigen\+::\+Vector\+Xi, Eigen\+::\+Array\+Xi) \\
+\hline
+{\em Index\+TypeB} & The type of the index container for set B (e.\+g., std\+::vector$<$int$>$, Eigen\+::\+Vector\+Xi, Eigen\+::\+Array\+Xi) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em idxA} & The indices of the variables to condition on (set A) \\
+\hline
+{\em idxB} & The indices of the variables with known conditional distribution (set B) \\
+\hline
+{\em px\+B\+\_\+y} & The conditional \doxylink{classGaussian}{Gaussian} distribution of x(idx\+B) given y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The conditional \doxylink{classGaussian}{Gaussian} distribution of x(idx\+A) given y
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The resulting distribution will have a dimension equal to the size of idxA. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_afe7297cb30034030e79a647b4f26caed}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!cov@{cov}}
+\index{cov@{cov}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{cov()}{cov()}}
+{\footnotesize\ttfamily \label{classGaussian_afe7297cb30034030e79a647b4f26caed} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::cov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the covariance matrix of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+\begin{DoxyReturn}{Returns}
+The covariance matrix of the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGaussianBase_a93d9a75118e38b3a0bbbd3c8704593d0}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a416b1486d74f1567aca071a779404f3d}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!dim@{dim}}
+\index{dim@{dim}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}}
+{\footnotesize\ttfamily \label{classGaussian_a416b1486d74f1567aca071a779404f3d} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+Index \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the dimension of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+\begin{DoxyReturn}{Returns}
+The dimension of the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a7c540ec12961bdefd7e1cdca72556474}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromInfo@{fromInfo}}
+\index{fromInfo@{fromInfo}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromInfo()}{fromInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a7c540ec12961bdefd7e1cdca72556474} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Info (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{Lambda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from information matrix with zero information vector. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using only the information matrix and assumes a zero information vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Lambda} & The information matrix of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution with zero information vector.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method internally calls from\+Info with a zero information vector of appropriate size and the provided information matrix. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_abfd47d269b59e1e8008f0ab783d79547}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromInfo@{fromInfo}}
+\index{fromInfo@{fromInfo}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromInfo()}{fromInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussian_abfd47d269b59e1e8008f0ab783d79547} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Info (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{eta}{, }\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{Lambda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from information parameters. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using the information vector and the information matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & The information vector of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+{\em Lambda} & The information matrix of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method performs dimension checks to ensure consistency between the input parameters and computes the square root information matrix using Cholesky decomposition before calling from\+Sqrt\+Info. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_ab1ac7a715496d7d91a349d551852801f}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromMoment@{fromMoment}}
+\index{fromMoment@{fromMoment}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromMoment()}{fromMoment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussian_ab1ac7a715496d7d91a349d551852801f} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Moment (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{P}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from covariance matrix with zero mean. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using only the covariance matrix and assumes a zero mean vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em P} & The covariance matrix of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution with zero mean.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method internally calls from\+Moment with a zero mean vector of appropriate size and the provided covariance matrix. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_ac246f9cccd7ebc2893f83873f726c2ab}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromMoment@{fromMoment}}
+\index{fromMoment@{fromMoment}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromMoment()}{fromMoment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussian_ac246f9cccd7ebc2893f83873f726c2ab} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Moment (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{mu}{, }\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{P}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from moment parameters. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using the mean vector and the covariance matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & The mean vector of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+{\em P} & The covariance matrix of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method performs dimension checks to ensure consistency between the input parameters and computes the square root of the covariance matrix using Cholesky decomposition. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_acb63e110439b9c29d945e9de640347d9}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromSamples@{fromSamples}}
+\index{fromSamples@{fromSamples}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromSamples()}{fromSamples()}}
+{\footnotesize\ttfamily \label{classGaussian_acb63e110439b9c29d945e9de640347d9} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Samples (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{X}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from a set of samples. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object by estimating the mean and covariance from the provided sample data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em X} & The matrix of samples, where each column represents a sample and each row represents a dimension of the distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the estimated distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method assumes that the samples are independent and identically distributed (i.\+i.\+d.) draws from a \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a55c640e5f16531b480911b1cd5b85123}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromSqrtInfo@{fromSqrtInfo}}
+\index{fromSqrtInfo@{fromSqrtInfo}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromSqrtInfo()}{fromSqrtInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a55c640e5f16531b480911b1cd5b85123} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Sqrt\+Info (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{Xi}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from square root information matrix with zero information vector. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using only the square root of the information matrix (upper triangular) and assumes a zero information vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Xi} & The square root of the information matrix (upper triangular). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution with zero information vector.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method internally calls from\+Sqrt\+Info with a zero information vector of appropriate size and the provided square root information matrix. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a132209b8c2b7879be2ad13a67d415367}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromSqrtInfo@{fromSqrtInfo}}
+\index{fromSqrtInfo@{fromSqrtInfo}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromSqrtInfo()}{fromSqrtInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a132209b8c2b7879be2ad13a67d415367} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Sqrt\+Info (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{nu}{, }\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{Xi}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from square root information parameters. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using the square root information vector and the square root information matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em nu} & The square root information vector. \\
+\hline
+{\em Xi} & The square root information matrix (upper triangular). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method performs dimension checks to ensure consistency between the input parameters and computes the mean and square root covariance matrix from the square root information parameters. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a20582914304ddba5138706991e8a3dd0}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromSqrtMoment@{fromSqrtMoment}}
+\index{fromSqrtMoment@{fromSqrtMoment}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromSqrtMoment()}{fromSqrtMoment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a20582914304ddba5138706991e8a3dd0} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Sqrt\+Moment (\begin{DoxyParamCaption}\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{S}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from square root covariance matrix with zero mean. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using only the square root of the covariance matrix (upper triangular) and assumes a zero mean vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em S} & The square root of the covariance matrix (upper triangular). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution with zero mean.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method internally calls from\+Sqrt\+Moment with a zero mean vector of appropriate size. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a5bae4c0120073660541d2b3e7e3e0656}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!fromSqrtMoment@{fromSqrtMoment}}
+\index{fromSqrtMoment@{fromSqrtMoment}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{fromSqrtMoment()}{fromSqrtMoment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussian_a5bae4c0120073660541d2b3e7e3e0656} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::from\+Sqrt\+Moment (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{mu}{, }\item[{const Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{S}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Creates a \doxylink{classGaussian}{Gaussian} object from square root moment parameters. 
+
+This static factory method constructs a \doxylink{classGaussian}{Gaussian} object using the mean vector and the square root of the covariance matrix (upper triangular).
+
+
+\begin{DoxyParams}{Parameters}
+{\em mu} & The mean vector of the \doxylink{classGaussian}{Gaussian} distribution. \\
+\hline
+{\em S} & The square root of the covariance matrix (upper triangular). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the \doxylink{classGaussian}{Gaussian} distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method performs dimension checks to ensure consistency between the input parameters. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a506cad2a4b25b31cfb0866a779cdf12a}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!infoMat@{infoMat}}
+\index{infoMat@{infoMat}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{infoMat()}{infoMat()}}
+{\footnotesize\ttfamily \label{classGaussian_a506cad2a4b25b31cfb0866a779cdf12a} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::info\+Mat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the information matrix of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+\begin{DoxyReturn}{Returns}
+The information matrix of the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGaussianBase_a286e3585f851985c98f3c8a6a2f4dcf3}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a2d59f2aecd35ff0c47658925d794da17}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!infoVec@{infoVec}}
+\index{infoVec@{infoVec}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{infoVec()}{infoVec()}}
+{\footnotesize\ttfamily \label{classGaussian_a2d59f2aecd35ff0c47658925d794da17} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::info\+Vec (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the information vector of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+\begin{DoxyReturn}{Returns}
+The information vector of the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGaussianBase_a959126cf330d5be69d5ff1a738d333ec}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a5cfc431373d485b389f54d6702e3c28b}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!isWithinConfidenceRegion@{isWithinConfidenceRegion}}
+\index{isWithinConfidenceRegion@{isWithinConfidenceRegion}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{isWithinConfidenceRegion()}{isWithinConfidenceRegion()}}
+{\footnotesize\ttfamily \label{classGaussian_a5cfc431373d485b389f54d6702e3c28b} 
+template$<$typename Scalar = double$>$ \\
+virtual bool \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::is\+Within\+Confidence\+Region (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{x}{, }\item[{double}]{n\+Sigma}{ = {\ttfamily 3.0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if a given point is within the confidence region of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+This method determines whether the input vector x is within the confidence region defined by n\+Sigma standard deviations from the mean of the \doxylink{classGaussian}{Gaussian} distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input vector to check. \\
+\hline
+{\em n\+Sigma} & The number of standard deviations defining the confidence region (default\+: 3.\+0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is within the confidence region, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{classGaussian_a6712694fd5780a754703fffe164416f6}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!join@{join}}
+\index{join@{join}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily \label{classGaussian_a6712694fd5780a754703fffe164416f6} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::join (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Join two \doxylink{classGaussian}{Gaussian} distributions into a joint distribution. 
+
+This method combines the current \doxylink{classGaussian}{Gaussian} distribution with another one, creating a joint distribution. The resulting distribution represents the joint probability of both input distributions, assuming they are independent.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \doxylink{classGaussian}{Gaussian} object to join with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} object representing the joint distribution. 
+\end{DoxyReturn}
+\Hypertarget{classGaussian_ae2b32cb1627b3cf0cb46e21a6c8f782c}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!log@{log}}
+\index{log@{log}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classGaussian_ae2b32cb1627b3cf0cb46e21a6c8f782c} 
+template$<$typename Scalar = double$>$ \\
+virtual Scalar \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::log (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{x}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the log-\/likelihood of a given point under the \doxylink{classGaussian}{Gaussian} distribution. 
+
+This method calculates the natural logarithm of the probability density function of the \doxylink{classGaussian}{Gaussian} distribution at the given point x.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input vector at which to evaluate the log-\/likelihood. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value at the given point.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method assumes that the input vector x has the same dimension as the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a338a329ad040caa11df6387cb4c6bb95}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!log@{log}}
+\index{log@{log}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classGaussian_a338a329ad040caa11df6387cb4c6bb95} 
+template$<$typename Scalar = double$>$ \\
+Scalar \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::log (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{x}{, }\item[{Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{g}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the log-\/likelihood of a given point and its gradient under the \doxylink{classGaussian}{Gaussian} distribution. 
+
+This method calculates the natural logarithm of the probability density function of the \doxylink{classGaussian}{Gaussian} distribution at the given point x and computes its gradient.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input vector at which to evaluate the log-\/likelihood. \\
+\hline
+{\em g} & Reference to a vector where the gradient will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value at the given point.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method assumes that the input vector x has the same dimension as the \doxylink{classGaussian}{Gaussian} distribution. The gradient vector g will be resized to match the dimension of x. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_ac60f746f189e902faac832d1b9b32434}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!log@{log}}
+\index{log@{log}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classGaussian_ac60f746f189e902faac832d1b9b32434} 
+template$<$typename Scalar = double$>$ \\
+Scalar \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::log (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{x}{, }\item[{Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{g}{, }\item[{Eigen\+::\+MatrixX$<$ Scalar $>$ \&}]{H}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the log-\/likelihood of a given point, its gradient, and Hessian under the \doxylink{classGaussian}{Gaussian} distribution. 
+
+This method calculates the natural logarithm of the probability density function of the \doxylink{classGaussian}{Gaussian} distribution at the given point x, computes its gradient, and Hessian matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input vector at which to evaluate the log-\/likelihood. \\
+\hline
+{\em g} & Reference to a vector where the gradient will be stored. \\
+\hline
+{\em H} & Reference to a matrix where the Hessian will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value at the given point.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method assumes that the input vector x has the same dimension as the \doxylink{classGaussian}{Gaussian} distribution. The gradient vector g and Hessian matrix H will be resized to match the dimension of x. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a542115dee7d78b24db88546e40c0cd87}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!marginal@{marginal}}
+\index{marginal@{marginal}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{marginal()}{marginal()}}
+{\footnotesize\ttfamily \label{classGaussian_a542115dee7d78b24db88546e40c0cd87} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Index\+Type$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::marginal (\begin{DoxyParamCaption}\item[{const Index\+Type \&}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the marginal distribution of a subset of variables. 
+
+Given the joint density p(x), this method returns the marginal density p(x(idx)).
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index\+Type} & The type of the index container (e.\+g., std\+::vector$<$int$>$, Eigen\+::\+Vector\+Xi, Eigen\+::\+Array\+Xi) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & The indices of the variables to marginalize over \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The marginal \doxylink{classGaussian}{Gaussian} distribution of the selected variables
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The resulting distribution will have a dimension equal to the size of idx. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a39e92048ba667390e2c29e5edc3c0689}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!mean@{mean}}
+\index{mean@{mean}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{mean()}{mean()}}
+{\footnotesize\ttfamily \label{classGaussian_a39e92048ba667390e2c29e5edc3c0689} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::mean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the mean vector of the \doxylink{classGaussian}{Gaussian} distribution. 
+
+\begin{DoxyReturn}{Returns}
+The mean vector of the \doxylink{classGaussian}{Gaussian} distribution. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a228392294d03cf2edf1328290accda2b}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}}
+{\footnotesize\ttfamily \label{classGaussian_a228392294d03cf2edf1328290accda2b} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$ \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create a new \doxylink{classGaussian}{Gaussian} distribution by appending another \doxylink{classGaussian}{Gaussian} distribution. 
+
+This operator combines the current \doxylink{classGaussian}{Gaussian} distribution with another one, effectively creating a joint distribution of independent variables. The resulting distribution will have a dimension equal to the sum of the dimensions of the two input distributions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classGaussian}{Gaussian} distribution to append to this one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{classGaussian}{Gaussian} distribution representing the joint distribution.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This operation assumes that the variables in the two distributions are independent, resulting in a block-\/diagonal covariance matrix. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_a21e2c0d710a1f04fd637b59cf22dcad9}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}}
+\index{operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}=()}{operator*=()}}
+{\footnotesize\ttfamily \label{classGaussian_a21e2c0d710a1f04fd637b59cf22dcad9} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{classGaussian}{Gaussian}} \& \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::operator\texorpdfstring{$\ast$}{*}= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$ \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Append another \doxylink{classGaussian}{Gaussian} distribution to this one. 
+
+This operator combines the current \doxylink{classGaussian}{Gaussian} distribution with another one, effectively creating a joint distribution of independent variables. The resulting distribution will have a dimension equal to the sum of the dimensions of the two input distributions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classGaussian}{Gaussian} distribution to append to this one. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the modified \doxylink{classGaussian}{Gaussian} distribution (\texorpdfstring{$\ast$}{*}this).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This operation assumes that the variables in the two distributions are independent, resulting in a block-\/diagonal covariance matrix. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_ac656d83cf800b1e5611ebcf69367fe91}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!quadricSurface@{quadricSurface}}
+\index{quadricSurface@{quadricSurface}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{quadricSurface()}{quadricSurface()}}
+{\footnotesize\ttfamily \label{classGaussian_ac656d83cf800b1e5611ebcf69367fe91} 
+template$<$typename Scalar = double$>$ \\
+Eigen\+::\+Matrix4$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::quadric\+Surface (\begin{DoxyParamCaption}\item[{double}]{n\+Sigma}{ = {\ttfamily 3.0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Compute the quadric surface coefficients for a given number of standard deviations. 
+
+This method calculates the coefficients of the quadric surface that represents the confidence ellipsoid of the 3D \doxylink{classGaussian}{Gaussian} distribution. The surface is defined for a specified number of standard deviations (n\+Sigma).
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Sigma} & The number of standard deviations to use for the confidence ellipsoid (default\+: 3.\+0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A 4x4 matrix containing the quadric surface coefficients.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method assumes that the \doxylink{classGaussian}{Gaussian} distribution is three-\/dimensional. 
+\end{DoxyNote}
+\Hypertarget{classGaussian_aeaef85731458efa56e4f2bbf1adb388f}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!sqrtCov@{sqrtCov}}
+\index{sqrtCov@{sqrtCov}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtCov()}{sqrtCov()}}
+{\footnotesize\ttfamily \label{classGaussian_aeaef85731458efa56e4f2bbf1adb388f} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::sqrt\+Cov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the square root of the covariance matrix. 
+
+\begin{DoxyReturn}{Returns}
+The upper triangular square root of the covariance matrix.
+\end{DoxyReturn}
+The returned matrix $\mathbf{S}$ is upper triangular and satisfies $\mathbf{S}^\mathsf{T} \mathbf{S} = \mathbf{P}$, where $\mathbf{P}$ is the covariance matrix. 
+
+Implements \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a00c7a2df5dd3f20b13cbffbc48b920d6}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!sqrtInfoMat@{sqrtInfoMat}}
+\index{sqrtInfoMat@{sqrtInfoMat}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtInfoMat()}{sqrtInfoMat()}}
+{\footnotesize\ttfamily \label{classGaussian_a00c7a2df5dd3f20b13cbffbc48b920d6} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::sqrt\+Info\+Mat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the square root of the information matrix. 
+
+\begin{DoxyReturn}{Returns}
+The upper triangular square root of the information matrix.
+\end{DoxyReturn}
+The returned matrix $\boldsymbol\Xi$ is upper triangular and satisfies $\boldsymbol\Xi^\mathsf{T} \boldsymbol\Xi = \boldsymbol\Lambda$, where $\boldsymbol\Lambda$ is the information matrix. 
+
+Implements \mbox{\hyperlink{classGaussianBase_ab1e4ae449123114da73b73cf3c72570e}{Gaussian\+Base$<$ double $>$}}.
+
+\Hypertarget{classGaussian_a2c94bc42fa33b200869486ce1c3bd3e3}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!sqrtInfoVec@{sqrtInfoVec}}
+\index{sqrtInfoVec@{sqrtInfoVec}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtInfoVec()}{sqrtInfoVec()}}
+{\footnotesize\ttfamily \label{classGaussian_a2c94bc42fa33b200869486ce1c3bd3e3} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussian}{Gaussian}}$<$ Scalar $>$\+::sqrt\+Info\+Vec (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the square root of the information vector. 
+
+\begin{DoxyReturn}{Returns}
+The square root of the information vector of the \doxylink{classGaussian}{Gaussian} distribution.
+\end{DoxyReturn}
+The returned vector $\boldsymbol\nu$ satisfies $\boldsymbol\nu = \boldsymbol\Xi \boldsymbol\mu$, where $\boldsymbol\Xi$ is the square root of the information matrix and $\boldsymbol\mu$ is the mean vector. 
+
+Implements \mbox{\hyperlink{classGaussianBase_a2647644ad1f9377081f79c3fa664fb09}{Gaussian\+Base$<$ double $>$}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{classGaussian_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classGaussian_a58c9db6030879d73e5eb59448f85a36e}\index{Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}!Gaussian@{Gaussian}}
+\index{Gaussian@{Gaussian}!Gaussian$<$ Scalar $>$@{Gaussian$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Gaussian}{Gaussian}}
+{\footnotesize\ttfamily \label{classGaussian_a58c9db6030879d73e5eb59448f85a36e} 
+template$<$typename Scalar = double$>$ \\
+template$<$typename Other\+Scalar$>$ \\
+friend class \mbox{\hyperlink{classGaussian}{Gaussian}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Declare \doxylink{classGaussian}{Gaussian} class as a friend for all scalar types. 
+
+This allows the \doxylink{classGaussian}{Gaussian} class with different scalar types to access private members of each other, facilitating type conversion operations. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Gaussian_8hpp}{Gaussian.\+hpp}}\end{DoxyCompactItemize}

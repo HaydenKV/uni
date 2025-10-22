@@ -1,0 +1,107 @@
+cat > .gitignore <<'EOF'
+# ===============================
+# General build & binary ignores
+# ===============================
+build/
+devel/
+install/
+*.o
+*.so
+*.exe
+*.out
+*.a
+*.dll
+*.bin
+
+# ===============================
+# Python cache & virtual envs
+# ===============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+**/.venv/
+venv/
+ENV/
+env/
+lab3/python/.venv/
+
+# ===============================
+# Old / temp / archive
+# ===============================
+.git_old/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.iso
+*.bak
+*.tmp
+*.log
+
+# ===============================
+# Large ML models & weights
+# ===============================
+*.safetensors
+*.pth
+*.pt
+*.onnx
+*.h5
+*.ckpt
+*.weights
+*.pb
+*.tflite
+*.npz
+*.npy
+
+# ===============================
+# Media & dataset files
+# ===============================
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.tiff
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.bag
+*.pcap
+
+# ===============================
+# Project-specific large dirs
+# ===============================
+/data/
+/datasets/
+/dataset/
+/recordings/
+/output/
+/out/
+/logs/
+/tmp/
+/results/
+/runs/
+/lab3/data/
+/lab3/out/
+/lab3/python/model/
+/lab3/python/processor/
+/a1/data/
+/a1_submit/data/
+/a1test/MCHA4400_Assignment1/a1/data/
+/MCHA4400_Assignment1/a1/data/
+/a2/data/
+/lab10/data/
+/lab11/data/
+
+# ===============================
+# IDEs / Editors / OS junk
+# ===============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+EOF

@@ -1,0 +1,35 @@
+var namespaces_dup =
+[
+    [ "funcmin", "namespacefuncmin.html", [
+      [ "BFGSLM", "namespacefuncmin.html#a867b4540fa51827a73fe33a6e9ff09de", null ],
+      [ "BFGSLM", "namespacefuncmin.html#a00ba900dd12b931cca42c9440c400e19", null ],
+      [ "BFGSLM", "namespacefuncmin.html#aa7255f9a4333476845bc6527fd280ecb", null ],
+      [ "BFGSLMSqrt", "namespacefuncmin.html#aa0ef432f7bf2f373a36fe1a0a5ed986f", null ],
+      [ "BFGSTrust", "namespacefuncmin.html#a50c78b531d01ee12ab57fac2fa026c64", null ],
+      [ "BFGSTrust", "namespacefuncmin.html#a7b84b4d95417401f7872c1c2d44d06fd", null ],
+      [ "BFGSTrust", "namespacefuncmin.html#a0f028cd54a9e280ba9f798d463a2489d", null ],
+      [ "BFGSTrustInv", "namespacefuncmin.html#a4bba38561b6514f722b6878fdf9381a0", null ],
+      [ "BFGSTrustInv", "namespacefuncmin.html#ac27869fdf9c701651280265739faba63", null ],
+      [ "BFGSTrustInv", "namespacefuncmin.html#af20e21a733457f03ccffe0cbfb14f0ba", null ],
+      [ "BFGSTrustSparse", "namespacefuncmin.html#a29960a3385a5a312048d348491ca5830", null ],
+      [ "BFGSTrustSparse", "namespacefuncmin.html#a4d2d5d03bbf4f6461c3580a0dc436d92", null ],
+      [ "BFGSTrustSparse", "namespacefuncmin.html#a0d2dae1ed415dec481e46614765045f4", null ],
+      [ "BFGSTrustSqrt", "namespacefuncmin.html#ac1f73e1e0cf8ec583ff407b4db1bc470", null ],
+      [ "BFGSTrustSqrtInv", "namespacefuncmin.html#a1f4d972989b5a583f5fdc8e70d87ebaa", null ],
+      [ "BFGSTrustSqrtSparse", "namespacefuncmin.html#a002b08f44db1089b601526b027f35e45", null ],
+      [ "NewtonTrust", "namespacefuncmin.html#a7610fb352ec73e4da5add06ab144d139", null ],
+      [ "NewtonTrust", "namespacefuncmin.html#a345194296ea671b071e1ec040efef32e", null ],
+      [ "NewtonTrust", "namespacefuncmin.html#a6ab4305064c9339f40232d606e5693a6", null ],
+      [ "NewtonTrustEig", "namespacefuncmin.html#a177ce87c99954482d2836fb7ec0ec8d1", null ],
+      [ "sgn", "namespacefuncmin.html#a90123447966b46b5a0861a34b68f16dc", null ],
+      [ "SR1Trust", "namespacefuncmin.html#a6b7cf99bbc1aef61696e16452998f81c", null ],
+      [ "SR1Trust", "namespacefuncmin.html#a06c21cb0ac4a81c59005ea2ac4eb618b", null ],
+      [ "SR1Trust", "namespacefuncmin.html#adffedbd691dce92b26edfb6d56c8c96f", null ],
+      [ "SR1TrustEig", "namespacefuncmin.html#a5bce3224539c2de39f587273194b07f9", null ],
+      [ "trsEig", "namespacefuncmin.html#a07939512747e3786b6a1c38ebc0ebecf", null ],
+      [ "trsEig", "namespacefuncmin.html#a07454c34d31cc7a3d436630645c29314", null ],
+      [ "trsSqrt", "namespacefuncmin.html#aafd08c8cf500feab0ebf4a452c0a88be", null ],
+      [ "trsSqrtInv", "namespacefuncmin.html#ac35752d9f2d6d61e5df0ba0542d5910d", null ],
+      [ "trsSqrtSparse", "namespacefuncmin.html#a4efa83f70a0a4d1da8401dde4a558b97", null ]
+    ] ]
+];

@@ -1,0 +1,45 @@
+cat > .gitignore <<'EOF'
+# Build artifacts
+build/
+*.o
+*.so
+*.exe
+
+# Python cache & virtual envs
+__pycache__/
+*.pyc
+**/.venv/
+
+# Do NOT commit the old repo
+.git_old/
+
+# Models / weights / large ML artifacts
+*.safetensors
+*.pth
+*.pt
+*.onnx
+*.h5
+*.ckpt
+*.weights
+
+# Media & dataset files
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+*.tiff
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Project-specific large dirs (datasets/outputs/models)
+lab3/data/
+lab3/out/
+lab3/python/model/
+lab3/python/processor/
+
+# IDE settings
+.vscode/
+EOF

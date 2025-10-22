@@ -1,0 +1,41 @@
+\doxysection{System\+Ballistic.\+h}
+\hypertarget{SystemBallistic_8h_source}{}\label{SystemBallistic_8h_source}\index{src/SystemBallistic.h@{src/SystemBallistic.h}}
+\mbox{\hyperlink{SystemBallistic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SYSTEMBALLISTIC\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SYSTEMBALLISTIC\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemEstimator_8h}{SystemEstimator.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSystemBallistic_adb6b36cb4e873be604471916e261a90f}{SystemBallistic}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSystemEstimator_ad83d8c162de6eae4c5574dca76fd640a}{SystemEstimator}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classSystemBallistic_adb6b36cb4e873be604471916e261a90f}{SystemBallistic}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ \mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemBallistic_ac68c66f327a50a897cbe0feb09a711a1}{input}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00049\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \mbox{\hyperlink{classSystemBallistic_add3723cc9586f38b768566ef9b63f9b7}{processNoiseDensity}}(\textcolor{keywordtype}{double}\ dt)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Eigen::Index>\ \mbox{\hyperlink{classSystemBallistic_a62d10dfa945004877f99a42ece1e9ca2}{processNoiseIndex}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ System\ constants}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_a37ff82ff0a3d1867f45925882450046e}{p0}};\ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_afd55811b89606ac7e364b3f9a3920573}{M}};\ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_a28098f72cc100580a8785ed2c079e36e}{R}};\ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_a4c47eb680f9a574624c82ff6b26772f7}{L}};\ \ \ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_adf025d3f8cb9a4a2c5a708910ccb23fc}{T0}};\ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemBallistic_aebdb2b886ae3594d1bd821e48ac006af}{g}};\ \ \ }
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

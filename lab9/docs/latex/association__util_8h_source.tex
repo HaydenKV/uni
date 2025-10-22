@@ -1,0 +1,22 @@
+\doxysection{association\+\_\+util.\+h}
+\hypertarget{association__util_8h_source}{}\label{association__util_8h_source}\index{src/association\_util.h@{src/association\_util.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ASSOCIATION\_UTIL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ASSOCIATION\_UTIL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}SystemSLAM.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{double}\ snn(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemSLAM}{SystemSLAM}}\ \&\ system,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ featureBundleDensity,\ \textcolor{keyword}{const}\ std::vector<std::size\_t>\ \&\ idxLandmarks,\ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ Y,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera,\ std::vector<int>\ \&\ idxFeatures,\ \textcolor{keywordtype}{bool}\ enforceJointCompatibility\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{bool}\ individualCompatibility(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\ i,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\ j,\ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ Y,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ density,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ nSigma);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ individualCompatibility(\textcolor{keyword}{const}\ Eigen::Vector2d\ \&\ y,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ marginal,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ nSigma);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ jointCompatibility(\textcolor{keyword}{const}\ std::vector<int>\ \&\ idx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ sU,\ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ Y,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ density,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ nSigma,\ \textcolor{keywordtype}{double}\ \&\ surprisal);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,174 @@
+\doxysection{Plot.\+h}
+\hypertarget{Plot_8h_source}{}\label{Plot_8h_source}\index{src/Plot.h@{src/Plot.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLOT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLOT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <opencv2/core.hpp>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vtkActor.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vtkActor2D.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vtkAxesActor.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vtkCellArray.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vtkColor.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <vtkContourFilter.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <vtkCubeAxesActor.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vtkDataSetMapper.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vtkImageData.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vtkImageMapper.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <vtkLine.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vtkPoints.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <vtkPolyData.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <vtkPolyDataMapper.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <vtkPyramid.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <vtkQuadric.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <vtkRenderer.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <vtkRenderWindow.h>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <vtkSampleFunction.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <vtkSmartPointer.h>}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <vtkTransform.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <vtkUnsignedCharArray.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <vtkUnstructuredGrid.h>}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}SystemSLAM.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}MeasurementSLAM.h"{}}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Bounds}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{struct\ }Bounds}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ Bounds();}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ getVTKBounds(\textcolor{keywordtype}{double}\ *\ bounds)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ setExtremity(Bounds\ \&\ extremity)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ calculateMaxMinSigmaPoints(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ positionDensity,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sigma);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{double}\ xmin,\ xmax;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ ymin,\ ymax;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{double}\ zmin,\ zmax;}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ QuadricPlot}}
+\DoxyCodeLine{00055\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00056\ \textcolor{keyword}{struct\ }QuadricPlot}
+\DoxyCodeLine{00057\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ QuadricPlot();}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ positionDensity);}
+\DoxyCodeLine{00060\ \ \ \ \ vtkActor\ *\ getActor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{structBounds}{Bounds}}\ bounds;}
+\DoxyCodeLine{00062\ \ \ \ \ vtkSmartPointer<vtkActor>\ \ \ \ \ \ \ \ \ \ \ \ contourActor;}
+\DoxyCodeLine{00063\ \ \ \ \ vtkSmartPointer<vtkContourFilter>\ \ \ \ contours;}
+\DoxyCodeLine{00064\ \ \ \ \ vtkSmartPointer<vtkPolyDataMapper>\ \ \ contourMapper;}
+\DoxyCodeLine{00065\ \ \ \ \ vtkSmartPointer<vtkQuadric>\ \ \ \ \ \ \ \ \ \ quadric;}
+\DoxyCodeLine{00066\ \ \ \ \ vtkSmartPointer<vtkSampleFunction>\ \ \ sample;}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ value;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInit;}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ FrustumPlot}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{struct\ }FrustumPlot}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{explicit}\ FrustumPlot(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ rCNn,\ \textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ Thetanc);}
+\DoxyCodeLine{00078\ \ \ \ \ vtkActor\ *\ getActor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ vtkSmartPointer<vtkActor>\ pyramidActor;}
+\DoxyCodeLine{00081\ \ \ \ \ vtkSmartPointer<vtkCellArray>\ cells;}
+\DoxyCodeLine{00082\ \ \ \ \ vtkSmartPointer<vtkDataSetMapper>\ mapper;}
+\DoxyCodeLine{00083\ \ \ \ \ vtkSmartPointer<vtkPoints>\ pyramidPts;}
+\DoxyCodeLine{00084\ \ \ \ \ vtkSmartPointer<vtkPyramid>\ pyramid;}
+\DoxyCodeLine{00085\ \ \ \ \ vtkSmartPointer<vtkUnstructuredGrid>\ ug;}
+\DoxyCodeLine{00086\ \ \ \ \ Eigen::MatrixXd\ rPCc;}
+\DoxyCodeLine{00087\ \ \ \ \ Eigen::MatrixXd\ rPNn;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInit;}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ AxisPlot}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00094\ \textcolor{keyword}{struct\ }AxisPlot}
+\DoxyCodeLine{00095\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ AxisPlot();}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ init(vtkCamera\ *cam);}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ \mbox{\hyperlink{structBounds}{Bounds}}\ \&\ bounds);}
+\DoxyCodeLine{00099\ \ \ \ \ vtkActor\ *\ getActor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ vtkColor3d\ axis1Color;}
+\DoxyCodeLine{00102\ \ \ \ \ vtkColor3d\ axis2Color;}
+\DoxyCodeLine{00103\ \ \ \ \ vtkColor3d\ axis3Color;}
+\DoxyCodeLine{00104\ \ \ \ \ vtkSmartPointer<vtkCubeAxesActor>\ cubeAxesActor;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInit;}
+\DoxyCodeLine{00106\ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00109\ \textcolor{comment}{//\ BasisPlot}}
+\DoxyCodeLine{00110\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00111\ \textcolor{keyword}{struct\ }BasisPlot}
+\DoxyCodeLine{00112\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ BasisPlot();}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ rCNn,\ \textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ Thetanc);}
+\DoxyCodeLine{00115\ \ \ \ \ vtkProp3D\ *\ getActor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ vtkSmartPointer<vtkAxesActor>\ \ \ \ \ \ \ axesActor;}
+\DoxyCodeLine{00118\ \ \ \ \ vtkSmartPointer<vtkTransform>\ \ \ \ \ \ \ transform;}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isInit;}
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00123\ \textcolor{comment}{//\ ImagePlot}}
+\DoxyCodeLine{00124\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00125\ \textcolor{keyword}{struct\ }ImagePlot}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \ \ \ \ ImagePlot();}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ init(\textcolor{keywordtype}{double}\ rendererWidth,\ \textcolor{keywordtype}{double}\ rendererHeight);}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keyword}{const}\ cv::Mat\ \&\ view);}
+\DoxyCodeLine{00130\ \ \ \ \ vtkActor2D\ *\ getActor()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ vtkSmartPointer<vtkImageData>\ viewVTK;}
+\DoxyCodeLine{00133\ \ \ \ \ vtkSmartPointer<vtkActor2D>\ imageActor2d;}
+\DoxyCodeLine{00134\ \ \ \ \ vtkSmartPointer<vtkImageMapper>\ imageMapper;}
+\DoxyCodeLine{00135\ \ \ \ \ cv::Mat\ cvVTKBuffer;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{double}\ width,\ height;}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{bool}\ isInit;}
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00141\ \textcolor{comment}{//\ Plot}}
+\DoxyCodeLine{00142\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00143\ \textcolor{keyword}{struct\ }Plot}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{explicit}\ Plot(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera);}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{void}\ start()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{void}\ setData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemSLAM}{SystemSLAM}}\ \&\ system,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classMeasurementSLAM}{MeasurementSLAM}}\ \&\ measurement);}
+\DoxyCodeLine{00150\ \ \ \ \ cv::Mat\ getFrame()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00153\ \ \ \ \ std::unique\_ptr<SystemSLAM>\ pSystem;}
+\DoxyCodeLine{00154\ \ \ \ \ std::unique\_ptr<MeasurementSLAM>\ pMeasurement;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera;}
+\DoxyCodeLine{00156\ \ \ \ \ vtkSmartPointer<vtkRenderWindow>\ renderWindow;}
+\DoxyCodeLine{00157\ \ \ \ \ vtkSmartPointer<vtkRenderer>\ \ \ \ \ threeDimRenderer;}
+\DoxyCodeLine{00158\ \ \ \ \ vtkSmartPointer<vtkRenderer>\ \ \ \ \ imageRenderer;}
+\DoxyCodeLine{00159\ \ \ \ \ vtkSmartPointer<vtkRenderWindowInteractor>\ interactor;}
+\DoxyCodeLine{00160\ \ \ \ \ \mbox{\hyperlink{structQuadricPlot}{QuadricPlot}}\ qpCamera;}
+\DoxyCodeLine{00161\ \ \ \ \ std::vector<QuadricPlot>\ qpLandmarks;}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{structFrustumPlot}{FrustumPlot}}\ fp;}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{structAxisPlot}{AxisPlot}}\ ap;}
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{structBasisPlot}{BasisPlot}}\ bp;}
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{structImagePlot}{ImagePlot}}\ ip;}
+\DoxyCodeLine{00166\ \};}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

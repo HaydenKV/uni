@@ -1,0 +1,149 @@
+\doxysection{Event Class Reference}
+\hypertarget{classEvent}{}\label{classEvent}\index{Event@{Event}}
+
+
+Base class for all events in the system.  
+
+
+
+
+{\ttfamily \#include $<$Event.\+h$>$}
+
+Inheritance diagram for Event\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classEvent}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}} (double time)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent_a74d66e95b362dc9cca69269fc91fe041}{Event}} (double time, int verbosity)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+\Hypertarget{classEvent_a7704ec01ce91e673885792054214b3d2}\label{classEvent_a7704ec01ce91e673885792054214b3d2} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEvent_a0a4e814f472c519ace0a22f1a23acb0a}{process}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system)
+\begin{DoxyCompactList}\small\item\em Process the event in the given system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classEvent_aa89fdd0acff3245e93180f8c425c2278}{update}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system)=0
+\begin{DoxyCompactList}\small\item\em Update the system based on this event. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classEvent_a5610e63185ccb47c969fe2f8796921a7}{get\+Process\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get a string representation of the event processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classEvent_a716a3d53e3f3b6798c6279a118a179c1}\label{classEvent_a716a3d53e3f3b6798c6279a118a179c1} 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The time at which the event occurs. \end{DoxyCompactList}\item 
+\Hypertarget{classEvent_ac98f29e9b794a6294f6a1be787263e35}\label{classEvent_ac98f29e9b794a6294f6a1be787263e35} 
+int {\bfseries verbosity\+\_\+}
+\begin{DoxyCompactList}\small\item\em Verbosity level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all events in the system. 
+
+This class represents an abstract event that can be processed by the system. Concrete event types should inherit from this class and implement the update method. 
+
+\label{doc-constructors}
+\Hypertarget{classEvent_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classEvent_aebd4c54256dbf46040053babdfcdf987}\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classEvent_aebd4c54256dbf46040053babdfcdf987} 
+Event\+::\+Event (\begin{DoxyParamCaption}\item[{double}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classEvent}{Event} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time at which the event occurs. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEvent_a74d66e95b362dc9cca69269fc91fe041}\index{Event@{Event}!Event@{Event}}
+\index{Event@{Event}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Event()}{Event()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classEvent_a74d66e95b362dc9cca69269fc91fe041} 
+Event\+::\+Event (\begin{DoxyParamCaption}\item[{double}]{time}{, }\item[{int}]{verbosity}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{classEvent}{Event} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time at which the event occurs. \\
+\hline
+{\em verbosity} & The verbosity level for the event. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classEvent_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classEvent_a5610e63185ccb47c969fe2f8796921a7}\index{Event@{Event}!getProcessString@{getProcessString}}
+\index{getProcessString@{getProcessString}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{getProcessString()}{getProcessString()}}
+{\footnotesize\ttfamily \label{classEvent_a5610e63185ccb47c969fe2f8796921a7} 
+std\+::string Event\+::get\+Process\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Get a string representation of the event processing. 
+
+\begin{DoxyReturn}{Returns}
+A string describing the event processing.
+\end{DoxyReturn}
+This virtual function can be overridden by derived classes to provide a custom string representation of the event processing. 
+
+Reimplemented in \mbox{\hyperlink{classMeasurementRADAR_ac92712423f9ca60e2dad0c6b65ef7900}{Measurement\+RADAR}}.
+
+\Hypertarget{classEvent_a0a4e814f472c519ace0a22f1a23acb0a}\index{Event@{Event}!process@{process}}
+\index{process@{process}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily \label{classEvent_a0a4e814f472c519ace0a22f1a23acb0a} 
+void Event\+::process (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSystemBase}{System\+Base}} \&}]{system}{}\end{DoxyParamCaption})}
+
+
+
+Process the event in the given system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em system} & The system in which to process the event. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classEvent_aa89fdd0acff3245e93180f8c425c2278}\index{Event@{Event}!update@{update}}
+\index{update@{update}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classEvent_aa89fdd0acff3245e93180f8c425c2278} 
+virtual void Event\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSystemBase}{System\+Base}} \&}]{system}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Update the system based on this event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em system} & The system to update.\\
+\hline
+\end{DoxyParams}
+This pure virtual function must be implemented by derived classes to define the specific behavior of the event. 
+
+Implemented in \mbox{\hyperlink{classMeasurement_a30df1dcc9aac6e9d25e54498ca11758a}{Measurement}}, and \mbox{\hyperlink{classMeasurementGaussianLikelihood_aa3a15797f5e7e5cd8fbf658af56f5a37}{Measurement\+Gaussian\+Likelihood}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{Event_8h}{Event.\+h}}\item 
+src/Event.\+cpp\end{DoxyCompactItemize}

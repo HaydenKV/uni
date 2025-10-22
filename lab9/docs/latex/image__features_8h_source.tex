@@ -1,0 +1,23 @@
+\doxysection{image\+\_\+features.\+h}
+\hypertarget{image__features_8h_source}{}\label{image__features_8h_source}\index{src/image\_features.h@{src/image\_features.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMAGE\_FEATURES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMAGE\_FEATURES\_H\ }}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <opencv2/core.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{struct\ }PointFeature}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ PointFeature();}
+\DoxyCodeLine{00010\ \ \ \ \ PointFeature(\textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ score\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ x\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \&\ y\_);}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ score,\ x,\ y;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ PointFeature\ \&\ other)\ \textcolor{keyword}{const};\ \ \ \textcolor{comment}{//\ used\ for\ std::sort}}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ std::vector<PointFeature>\ detectFeatures(\textcolor{keyword}{const}\ cv::Mat\ \&\ img,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\ maxNumFeatures);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,34 @@
+\doxysection{Event.\+h}
+\hypertarget{Event_8h_source}{}\label{Event_8h_source}\index{src/Event.h@{src/Event.h}}
+\mbox{\hyperlink{Event_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ EVENT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ EVENT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemBase_8h}{SystemBase.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}}(\textcolor{keywordtype}{double}\ time);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}}(\textcolor{keywordtype}{double}\ time,\ \textcolor{keywordtype}{int}\ verbosity);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classEvent_a7704ec01ce91e673885792054214b3d2}{\string~Event}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEvent_a0a4e814f472c519ace0a22f1a23acb0a}{process}}(\mbox{\hyperlink{classSystemBase}{SystemBase}}\ \&\ system);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classEvent_aa89fdd0acff3245e93180f8c425c2278}{update}}(\mbox{\hyperlink{classSystemBase}{SystemBase}}\ \&\ system)\ =\ 0;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classEvent_a5610e63185ccb47c969fe2f8796921a7}{getProcessString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classEvent_a716a3d53e3f3b6798c6279a118a179c1}{time\_}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEvent_ac98f29e9b794a6294f6a1be787263e35}{verbosity\_}};\ \ \ \ \ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

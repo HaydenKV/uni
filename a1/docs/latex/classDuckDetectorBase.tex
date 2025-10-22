@@ -1,0 +1,41 @@
+\doxysection{Duck\+Detector\+Base Class Reference}
+\hypertarget{classDuckDetectorBase}{}\label{classDuckDetectorBase}\index{DuckDetectorBase@{DuckDetectorBase}}
+Inheritance diagram for Duck\+Detector\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDuckDetectorBase}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDuckDetectorBase_aa798cad86b965ba9a0c7e515356aa4cb}\label{classDuckDetectorBase_aa798cad86b965ba9a0c7e515356aa4cb} 
+virtual cv\+::\+Mat {\bfseries detect} (const cv\+::\+Mat \&image)=0
+\item 
+\Hypertarget{classDuckDetectorBase_a0911a6f93cd7e495f782da88dcb6381e}\label{classDuckDetectorBase_a0911a6f93cd7e495f782da88dcb6381e} 
+const std\+::vector$<$ cv\+::\+Point2f $>$ \& {\bfseries last\+\_\+centroids} () const noexcept
+\item 
+\Hypertarget{classDuckDetectorBase_a853b9eced19404c9cd8f738855ad1a18}\label{classDuckDetectorBase_a853b9eced19404c9cd8f738855ad1a18} 
+const std\+::vector$<$ double $>$ \& {\bfseries last\+\_\+areas} () const noexcept
+\item 
+\Hypertarget{classDuckDetectorBase_a2852c4bd19bb088985ab54bf377fc51f}\label{classDuckDetectorBase_a2852c4bd19bb088985ab54bf377fc51f} 
+void {\bfseries preprocess} (const cv\+::\+Mat \&img, std\+::vector$<$ float $>$ \&input\+\_\+tensor\+\_\+values)
+\item 
+\Hypertarget{classDuckDetectorBase_ad746139531c443d7c982ffcc223a1bf5}\label{classDuckDetectorBase_ad746139531c443d7c982ffcc223a1bf5} 
+void {\bfseries postprocess} (const std\+::vector$<$ float $>$ \&class\+\_\+scores\+\_\+data, const std\+::vector$<$ float $>$ \&mask\+\_\+probs\+\_\+data, const std\+::vector$<$ std\+::int64\+\_\+t $>$ \&class\+\_\+scores\+\_\+shape, const std\+::vector$<$ std\+::int64\+\_\+t $>$ \&mask\+\_\+probs\+\_\+shape, cv\+::\+Mat \&imgout)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDuckDetectorBase_a409a47dfec7a19a45ff79f16b96a4a31}\label{classDuckDetectorBase_a409a47dfec7a19a45ff79f16b96a4a31} 
+std\+::vector$<$ cv\+::\+Point2f $>$ {\bfseries centroids\+\_\+}
+\item 
+\Hypertarget{classDuckDetectorBase_a94efefaef83d3d76d7147bd8000f290d}\label{classDuckDetectorBase_a94efefaef83d3d76d7147bd8000f290d} 
+std\+::vector$<$ double $>$ {\bfseries areas\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Duck\+Detector\+Base.\+h\item 
+src/Duck\+Detector\+Base.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,38 @@
+\doxysection{Measurement\+RADAR.\+h}
+\hypertarget{MeasurementRADAR_8h_source}{}\label{MeasurementRADAR_8h_source}\index{src/MeasurementRADAR.h@{src/MeasurementRADAR.h}}
+\mbox{\hyperlink{MeasurementRADAR_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ MEASUREMENTRADAR\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MEASUREMENTRADAR\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unsupported/Eigen/CXX11/Tensor>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemEstimator_8h}{SystemEstimator.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{MeasurementGaussianLikelihood_8h}{MeasurementGaussianLikelihood.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMeasurementRADAR_a40938d6c0410988fc16e31cd2316c6cf}{MeasurementRADAR}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a240f19468cb8ef73dec7c4ca861ad418}{MeasurementGaussianLikelihood}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classMeasurementRADAR_a40938d6c0410988fc16e31cd2316c6cf}{MeasurementRADAR}}(\textcolor{keywordtype}{double}\ time,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ y);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classMeasurementRADAR_a40938d6c0410988fc16e31cd2316c6cf}{MeasurementRADAR}}(\textcolor{keywordtype}{double}\ time,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ y,\ \textcolor{keywordtype}{int}\ verbosity);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMeasurementRADAR_acf4d82288c9e3d0a89e5a5335c55071f}{\string~MeasurementRADAR}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Inherited\ virtual\ functions}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementRADAR_a4b70f74c6a9cd691a3ca3c7c37bf5475}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementRADAR_a4b70f74c6a9cd691a3ca3c7c37bf5475}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementRADAR_a4b70f74c6a9cd691a3ca3c7c37bf5475}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ J,\ Eigen::Tensor<double,\ 3>\ \&\ H)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \mbox{\hyperlink{classMeasurementRADAR_a34bb886bbddd9ca368159c0f4fefd154}{noiseDensity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00049\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{classMeasurementRADAR_ac92712423f9ca60e2dad0c6b65ef7900}{getProcessString}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementRADAR_ab7b53f305de8307c7e18430d1d8b78a8}{r1}};\ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementRADAR_a10c6977eb5b6fed02183f7b7b3a8bb72}{r2}};\ \ }
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

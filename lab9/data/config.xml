@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<chessboard_data>
+  <!-- Regular expression for file(s) containing chessboard images -->
+  <file_regex>"GOPR[0-9]\{4,4\}.JPG"</file_regex>
+
+  <!-- Calibration chessboard properties -->
+  <chessboard>
+    <!-- Grid dimensions -->
+    <grid_width>10</grid_width>       <!-- Number of internal corners per row -->
+    <grid_height>7</grid_height>      <!-- Number of internal corners per column -->
+    <square_size>0.022</square_size>  <!-- Side length of each square -->
+  </chessboard>
+</chessboard_data>
+</opencv_storage>

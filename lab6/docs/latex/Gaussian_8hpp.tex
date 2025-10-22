@@ -1,0 +1,29 @@
+\doxysection{src/\+Gaussian.hpp File Reference}
+\hypertarget{Gaussian_8hpp}{}\label{Gaussian_8hpp}\index{src/Gaussian.hpp@{src/Gaussian.hpp}}
+
+
+Defines the \doxylink{classGaussian}{Gaussian} class for representing and manipulating \doxylink{classGaussian}{Gaussian} distributions.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+{\ttfamily \#include $<$Eigen/\+QR$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Cholesky$>$}\newline
+{\ttfamily \#include $<$Eigen/\+LU$>$}\newline
+{\ttfamily \#include "{}Gaussian\+Base.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGaussian}{Gaussian$<$ Scalar $>$}}
+\begin{DoxyCompactList}\small\item\em Represents a \doxylink{classGaussian}{Gaussian} distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{classGaussian}{Gaussian} class for representing and manipulating \doxylink{classGaussian}{Gaussian} distributions. 
+
+This file contains the implementation of the \doxylink{classGaussian}{Gaussian} class, which represents a multivariate \doxylink{classGaussian}{Gaussian} (normal) distribution. The class provides various operations such as marginalization, conditioning, and transformation of \doxylink{classGaussian}{Gaussian} distributions. It also includes methods for computing log-\/likelihoods, gradients, and Hessians, as well as utilities for working with confidence regions.
+
+The \doxylink{classGaussian}{Gaussian} class is templated on the scalar type, allowing for flexibility in the numeric precision used for calculations and to enable autodiff support. 

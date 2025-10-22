@@ -1,0 +1,54 @@
+\doxysection{Measurement\+Gaussian\+Likelihood.\+h}
+\hypertarget{MeasurementGaussianLikelihood_8h_source}{}\label{MeasurementGaussianLikelihood_8h_source}\index{src/MeasurementGaussianLikelihood.h@{src/MeasurementGaussianLikelihood.h}}
+\mbox{\hyperlink{MeasurementGaussianLikelihood_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ MEASUREMENTGAUSSIANLIKELIHOOD\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MEASUREMENTGAUSSIANLIKELIHOOD\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unsupported/Eigen/CXX11/Tensor>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Gaussian_8hpp}{Gaussian.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemEstimator_8h}{SystemEstimator.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Measurement_8h}{Measurement.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMeasurementGaussianLikelihood_a240f19468cb8ef73dec7c4ca861ad418}{MeasurementGaussianLikelihood}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMeasurement_af524d8e57d33c6b748c27a5059cbcf63}{Measurement}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a240f19468cb8ef73dec7c4ca861ad418}{MeasurementGaussianLikelihood}}(\textcolor{keywordtype}{double}\ time,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ y);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a240f19468cb8ef73dec7c4ca861ad418}{MeasurementGaussianLikelihood}}(\textcolor{keywordtype}{double}\ time,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ y,\ \textcolor{keywordtype}{int}\ verbosity);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_aed56ea8d3a414fcf2bf43f5943be8838}{\string~MeasurementGaussianLikelihood}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a47d5bc4615cfe2f5309332e7605ebbf4}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a53c37b9964d2aad264933f77c8bb1cfd}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_aac40c950b4e4f43be4452644181eeca3}{predict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ J,\ Eigen::Tensor<double,\ 3>\ \&\ H)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a4e4a031e3359823b627b3c4df9bc13c3}{noiseDensity}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a7a4b22914cacfb9952e0d8af0926e482}{predictDensity}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a7a4b22914cacfb9952e0d8af0926e482}{predictDensity}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ dhdx)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a7a4b22914cacfb9952e0d8af0926e482}{predictDensity}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::MatrixXd\ \&\ dhdx,\ Eigen::Tensor<double,\ 3>\ \&\ d2hdx2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Inherited\ virtual\ functions}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_ac733daf38964b058f5687e07c36c84e4}{simulate}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_adfc889feda4149798665634d32f6ae49}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_adfc889feda4149798665634d32f6ae49}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::VectorXd\ \&\ g)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_adfc889feda4149798665634d32f6ae49}{logLikelihood}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00119\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_abdae6ec5b6c2f27d93e72b66e1f5997b}{augmentedPredict}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ xv,\ Eigen::MatrixXd\ \&\ Ja,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemEstimator}{SystemEstimator}}\ \&\ system)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_aa3a15797f5e7e5cd8fbf658af56f5a37}{update}}(\mbox{\hyperlink{classSystemBase}{SystemBase}}\ \&\ system)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ Eigen::VectorXd\ \mbox{\hyperlink{classMeasurementGaussianLikelihood_a6afc4222dccb70bb74d9719f236ab393}{y\_}};\ \ }
+\DoxyCodeLine{00128\ \};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

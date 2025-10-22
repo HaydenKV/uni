@@ -1,0 +1,303 @@
+\doxysection{Measurement\+Point\+Bundle Class Reference}
+\hypertarget{classMeasurementPointBundle}{}\label{classMeasurementPointBundle}\index{MeasurementPointBundle@{MeasurementPointBundle}}
+Inheritance diagram for Measurement\+Point\+Bundle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classMeasurementPointBundle}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurementPointBundle_ad3e9a288190a3ebcc09b61cea2ca79cf}\label{classMeasurementPointBundle_ad3e9a288190a3ebcc09b61cea2ca79cf} 
+{\bfseries Measurement\+Point\+Bundle} (double time, const Eigen\+::\+Matrix$<$ double, 2, Eigen\+::\+Dynamic $>$ \&Y, const \mbox{\hyperlink{structCamera}{Camera}} \&camera)
+\item 
+\mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classMeasurementPointBundle_a1197747d409eba23ec8985cd375defd9}{clone}} () const override
+\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classMeasurementPointBundle_ac368052d6c6700daba2676c8c7f767c1}{simulate}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const override
+\begin{DoxyCompactList}\small\item\em Simulate a measurement given a state and system. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementPointBundle_abc7d69eed60bab5f63982e25888ca1c5}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood of a measurement. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementPointBundle_ab7bda57787c76493a60b52f02e9c254f}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood and its gradient. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementPointBundle_ae2b8fad7d79ec97b0afd7cf1d216d2bd}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood, its gradient, and Hessian. \end{DoxyCompactList}\item 
+\Hypertarget{classMeasurementPointBundle_ade71ff4ffba3274ae39c9c4e01385ff5}\label{classMeasurementPointBundle_ade71ff4ffba3274ae39c9c4e01385ff5} 
+{\footnotesize template$<$typename Scalar$>$ }\\Eigen\+::\+Vector2$<$ Scalar $>$ {\bfseries predict\+Feature} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, std\+::size\+\_\+t idx\+Landmark) const
+\item 
+\Hypertarget{classMeasurementPointBundle_a913dcd5d93af1a834a15d9c1f2708ace}\label{classMeasurementPointBundle_a913dcd5d93af1a834a15d9c1f2708ace} 
+Eigen\+::\+Vector2d {\bfseries predict\+Feature} (const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J, const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, std\+::size\+\_\+t idx\+Landmark) const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \mbox{\hyperlink{classMeasurementPointBundle_ae56ca5b448cdc37c7e95646488d3fbda}{predict\+Feature\+Density}} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, std\+::size\+\_\+t idx\+Landmark) const override
+\item 
+\Hypertarget{classMeasurementPointBundle_a074ad6d546c188b3c966ffd5e56890dc}\label{classMeasurementPointBundle_a074ad6d546c188b3c966ffd5e56890dc} 
+{\footnotesize template$<$typename Scalar$>$ }\\Eigen\+::\+VectorX$<$ Scalar $>$ {\bfseries predict\+Feature\+Bundle} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) const
+\item 
+\Hypertarget{classMeasurementPointBundle_a60189a5119bd961a2828bbc0f17027fe}\label{classMeasurementPointBundle_a60189a5119bd961a2828bbc0f17027fe} 
+Eigen\+::\+Vector\+Xd {\bfseries predict\+Feature\+Bundle} (const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J, const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \mbox{\hyperlink{classMeasurementPointBundle_a721625a147f92659a905fc6687642c3e}{predict\+Feature\+Bundle\+Density}} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) const override
+\item 
+virtual const std\+::vector$<$ int $>$ \& \mbox{\hyperlink{classMeasurementPointBundle_a7d66e44af75c2e6b53e5957f21c19568}{associate}} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Measurement\+SLAM} (double time, const \mbox{\hyperlink{structCamera}{Camera}} \&camera)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMeasurement_af524d8e57d33c6b748c27a5059cbcf63}{Measurement}} (double time)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMeasurement_a9165a85599c8e49e4d0ee6f614cc6772}{Measurement}} (double time, int verbosity)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Measurement} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}} (double time)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent_a74d66e95b362dc9cca69269fc91fe041}{Event}} (double time, int verbosity)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEvent_a0a4e814f472c519ace0a22f1a23acb0a}{process}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system)
+\begin{DoxyCompactList}\small\item\em Process the event in the given system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classMeasurementPointBundle_a4d7ec2ad6e6fe05ffffe8e537f551365}{update}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system) override
+\begin{DoxyCompactList}\small\item\em Update the system based on this measurement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classMeasurement_a3e2ef4fbb8d8eeb71940f5ffd6848ea6}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMeasurement_aaea34bb7e795a1c29a28f37b7e252ecf}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density and its gradient. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMeasurement_aeae3ef416c7110a2041fdfb320a57559}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density, its gradient, and Hessian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classEvent_a5610e63185ccb47c969fe2f8796921a7}{get\+Process\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get a string representation of the event processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurementPointBundle_a08c27bb7111e2d612e75e8cf6ee666b7}\label{classMeasurementPointBundle_a08c27bb7111e2d612e75e8cf6ee666b7} 
+Eigen\+::\+Matrix$<$ double, 2, Eigen\+::\+Dynamic $>$ {\bfseries Y\+\_\+}
+\item 
+\Hypertarget{classMeasurementPointBundle_a0b1f8b57e62360d157f52bc10240faa8}\label{classMeasurementPointBundle_a0b1f8b57e62360d157f52bc10240faa8} 
+double {\bfseries sigma\+\_\+}
+\item 
+\Hypertarget{classMeasurementPointBundle_ae253b5e1824ed50b057b9dfdd9839b20}\label{classMeasurementPointBundle_ae253b5e1824ed50b057b9dfdd9839b20} 
+std\+::vector$<$ int $>$ {\bfseries idx\+Features\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structCamera}{Camera}} \& {\bfseries camera\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMeasurement_af49d21e894f7502251497eabcf1f2dff}{Update\+Method}} {\bfseries update\+Method\+\_\+}
+\begin{DoxyCompactList}\small\item\em The method used for updating the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The time at which the event occurs. \end{DoxyCompactList}\item 
+int {\bfseries verbosity\+\_\+}
+\begin{DoxyCompactList}\small\item\em Verbosity level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurement_af49d21e894f7502251497eabcf1f2dff}\label{classMeasurement_af49d21e894f7502251497eabcf1f2dff} 
+enum class \mbox{\hyperlink{classMeasurement_af49d21e894f7502251497eabcf1f2dff}{Update\+Method}} \{ \newline
+{\bfseries BFGSTRUSTSQRT}
+, {\bfseries BFGSLMSQRT}
+, {\bfseries SR1\+TRUSTEIG}
+, {\bfseries NEWTONTRUSTEIG}
+, \newline
+{\bfseries AFFINE}
+, {\bfseries GAUSSNEWTON}
+, {\bfseries LEVENBERGMARQUARDT}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of update methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classMeasurementPointBundle_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMeasurementPointBundle_a7d66e44af75c2e6b53e5957f21c19568}\index{MeasurementPointBundle@{MeasurementPointBundle}!associate@{associate}}
+\index{associate@{associate}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{associate()}{associate()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_a7d66e44af75c2e6b53e5957f21c19568} 
+const std\+::vector$<$ int $>$ \& Measurement\+Point\+Bundle\+::associate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&}]{system}{, }\item[{const std\+::vector$<$ std\+::size\+\_\+t $>$ \&}]{idx\+Landmarks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}.
+
+\Hypertarget{classMeasurementPointBundle_a1197747d409eba23ec8985cd375defd9}\index{MeasurementPointBundle@{MeasurementPointBundle}!clone@{clone}}
+\index{clone@{clone}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_a1197747d409eba23ec8985cd375defd9} 
+\mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}} \texorpdfstring{$\ast$}{*} Measurement\+Point\+Bundle\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}.
+
+\Hypertarget{classMeasurementPointBundle_abc7d69eed60bab5f63982e25888ca1c5}\index{MeasurementPointBundle@{MeasurementPointBundle}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_abc7d69eed60bab5f63982e25888ca1c5} 
+double Measurement\+Point\+Bundle\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&}]{system}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood of a measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_a9b1d5256fcc2df3e1b103d0d47ea340b}{Measurement}}.
+
+\Hypertarget{classMeasurementPointBundle_ab7bda57787c76493a60b52f02e9c254f}\index{MeasurementPointBundle@{MeasurementPointBundle}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_ab7bda57787c76493a60b52f02e9c254f} 
+double Measurement\+Point\+Bundle\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&}]{system}{, }\item[{Eigen\+::\+Vector\+Xd \&}]{g}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood and its gradient. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+{\em g} & Output parameter for the gradient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_aad051d0b0f3194e26d2742d828b0f088}{Measurement}}.
+
+\Hypertarget{classMeasurementPointBundle_ae2b8fad7d79ec97b0afd7cf1d216d2bd}\index{MeasurementPointBundle@{MeasurementPointBundle}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_ae2b8fad7d79ec97b0afd7cf1d216d2bd} 
+double Measurement\+Point\+Bundle\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&}]{system}{, }\item[{Eigen\+::\+Vector\+Xd \&}]{g}{, }\item[{Eigen\+::\+Matrix\+Xd \&}]{H}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood, its gradient, and Hessian. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+{\em g} & Output parameter for the gradient. \\
+\hline
+{\em H} & Output parameter for the Hessian. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_a1dc788a547ed31405e10e895ccbbaf87}{Measurement}}.
+
+\Hypertarget{classMeasurementPointBundle_a721625a147f92659a905fc6687642c3e}\index{MeasurementPointBundle@{MeasurementPointBundle}!predictFeatureBundleDensity@{predictFeatureBundleDensity}}
+\index{predictFeatureBundleDensity@{predictFeatureBundleDensity}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{predictFeatureBundleDensity()}{predictFeatureBundleDensity()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_a721625a147f92659a905fc6687642c3e} 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ Measurement\+Point\+Bundle\+::predict\+Feature\+Bundle\+Density (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&}]{system}{, }\item[{const std\+::vector$<$ std\+::size\+\_\+t $>$ \&}]{idx\+Landmarks}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}.
+
+\Hypertarget{classMeasurementPointBundle_ae56ca5b448cdc37c7e95646488d3fbda}\index{MeasurementPointBundle@{MeasurementPointBundle}!predictFeatureDensity@{predictFeatureDensity}}
+\index{predictFeatureDensity@{predictFeatureDensity}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{predictFeatureDensity()}{predictFeatureDensity()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_ae56ca5b448cdc37c7e95646488d3fbda} 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ Measurement\+Point\+Bundle\+::predict\+Feature\+Density (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&}]{system}{, }\item[{std\+::size\+\_\+t}]{idx\+Landmark}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}}.
+
+\Hypertarget{classMeasurementPointBundle_ac368052d6c6700daba2676c8c7f767c1}\index{MeasurementPointBundle@{MeasurementPointBundle}!simulate@{simulate}}
+\index{simulate@{simulate}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_ac368052d6c6700daba2676c8c7f767c1} 
+Eigen\+::\+Vector\+Xd Measurement\+Point\+Bundle\+::simulate (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&}]{system}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Simulate a measurement given a state and system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The simulated measurement. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_ad83df4a48099d53eb3af99241974f605}{Measurement}}.
+
+\Hypertarget{classMeasurementPointBundle_a4d7ec2ad6e6fe05ffffe8e537f551365}\index{MeasurementPointBundle@{MeasurementPointBundle}!update@{update}}
+\index{update@{update}!MeasurementPointBundle@{MeasurementPointBundle}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classMeasurementPointBundle_a4d7ec2ad6e6fe05ffffe8e537f551365} 
+void Measurement\+Point\+Bundle\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSystemBase}{System\+Base}} \&}]{system}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Update the system based on this measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em system} & The system to update. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classMeasurement_a30df1dcc9aac6e9d25e54498ca11758a}{Measurement}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Measurement\+SLAMPoint\+Bundle.\+h\item 
+src/Measurement\+SLAMPoint\+Bundle.\+cpp\end{DoxyCompactItemize}

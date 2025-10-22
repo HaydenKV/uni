@@ -1,0 +1,31 @@
+\doxysection{to\+\_\+string.\+hpp}
+\hypertarget{to__string_8hpp_source}{}\label{to__string_8hpp_source}\index{src/to\_string.hpp@{src/to\_string.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TO\_STRING\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TO\_STRING\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <concepts>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Helper\ template\ to\ convert\ a\ stream\ into\ a\ string}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptStreamInsertable}{StreamInsertable}}\ =\ \textcolor{keyword}{requires}(std::ostream\ \&\ os,\ \textcolor{keyword}{const}\ T\ \&\ obj)}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ os\ <<\ obj;}
+\DoxyCodeLine{00015\ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}\ <StreamInsertable\ T>}
+\DoxyCodeLine{00018\ std::string\ to\_string(\textcolor{keyword}{const}\ T\ \&\ obj)}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00021\ \ \ \ \ oss\ <<\ obj;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,35 @@
+\doxysection{Confidence\+Ellipsoid\+Plot Class Reference}
+\hypertarget{classConfidenceEllipsoidPlot}{}\label{classConfidenceEllipsoidPlot}\index{ConfidenceEllipsoidPlot@{ConfidenceEllipsoidPlot}}
+
+
+Simplified confidence ellipsoid for testing (Will be enhanced once basic VTK works)  
+
+
+
+
+{\ttfamily \#include $<$Plot.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classConfidenceEllipsoidPlot_af71096d8fafd7b4ddcfde599af42d9c3}\label{classConfidenceEllipsoidPlot_af71096d8fafd7b4ddcfde599af42d9c3} 
+void {\bfseries update\+Ellipsoid} (const Eigen\+::\+Vector3d \&center, const Eigen\+::\+Matrix3d \&covariance, double sigma=3.\+0)
+\item 
+\Hypertarget{classConfidenceEllipsoidPlot_a5a04e1cac9be56391092f832d6509aa4}\label{classConfidenceEllipsoidPlot_a5a04e1cac9be56391092f832d6509aa4} 
+void {\bfseries set\+Color} (double r, double g, double b, double opacity=0.\+7)
+\item 
+\Hypertarget{classConfidenceEllipsoidPlot_a2422ecadc9ef02f6ff89b241fdb34d76}\label{classConfidenceEllipsoidPlot_a2422ecadc9ef02f6ff89b241fdb34d76} 
+vtk\+Actor \texorpdfstring{$\ast$}{*} {\bfseries get\+Actor} ()
+\item 
+\Hypertarget{classConfidenceEllipsoidPlot_a09c743cb49b734197fa71880d3cbcf6b}\label{classConfidenceEllipsoidPlot_a09c743cb49b734197fa71880d3cbcf6b} 
+bool {\bfseries is\+Valid} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simplified confidence ellipsoid for testing (Will be enhanced once basic VTK works) 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Plot.\+h\item 
+src/Plot.\+cpp\end{DoxyCompactItemize}

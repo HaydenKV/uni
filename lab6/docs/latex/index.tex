@@ -1,0 +1,44 @@
+\chapter{MCHA4400 Lab 6\+: Laplace filter }
+\hypertarget{index}{}\label{index}\index{MCHA4400 Lab 6: Laplace filter@{MCHA4400 Lab 6: Laplace filter}}
+\hypertarget{index_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro}
+In this lab, you will\+:
+\begin{DoxyItemize}
+\item Implement \doxylink{classGaussian}{Gaussian} distribution operations in square-\/root moment form
+\item Implement the process dynamics and measurement model for a ballistic state estimation problem
+\item Run a square-\/root Laplace filter
+\item Plot the results using VTK
+\end{DoxyItemize}\hypertarget{index_tasks}{}\doxysection{\texorpdfstring{Tasks}{Tasks}}\label{index_tasks}
+
+\begin{DoxyEnumerate}
+\item Implement \doxylink{classGaussian}{Gaussian} distribution operations (log likelihood, affine transform, marginal, conditional)
+\item Implement ballistic process model dynamics
+\item Implement RADAR range measurement model
+\item Run Laplace filter and visualise results
+\end{DoxyEnumerate}\hypertarget{index_implementation}{}\doxysection{\texorpdfstring{Key Implementation Files}{Key Implementation Files}}\label{index_implementation}
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{GaussianBase_8hpp}{src/\+Gaussian\+Base.\+hpp}}\+: Base class for \doxylink{classGaussian}{Gaussian} distribution
+\item {\ttfamily \doxylink{Gaussian_8hpp}{src/\+Gaussian.\+hpp}}\+: \doxylink{classGaussian}{Gaussian} distribution in square-\/root moment form
+\item {\ttfamily src/\+System\+Ballistic.\+cpp}\+: System dynamics for ballistic trajectory
+\item {\ttfamily src/\+Measurement\+RADAR.\+cpp}\+: \doxylink{classMeasurement}{Measurement} model and likelihood for RADAR
+\item {\ttfamily src/ballistic\+\_\+plot.\+cpp}\+: Plotting functions for ballistic trajectory
+\end{DoxyItemize}\hypertarget{index_testing}{}\doxysection{\texorpdfstring{Unit Tests}{Unit Tests}}\label{index_testing}
+Unit tests are provided to verify your implementations\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily test/src/\+Gaussian\+Log.\+cpp}
+\item {\ttfamily test/src/\+Gaussian\+Log\+Integral.\+cpp}
+\item {\ttfamily test/src/\+Gaussian\+Transform.\+cpp}
+\item {\ttfamily test/src/\+Gaussian\+Marginal.\+cpp}
+\item {\ttfamily test/src/\+Gaussian\+Conditional.\+cpp}
+\item {\ttfamily test/src/\+Gaussian\+Confidence.\+cpp}
+\item {\ttfamily test/src/\+System\+Ballistic.\+cpp}
+\item {\ttfamily test/src/\+Measurement\+RADAR.\+cpp}
+\end{DoxyItemize}\hypertarget{index_build}{}\doxysection{\texorpdfstring{Building and Running}{Building and Running}}\label{index_build}
+
+\begin{DoxyEnumerate}
+\item Configure CMake build\+: {\ttfamily cmake -\/G Ninja -\/B build -\/DBUILD\+\_\+\+DOCUMENTATION=ON -\/DCMAKE\+\_\+\+BUILD\+\_\+\+TYPE=Debug \&\& cd build}
+\item Build project and run unit tests\+: {\ttfamily ninja}
+\item Build and run executable\+: {\ttfamily ninja \&\& ./lab6} 
+\end{DoxyEnumerate}

@@ -1,0 +1,227 @@
+\doxysection{Camera.\+h}
+\hypertarget{Camera_8h_source}{}\label{Camera_8h_source}\index{src/Camera.h@{src/Camera.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CAMERA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CAMERA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <opencv2/core/types.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <opencv2/core/persistence.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}serialisation.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pose_8hpp}{Pose.hpp}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }CamDefaults\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{int}\ BorderMarginPx\ =\ 15;\ \ \ \textcolor{comment}{//\ for\ the\ conserative\ functions\ in\ assignment}}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structChessboard}{Chessboard}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ cv::Size\ boardSize;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{float}\ squareSize;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ write(cv::FileStorage\ \&\ fs)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OpenCV\ serialisation}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ read(\textcolor{keyword}{const}\ cv::FileNode\ \&\ node);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OpenCV\ serialisation}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<cv::Point3f>\ gridPoints()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\ operator<<(std::ostream\ \&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structChessboard}{Chessboard}}\ \&);}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCamera}{Camera}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{struct\ }ChessboardImage}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ ChessboardImage(\textcolor{keyword}{const}\ cv::Mat\ \&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structChessboard}{Chessboard}}\ \&,\ \textcolor{keyword}{const}\ std::filesystem::path\ \&\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ cv::Mat\ image;}
+\DoxyCodeLine{00036\ \ \ \ \ std::filesystem::path\ filename;}
+\DoxyCodeLine{00037\ \ \ \ \ Posed\ Tnc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extrinsic\ camera\ parameters}}
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<cv::Point2f>\ corners;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Chessboard\ corners\ in\ image\ [rQOi]}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ isFound;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ drawCorners(\textcolor{keyword}{const}\ \mbox{\hyperlink{structChessboard}{Chessboard}}\ \&);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ drawBox(\textcolor{keyword}{const}\ \mbox{\hyperlink{structChessboard}{Chessboard}}\ \&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ recoverPose(\textcolor{keyword}{const}\ \mbox{\hyperlink{structChessboard}{Chessboard}}\ \&,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&);}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{struct\ }ChessboardData}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{explicit}\ ChessboardData(\textcolor{keyword}{const}\ std::filesystem::path\ \&);\ \textcolor{comment}{//\ Load\ from\ config\ file}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{structChessboard}{Chessboard}}\ chessboard;}
+\DoxyCodeLine{00050\ \ \ \ \ std::vector<ChessboardImage>\ chessboardImages;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ drawCorners();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ drawBoxes(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ recoverPoses(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&);}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{namespace\ }Eigen\ \{}
+\DoxyCodeLine{00058\ \textcolor{keyword}{using\ }Matrix23d\ =\ Eigen::Matrix<double,\ 2,\ 3>;}
+\DoxyCodeLine{00059\ \textcolor{keyword}{using\ }Vector6d\ =\ Eigen::Matrix<double,\ 6,\ 1>;}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCamera}{Camera}}}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ calibrate(\mbox{\hyperlink{structChessboardData}{ChessboardData}}\ \&);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calibrate\ camera\ from\ chessboard\ data}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ printCalibration()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ cameraToBody(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ \&\ Tnc)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Tnc*Tbc.\mbox{\hyperlink{structPose_a4d5526e64f5903219a573725cbba1591}{inverse}}();\ \}\ \textcolor{comment}{//\ Tnb\ =\ Tnc*Tcb}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ bodyToCamera(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ \&\ Tnb)\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ Tnb*Tbc;\ \}\ \textcolor{comment}{//\ Tnc\ =\ Tnb*Tbc}}
+\DoxyCodeLine{00069\ \ \ \ \ cv::Vec3d\ worldToVector(\textcolor{keyword}{const}\ cv::Vec3d\ \&\ rPNn,\ \textcolor{keyword}{const}\ Posed\ \&\ Tnb)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \ \ \ \ cv::Vec2d\ worldToPixel(\textcolor{keyword}{const}\ cv::Vec3d\ \&,\ \textcolor{keyword}{const}\ Posed\ \&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ cv::Vec2d\ vectorToPixel(\textcolor{keyword}{const}\ cv::Vec3d\ \&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ Eigen::Vector2<Scalar>\ vectorToPixel(\textcolor{keyword}{const}\ Eigen::Vector3<Scalar>\ \&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ \ \ \ \ Eigen::Vector2d\ vectorToPixel(\textcolor{keyword}{const}\ Eigen::Vector3d\ \&,\ Eigen::Matrix23d\ \&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ cv::Vec3d\ pixelToVector(\textcolor{keyword}{const}\ cv::Vec2d\ \&)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ isWorldWithinFOV(\textcolor{keyword}{const}\ cv::Vec3d\ \&\ rPNn,\ \textcolor{keyword}{const}\ Posed\ \&\ Tnb)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{bool}\ isVectorWithinFOV(\textcolor{keyword}{const}\ cv::Vec3d\ \&\ rPCc)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ undistort(\textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ rQOi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ \ \ \ \ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ undistort(\textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pQOi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ distort(\textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ rQbarOi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00083\ \ \ \ \ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ distort(\textcolor{keyword}{const}\ Eigen::Matrix<double,\ 3,\ Eigen::Dynamic>\ \&\ pQbarOi)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ calcFieldOfView();}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ write(cv::FileStorage\ \&)\ \textcolor{keyword}{const};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OpenCV\ serialisation}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ read(\textcolor{keyword}{const}\ cv::FileNode\ \&);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ OpenCV\ serialisation}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Conservative,\ pixel-\/space\ bounds\ checks\ (default\ =\ CamDefaults::BorderMarginPx)}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{bool}\ isPixelInside(\textcolor{keyword}{const}\ cv::Point2f\&\ uv,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ isPixelInside(\textcolor{keyword}{const}\ cv::Point2d\&\ uv,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ isPixelInside(\textcolor{keyword}{const}\ Eigen::Vector2d\&\ uv,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Convenience\ for\ ArUco-\/style\ 4-\/corner\ checks}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{bool}\ areCornersInside(\textcolor{keyword}{const}\ std::array<cv::Point2f,4>\&\ corners,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{bool}\ areCornersInside(\textcolor{keyword}{const}\ Eigen::Matrix<double,8,1>\&\ uv8,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ FOV\ +\ pixel-\/margin\ gate\ for\ a\ 3D\ ray\ in\ camera\ coords}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{bool}\ isVectorWithinFOVConservative(\textcolor{keyword}{const}\ cv::Vec3d\&\ rPCc,\ \textcolor{keywordtype}{int}\ margin\ =\ -\/1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ cv::Mat\ cameraMatrix;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Camera\ matrix}}
+\DoxyCodeLine{00102\ \ \ \ \ cv::Mat\ distCoeffs;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Lens\ distortion\ coefficients}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{int}\ flags\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calibration\ flags}}
+\DoxyCodeLine{00104\ \ \ \ \ cv::Size\ imageSize;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Image\ size}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ Posed\ Tbc;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Relative\ pose\ of\ camera\ in\ body\ coordinates\ (Rbc,\ rCBb)}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<double>\ cosThetaLimit\_;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{double}\ hFOV\ =\ 0.0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Horizonal\ field\ of\ view}}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{double}\ vFOV\ =\ 0.0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vertical\ field\ of\ view}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{double}\ dFOV\ =\ 0.0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Diagonal\ field\ of\ view}}
+\DoxyCodeLine{00114\ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#include\ <opencv2/calib3d.hpp>}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00121\ \textcolor{comment}{Template\ projection\ π(K,dist):}}
+\DoxyCodeLine{00122\ \textcolor{comment}{Given\ r\string^c\_\{P/C\}\ =\ (X,Y,Z),\ compute\ normalised\ (x,y)\ =\ (X/Z,Y/Z),}}
+\DoxyCodeLine{00123\ \textcolor{comment}{apply\ rational\ +\ thin-\/prism\ distortion,\ then\ map\ to\ pixels}}
+\DoxyCodeLine{00124\ \textcolor{comment}{[u,v]\string^T\ =\ [fx*xd\ +\ cx,\ fy*yd\ +\ cy]\string^T.\ Used\ by\ autodiff\ paths\ in\ measurement\ models.}}
+\DoxyCodeLine{00125\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00126\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00127\ Eigen::Vector2<Scalar>\ Camera::vectorToPixel(\textcolor{keyword}{const}\ Eigen::Vector3<Scalar>\ \&\ rPCc)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00128\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{bool}\ isRationalModel\ \ \ \ =\ (flags\ \&\ cv::CALIB\_RATIONAL\_MODEL)\ \ \ \ ==\ cv::CALIB\_RATIONAL\_MODEL;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{bool}\ isThinPrismModel\ \ \ =\ (flags\ \&\ cv::CALIB\_THIN\_PRISM\_MODEL)\ \ ==\ cv::CALIB\_THIN\_PRISM\_MODEL;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTiltedModel\ \ \ \ \ \ =\ (flags\ \&\ cv::CALIB\_TILTED\_MODEL)\ \ \ \ \ \ ==\ cv::CALIB\_TILTED\_MODEL;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordflow}{if}\ (isTiltedModel)}
+\DoxyCodeLine{00134\ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(\textcolor{stringliteral}{"{}Tilted\ camera\ model\ not\ currently\ implemented."{}});}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ Camera\ matrix\ parameters}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{double}\ fx\ =\ cameraMatrix.at<\textcolor{keywordtype}{double}>(0,\ 0);}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{double}\ fy\ =\ cameraMatrix.at<\textcolor{keywordtype}{double}>(1,\ 1);}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{double}\ cx\ =\ cameraMatrix.at<\textcolor{keywordtype}{double}>(0,\ 2);}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{double}\ cy\ =\ cameraMatrix.at<\textcolor{keywordtype}{double}>(1,\ 2);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ Lens\ distortion\ coefficients}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ theta\ =\ k1,\ k2,\ p1,\ p2[,\ k3[,\ k4,\ k5,\ k6[,\ s1,\ s2,\ s3,\ s4[,\ taux,\ tauy]]]]\ has\ 4,\ 5,\ 8,\ 12\ or\ 14\ elements}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ Radial\ and\ tangential\ distortion\ coefficients}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{double}\ k1\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(0,\ 0);}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{double}\ k2\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(1,\ 0);}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{double}\ p1\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(2,\ 0);}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{double}\ p2\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(3,\ 0);}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{double}\ k3\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(4,\ 0);}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{comment}{//\ Rational\ distortion\ coefficients}}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{double}\ k4,\ k5,\ k6;}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (isRationalModel)}
+\DoxyCodeLine{00157\ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ k4\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(5,\ 0);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ k5\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(6,\ 0);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ k6\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(7,\ 0);}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00163\ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ k4\ =\ k5\ =\ k6\ =\ 0.0;}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//\ Thin\ prism\ distortion\ coefficients}}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{double}\ s1,\ s2,\ s3,\ s4;}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{if}\ (isThinPrismModel)}
+\DoxyCodeLine{00170\ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ s1\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(8,\ 0);}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ s2\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(9,\ 0);}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ s3\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(10,\ 0);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ s4\ =\ distCoeffs.at<\textcolor{keywordtype}{double}>(11,\ 0);}
+\DoxyCodeLine{00175\ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ s1\ =\ s2\ =\ s3\ =\ s4\ =\ 0.0;}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ Eigen::Vector2<Scalar>\ rQOi;}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8\ (optional)}}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{comment}{//\ iii)\ Auto\ diff\ ONLY\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{comment}{//\ Normalised\ image\ coords}}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ X\ =\ rPCc(0),\ Y\ =\ rPCc(1),\ Z\ =\ rPCc(2);}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ invZ\ =\ Scalar(1)\ /\ Z;}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ x\ =\ X\ *\ invZ;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ y\ =\ Y\ *\ invZ;}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r2\ =\ x*x\ +\ y*y;}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r4\ =\ r2*r2;}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r6\ =\ r4*r2;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ Rational\ radial}}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ num\ \ \ =\ Scalar(1)\ +\ k1*r2\ +\ k2*r4\ +\ k3*r6;}
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ den\ \ \ =\ Scalar(1)\ +\ k4*r2\ +\ k5*r4\ +\ k6*r6;}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cdist\ =\ num\ /\ den;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \textcolor{comment}{//\ Tangential}}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ x\_tan\ =\ Scalar(2)*p1*x*y\ +\ p2*(r2\ +\ Scalar(2)*x*x);}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ y\_tan\ =\ p1*(r2\ +\ Scalar(2)*y*y)\ +\ Scalar(2)*p2*x*y;}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{comment}{//\ Thin-\/prism}}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ x\_pr\ \ =\ s1*r2\ +\ s2*r4;}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ y\_pr\ \ =\ s3*r2\ +\ s4*r4;}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ Distorted\ normalised}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ xd\ =\ x*cdist\ +\ x\_tan\ +\ x\_pr;}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ yd\ =\ y*cdist\ +\ y\_tan\ +\ y\_pr;}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{comment}{//\ Pixels}}
+\DoxyCodeLine{00213\ \ \ \ \ rQOi\ <<\ fx*xd\ +\ cx,\ fy*yd\ +\ cy;}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{return}\ rQOi;}
+\DoxyCodeLine{00216\ \}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00221\ }
+
+\end{DoxyCode}

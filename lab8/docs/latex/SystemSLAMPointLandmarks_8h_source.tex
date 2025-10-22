@@ -1,0 +1,35 @@
+\doxysection{System\+SLAMPoint\+Landmarks.\+h}
+\hypertarget{SystemSLAMPointLandmarks_8h_source}{}\label{SystemSLAMPointLandmarks_8h_source}\index{src/SystemSLAMPointLandmarks.h@{src/SystemSLAMPointLandmarks.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYSTEMSLAMPOINTLANDMARKS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYSTEMSLAMPOINTLANDMARKS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}SystemSLAM.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *\ State\ containing\ body\ velocities,\ body\ pose\ and\ landmark\ positions}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ \ \ \ \ [\ vBNb\ \ \ \ \ ]\ \ Body\ translational\ velocity\ (body-\/fixed)}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ \ \ \ \ [\ omegaBNb\ ]\ \ Body\ angular\ velocity\ (body-\/fixed)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ \ \ \ \ [\ rBNn\ \ \ \ \ ]\ \ Body\ position\ (world-\/fixed)}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ x\ =\ [\ Thetanb\ \ ]\ \ Body\ orientation\ (world-\/fixed)}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ \ \ [\ rL1Nn\ \ \ \ ]\ \ Landmark\ 1\ position\ (world-\/fixed)}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ \ \ [\ rL2Nn\ \ \ \ ]\ \ Landmark\ 2\ position\ (world-\/fixed)}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ \ \ [\ ...\ \ \ \ \ \ ]\ \ ...}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }SystemSLAMPointLandmarks\ :\ \textcolor{keyword}{public}\ SystemSLAM}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{explicit}\ SystemSLAMPointLandmarks(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ \mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}});}
+\DoxyCodeLine{00024\ \ \ \ \ SystemSLAM\ *\ clone()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ std::size\_t\ numberLandmarks()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ std::size\_t\ landmarkPositionIndex(std::size\_t\ idxLandmark)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

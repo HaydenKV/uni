@@ -1,0 +1,143 @@
+\doxysection{rotation.\+hpp}
+\hypertarget{rotation_8hpp_source}{}\label{rotation_8hpp_source}\index{src/rotation.hpp@{src/rotation.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ROTATION\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ROTATION\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00007\ Eigen::Matrix3<Scalar>\ rotx(\textcolor{keyword}{const}\ Scalar\ \&\ x)}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00010\ \ \ \ \ Eigen::Matrix3<Scalar>\ R;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cx\ =\ cos(x),\ sx\ =\ sin(x);}
+\DoxyCodeLine{00013\ \ \ \ \ R\ <<\ Scalar(1),\ Scalar(0),\ Scalar(0),}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ Scalar(0),\ \ \ \ \ \ cx\ \ \ ,\ \ \ \ \ -\/sx\ \ \ ,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ Scalar(0),\ \ \ \ \ \ sx\ \ \ ,\ \ \ \ \ \ cx\ \ \ ;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{00017\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00020\ Eigen::Matrix3<Scalar>\ rotx(\textcolor{keyword}{const}\ Scalar\ \&\ x,\ Eigen::Matrix3<Scalar>\ \&\ dRdx)}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00023\ \ \ \ \ dRdx\ \ \ \ \ \ \ \ \ \ \ \ =\ \ Eigen::Matrix3<Scalar>::Zero();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ dRdx(1,1)\ \ \ \ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00026\ \ \ \ \ dRdx(2,1)\ \ \ \ \ \ \ =\ \ cos(x);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ dRdx(1,2)\ \ \ \ \ \ \ =\ -\/cos(x);}
+\DoxyCodeLine{00029\ \ \ \ \ dRdx(2,2)\ \ \ \ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ rotx(x);}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00034\ Eigen::Matrix3<Scalar>\ roty(\textcolor{keyword}{const}\ Scalar\ \&\ x)}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00037\ \ \ \ \ Eigen::Matrix3<Scalar>\ R;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cy\ =\ cos(x),\ sy\ =\ sin(x);}
+\DoxyCodeLine{00040\ \ \ \ \ R\ <<\ \ \ \ \ \ cy\ \ \ ,\ Scalar(0),\ \ \ \ \ \ sy\ \ ,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ Scalar(0),\ Scalar(1),\ Scalar(0)\ ,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ -\/sy\ \ \ ,\ Scalar(0),\ \ \ \ \ \ cy\ \ \ ;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00047\ Eigen::Matrix3<Scalar>\ roty(\textcolor{keyword}{const}\ Scalar\ \&\ x,\ Eigen::Matrix3<Scalar>\ \&\ dRdx)}
+\DoxyCodeLine{00048\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00050\ \ \ \ \ dRdx\ \ \ \ \ \ \ \ \ =\ \ Eigen::Matrix3<Scalar>::Zero();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ dRdx(0,0)\ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00053\ \ \ \ \ dRdx(2,0)\ \ \ \ =\ -\/cos(x);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ dRdx(0,2)\ \ \ \ =\ \ cos(x);}
+\DoxyCodeLine{00056\ \ \ \ \ dRdx(2,2)\ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ roty(x);}
+\DoxyCodeLine{00058\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00061\ Eigen::Matrix3<Scalar>\ rotz(\textcolor{keyword}{const}\ Scalar\ \&\ x)}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00064\ \ \ \ \ Eigen::Matrix3<Scalar>\ R;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cz\ =\ cos(x),\ sz\ =\ sin(x);}
+\DoxyCodeLine{00067\ \ \ \ \ R\ <<\ \ \ \ \ \ cz\ \ \ ,\ \ \ \ -\/sz\ \ \ ,\ Scalar(0),}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sz\ \ \ ,\ \ \ \ \ cz\ \ \ ,\ Scalar(0),}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ Scalar(0),\ Scalar(0),\ Scalar(1);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{00071\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00074\ Eigen::Matrix3<Scalar>\ rotz(\textcolor{keyword}{const}\ Scalar\ \&\ x,\ Eigen::Matrix3<Scalar>\ \&\ dRdx)}
+\DoxyCodeLine{00075\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{using\ }std::cos,\ std::sin;}
+\DoxyCodeLine{00077\ \ \ \ \ dRdx\ \ \ \ \ \ \ \ \ =\ \ Eigen::Matrix3<Scalar>::Zero();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ dRdx(0,0)\ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00080\ \ \ \ \ dRdx(1,0)\ \ \ \ =\ \ cos(x);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ dRdx(0,1)\ \ \ \ =\ -\/cos(x);}
+\DoxyCodeLine{00083\ \ \ \ \ dRdx(1,1)\ \ \ \ =\ -\/sin(x);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ rotz(x);}
+\DoxyCodeLine{00085\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived>}
+\DoxyCodeLine{00088\ Eigen::Matrix3<typename\ Derived::Scalar>\ rpy2rot(\textcolor{keyword}{const}\ Eigen::MatrixBase<Derived>\ \&\ Theta)}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{using\ }Scalar\ =\ \textcolor{keyword}{typename}\ Derived::Scalar;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{using\ }std::sin;\ \textcolor{keyword}{using\ }std::cos;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ R\ =\ Rz*Ry*Rx}}
+\DoxyCodeLine{00093\ \ \ \ \ Eigen::Matrix3<Scalar>\ R;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ phi\ \ \ =\ Theta(0);\ \textcolor{comment}{//\ roll}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ theta\ =\ Theta(1);\ \textcolor{comment}{//\ pitch}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ psi\ \ \ =\ Theta(2);\ \textcolor{comment}{//\ yaw}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cphi\ =\ cos(phi),\ \ \ sphi\ =\ sin(phi);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cth\ \ =\ cos(theta),\ sth\ \ =\ sin(theta);}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ cpsi\ =\ cos(psi),\ \ \ spsi\ =\ sin(psi);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ R\ <<\ \ cpsi*cth,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cpsi*sth*sphi\ -\/\ spsi*cphi,\ \ cpsi*sth*cphi\ +\ spsi*sphi,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ spsi*cth,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spsi*sth*sphi\ +\ cpsi*cphi,\ \ spsi*sth*cphi\ -\/\ cpsi*sphi,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/sth,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cth*sphi,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cth*cphi;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{00108\ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived>}
+\DoxyCodeLine{00111\ Eigen::Vector3<typename\ Derived::Scalar>\ rot2rpy(\textcolor{keyword}{const}\ Eigen::MatrixBase<Derived>\ \&\ R)}
+\DoxyCodeLine{00112\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{using\ }Scalar\ =\ \textcolor{keyword}{typename}\ Derived::Scalar;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{using\ }std::atan2,\ std::hypot;}
+\DoxyCodeLine{00115\ \ \ \ \ Eigen::Vector3<Scalar>\ Theta;\ \textcolor{comment}{//\ [phi;\ theta;\ psi]\ =\ [roll;\ pitch;\ yaw]}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Lab\ 8}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ ZYX\ convention:}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ theta\ =\ atan2(-\/R(2,0),\ sqrt(R(0,0)\string^2\ +\ R(1,0)\string^2))}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r20\ =\ R(2,0);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r00\ =\ R(0,0);}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r10\ =\ R(1,0);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ ctheta\ =\ hypot(r00,\ r10);\ \ \textcolor{comment}{//\ =\ |cos(theta)|}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ theta\ =\ atan2(-\/r20,\ ctheta);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{comment}{//\ phi\ =\ atan2(R(2,1),\ R(2,2))}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ phi\ =\ atan2(R(2,1),\ R(2,2));}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ psi\ =\ atan2(R(1,0),\ R(0,0))}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ psi\ =\ atan2(r10,\ r00);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ Theta\ <<\ phi,\ theta,\ psi;}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ Theta;}
+\DoxyCodeLine{00135\ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

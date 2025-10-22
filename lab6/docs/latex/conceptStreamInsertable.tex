@@ -1,0 +1,12 @@
+\doxysection{Stream\+Insertable Concept Reference}
+\hypertarget{conceptStreamInsertable}{}\label{conceptStreamInsertable}\index{StreamInsertable@{StreamInsertable}}
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptStreamInsertable}{StreamInsertable}}\ =\ \ \textcolor{keyword}{requires}(std::ostream\ \&\ os,\ \textcolor{keyword}{const}\ T\ \&\ obj)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ os\ <<\ obj;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}

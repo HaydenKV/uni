@@ -1,0 +1,44 @@
+\doxysection{Image\+Plot Struct Reference}
+\hypertarget{structImagePlot}{}\label{structImagePlot}\index{ImagePlot@{ImagePlot}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structImagePlot_a5460e875252f83fb20126c93864b725e}\label{structImagePlot_a5460e875252f83fb20126c93864b725e} 
+void {\bfseries init} (double renderer\+Width, double renderer\+Height)
+\item 
+\Hypertarget{structImagePlot_a673775c16703269d6c04ba5d2acfc276}\label{structImagePlot_a673775c16703269d6c04ba5d2acfc276} 
+void {\bfseries update} (const cv\+::\+Mat \&view)
+\item 
+\Hypertarget{structImagePlot_ade96ce2b7fc16dd8a76d0d386e32e7f1}\label{structImagePlot_ade96ce2b7fc16dd8a76d0d386e32e7f1} 
+vtk\+Actor2D \texorpdfstring{$\ast$}{*} {\bfseries get\+Actor} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structImagePlot_a5f1ee85b82ecbe0daa7bdfb28b86c918}\label{structImagePlot_a5f1ee85b82ecbe0daa7bdfb28b86c918} 
+vtk\+Smart\+Pointer$<$ vtk\+Image\+Data $>$ {\bfseries view\+VTK}
+\item 
+\Hypertarget{structImagePlot_a8098326e37639cb601a4e6751ad8472c}\label{structImagePlot_a8098326e37639cb601a4e6751ad8472c} 
+vtk\+Smart\+Pointer$<$ vtk\+Actor2D $>$ {\bfseries image\+Actor2d}
+\item 
+\Hypertarget{structImagePlot_a4ef902486b4dfcc889a982b1f70bdfd6}\label{structImagePlot_a4ef902486b4dfcc889a982b1f70bdfd6} 
+vtk\+Smart\+Pointer$<$ vtk\+Image\+Mapper $>$ {\bfseries image\+Mapper}
+\item 
+\Hypertarget{structImagePlot_ab48f6a381da7196d0fdb9711ffeaa6ed}\label{structImagePlot_ab48f6a381da7196d0fdb9711ffeaa6ed} 
+cv\+::\+Mat {\bfseries cv\+VTKBuffer}
+\item 
+\Hypertarget{structImagePlot_a188a84f5328564a4be20fb63b4616868}\label{structImagePlot_a188a84f5328564a4be20fb63b4616868} 
+double {\bfseries width}
+\item 
+\Hypertarget{structImagePlot_af3775fba1a06d927b16a35597ecddec5}\label{structImagePlot_af3775fba1a06d927b16a35597ecddec5} 
+double {\bfseries height}
+\item 
+\Hypertarget{structImagePlot_a4007bccdeed37bdb8232e64f4803185f}\label{structImagePlot_a4007bccdeed37bdb8232e64f4803185f} 
+bool {\bfseries is\+Init}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Plot.\+h\item 
+src/Plot.\+cpp\end{DoxyCompactItemize}

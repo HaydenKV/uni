@@ -1,0 +1,444 @@
+\doxysection{Gaussian\+Base\texorpdfstring{$<$}{<} Scalar \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classGaussianBase}{}\label{classGaussianBase}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+
+
+Base class for Gaussian distributions.  
+
+
+
+
+{\ttfamily \#include $<$Gaussian\+Base.\+hpp$>$}
+
+Inheritance diagram for Gaussian\+Base\texorpdfstring{$<$}{<} Scalar \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classGaussianBase}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classGaussianBase_a942f4c7f2ac6da27992123bbf0300caa}\label{classGaussianBase_a942f4c7f2ac6da27992123bbf0300caa} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Gaussian\+Base} () override=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Index \mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the dimension of the Gaussian distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{mean}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the mean of the Gaussian distribution. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrt\+Cov}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the square root of the covariance matrix. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a93d9a75118e38b3a0bbbd3c8704593d0}{cov}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the covariance matrix. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a286e3585f851985c98f3c8a6a2f4dcf3}{info\+Mat}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the information matrix (inverse of covariance). \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a959126cf330d5be69d5ff1a738d333ec}{info\+Vec}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the information vector. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_ab1e4ae449123114da73b73cf3c72570e}{sqrt\+Info\+Mat}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the square root of the information matrix. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a2647644ad1f9377081f79c3fa664fb09}{sqrt\+Info\+Vec}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the square root of the information vector. \end{DoxyCompactList}\item 
+Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase_a80dd97c033cc01bbff9a8fec2446aa82}{simulate}} () const
+\begin{DoxyCompactList}\small\item\em Simulates a sample from the Gaussian distribution. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classGaussianBase_a5f1a37da126fc89dcf7c0457ec6c6ca8}{is\+Within\+Confidence\+Region}} (const Eigen\+::\+VectorX$<$ Scalar $>$ \&x, double n\+Sigma=3.\+0) const =0
+\begin{DoxyCompactList}\small\item\em Check if a given point is within the confidence region of the Gaussian distribution. \end{DoxyCompactList}\item 
+Eigen\+::\+Matrix$<$ Scalar, 2, Eigen\+::\+Dynamic $>$ \mbox{\hyperlink{classGaussianBase_a8ae8a883329fc03d4b2fcc30163dd552}{confidence\+Ellipse}} (double n\+Sigma=3.\+0, int n\+Samples=100) const
+\begin{DoxyCompactList}\small\item\em Computes points on the boundary of the confidence ellipse. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classGaussianBase_aaeec2dd1eb35e0df204bfaf3b820204f}{log\+Integral}} (Scalar a, Scalar b) const
+\begin{DoxyCompactList}\small\item\em Computes the log of the integral of the Gaussian distribution between two points. \end{DoxyCompactList}\item 
+Scalar \mbox{\hyperlink{classGaussianBase_a753f3e63e71907cb446c55e64de67aa6}{log\+Integral}} (Scalar a, Scalar b, Scalar \&dldmu) const
+\begin{DoxyCompactList}\small\item\em Computes the log of the integral of the Gaussian distribution between two points and its derivative with respect to the mean. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classDensityBase}{Density\+Base$<$ double $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Density\+Base} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}} (const Eigen\+::\+VectorX$<$ double $>$ \&x) const=0
+\begin{DoxyCompactList}\small\item\em Computes the log of the probability density function. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDensityBase_a3980cb1edaa1b1e26d2ccefe75e1dcba}{eval}} (const Eigen\+::\+VectorX$<$ double $>$ \&x) const
+\begin{DoxyCompactList}\small\item\em Evaluates the probability density function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6}{chi2inv}} (double p, double nu)
+\begin{DoxyCompactList}\small\item\em Computes the inverse of the chi-\/squared distribution function. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}{normcdf}} (double w)
+\begin{DoxyCompactList}\small\item\em Computes the cumulative distribution function of the standard normal distribution. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classGaussianBase_a340d39f075cf8039a5ad11b239d7a19a}{normcdf}} (double x, double mu, double sigma)
+\begin{DoxyCompactList}\small\item\em Computes the cumulative distribution function of a normal distribution. \end{DoxyCompactList}\item 
+static double \mbox{\hyperlink{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}{erfcx}} (double x)
+\begin{DoxyCompactList}\small\item\em Computes the scaled complementary error function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Scalar = double$>$\newline
+class Gaussian\+Base$<$ Scalar $>$}
+Base class for Gaussian distributions. 
+
+This class provides a common interface and utility functions for Gaussian distributions.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Scalar} & The scalar type used for calculations (default\+: double). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classGaussianBase_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!chi2inv@{chi2inv}}
+\index{chi2inv@{chi2inv}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{chi2inv()}{chi2inv()}}
+{\footnotesize\ttfamily \label{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6} 
+template$<$typename Scalar = double$>$ \\
+double \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::chi2inv (\begin{DoxyParamCaption}\item[{double}]{p}{, }\item[{double}]{nu}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Computes the inverse of the chi-\/squared distribution function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Probability value. \\
+\hline
+{\em nu} & Degrees of freedom. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The inverse of the chi-\/squared distribution function. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a8ae8a883329fc03d4b2fcc30163dd552}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!confidenceEllipse@{confidenceEllipse}}
+\index{confidenceEllipse@{confidenceEllipse}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{confidenceEllipse()}{confidenceEllipse()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a8ae8a883329fc03d4b2fcc30163dd552} 
+template$<$typename Scalar = double$>$ \\
+Eigen\+::\+Matrix$<$ Scalar, 2, Eigen\+::\+Dynamic $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::confidence\+Ellipse (\begin{DoxyParamCaption}\item[{double}]{n\+Sigma}{ = {\ttfamily 3.0}, }\item[{int}]{n\+Samples}{ = {\ttfamily 100}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes points on the boundary of the confidence ellipse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Sigma} & The number of standard deviations (default\+: 3.\+0). \\
+\hline
+{\em n\+Samples} & The number of samples to generate (default\+: 100). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix of points on the ellipse boundary. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a93d9a75118e38b3a0bbbd3c8704593d0}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!cov@{cov}}
+\index{cov@{cov}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{cov()}{cov()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a93d9a75118e38b3a0bbbd3c8704593d0} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::cov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the covariance matrix. 
+
+\begin{DoxyReturn}{Returns}
+The covariance matrix. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_ae9e3f8be04be322e1fec36986774af22}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_ae9e3f8be04be322e1fec36986774af22}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!dim@{dim}}
+\index{dim@{dim}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{dim()}{dim()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+Index \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::dim (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the dimension of the Gaussian distribution. 
+
+\begin{DoxyReturn}{Returns}
+The dimension of the distribution. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_ac726ca2019576d3297070b77607acb83}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_ac726ca2019576d3297070b77607acb83}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!erfcx@{erfcx}}
+\index{erfcx@{erfcx}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{erfcx()}{erfcx()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a4187029ae32273600bc54c5d6b40835b} 
+template$<$typename Scalar = double$>$ \\
+double \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::erfcx (\begin{DoxyParamCaption}\item[{double}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Computes the scaled complementary error function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The scaled complementary error function value. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a286e3585f851985c98f3c8a6a2f4dcf3}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!infoMat@{infoMat}}
+\index{infoMat@{infoMat}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{infoMat()}{infoMat()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a286e3585f851985c98f3c8a6a2f4dcf3} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::info\+Mat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the information matrix (inverse of covariance). 
+
+\begin{DoxyReturn}{Returns}
+The information matrix. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a5af43345a5a6443cdc52c311c53476ad}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_a5af43345a5a6443cdc52c311c53476ad}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a959126cf330d5be69d5ff1a738d333ec}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!infoVec@{infoVec}}
+\index{infoVec@{infoVec}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{infoVec()}{infoVec()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a959126cf330d5be69d5ff1a738d333ec} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::info\+Vec (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the information vector. 
+
+\begin{DoxyReturn}{Returns}
+The information vector. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a4ebe3246138cac38bb009727687f805b}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_a4ebe3246138cac38bb009727687f805b}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a5f1a37da126fc89dcf7c0457ec6c6ca8}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!isWithinConfidenceRegion@{isWithinConfidenceRegion}}
+\index{isWithinConfidenceRegion@{isWithinConfidenceRegion}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{isWithinConfidenceRegion()}{isWithinConfidenceRegion()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a5f1a37da126fc89dcf7c0457ec6c6ca8} 
+template$<$typename Scalar = double$>$ \\
+virtual bool \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::is\+Within\+Confidence\+Region (\begin{DoxyParamCaption}\item[{const Eigen\+::\+VectorX$<$ Scalar $>$ \&}]{x}{, }\item[{double}]{n\+Sigma}{ = {\ttfamily 3.0}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if a given point is within the confidence region of the Gaussian distribution. 
+
+This method determines whether the input vector x is within the confidence region defined by n\+Sigma standard deviations from the mean of the Gaussian distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input vector to check. \\
+\hline
+{\em n\+Sigma} & The number of standard deviations defining the confidence region (default\+: 3.\+0). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the point is within the confidence region, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a8a40f20e8d0fde44bdde239eea310540}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_aaeec2dd1eb35e0df204bfaf3b820204f}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!logIntegral@{logIntegral}}
+\index{logIntegral@{logIntegral}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{logIntegral()}{logIntegral()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussianBase_aaeec2dd1eb35e0df204bfaf3b820204f} 
+template$<$typename Scalar = double$>$ \\
+Scalar \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::log\+Integral (\begin{DoxyParamCaption}\item[{Scalar}]{a}{, }\item[{Scalar}]{b}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the log of the integral of the Gaussian distribution between two points. 
+
+This function returns the following value\+:
+
+\[\log \int_a^b \mathcal{N}(x; \mu, \sigma^2) \,\mathrm{d}x
+\]
+
+where $\mu$ is the mean and $\sigma$ is the standard deviation of the Gaussian distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The lower bound of the integral. \\
+\hline
+{\em b} & The upper bound of the integral. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log of the integral value. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a753f3e63e71907cb446c55e64de67aa6}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!logIntegral@{logIntegral}}
+\index{logIntegral@{logIntegral}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{logIntegral()}{logIntegral()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussianBase_a753f3e63e71907cb446c55e64de67aa6} 
+template$<$typename Scalar = double$>$ \\
+Scalar \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::log\+Integral (\begin{DoxyParamCaption}\item[{Scalar}]{a}{, }\item[{Scalar}]{b}{, }\item[{Scalar \&}]{dldmu}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the log of the integral of the Gaussian distribution between two points and its derivative with respect to the mean. 
+
+This function returns the following value\+:
+
+\[l = \log \int_a^b \mathcal{N}(x; \mu, \sigma^2) \,\mathrm{d}x
+\]
+
+and its derivative with respect to the mean\+:
+
+\[\frac{\partial l}{\partial \mu} = \frac{\mathcal{N}(b; \mu, \sigma^2) - \mathcal{N}(a; \mu, \sigma^2)}{\int_a^b \mathcal{N}(x; \mu, \sigma^2) \,\mathrm{d}x}
+\]
+
+where $\mu$ is the mean and $\sigma$ is the standard deviation of the Gaussian distribution.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & The lower bound of the integral. \\
+\hline
+{\em b} & The upper bound of the integral. \\
+\hline
+{\em dldmu} & Reference to store the derivative with respect to the mean. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log of the integral value. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!mean@{mean}}
+\index{mean@{mean}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{mean()}{mean()}}
+{\footnotesize\ttfamily \label{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::mean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the mean of the Gaussian distribution. 
+
+\begin{DoxyReturn}{Returns}
+The mean vector. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a09ea34257421e518cd44b1061cd1bda5}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_a09ea34257421e518cd44b1061cd1bda5}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!normcdf@{normcdf}}
+\index{normcdf@{normcdf}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{normcdf()}{normcdf()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9} 
+template$<$typename Scalar = double$>$ \\
+double \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::normcdf (\begin{DoxyParamCaption}\item[{double}]{w}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Computes the cumulative distribution function of the standard normal distribution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & The input value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative probability. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a340d39f075cf8039a5ad11b239d7a19a}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!normcdf@{normcdf}}
+\index{normcdf@{normcdf}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{normcdf()}{normcdf()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classGaussianBase_a340d39f075cf8039a5ad11b239d7a19a} 
+template$<$typename Scalar = double$>$ \\
+double \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::normcdf (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{mu}{, }\item[{double}]{sigma}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Computes the cumulative distribution function of a normal distribution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The input value. \\
+\hline
+{\em mu} & The mean of the normal distribution. \\
+\hline
+{\em sigma} & The standard deviation of the normal distribution. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative probability. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a80dd97c033cc01bbff9a8fec2446aa82}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!simulate@{simulate}}
+\index{simulate@{simulate}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a80dd97c033cc01bbff9a8fec2446aa82} 
+template$<$typename Scalar = double$>$ \\
+Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::simulate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simulates a sample from the Gaussian distribution. 
+
+\begin{DoxyReturn}{Returns}
+A random vector drawn from the distribution. 
+\end{DoxyReturn}
+\Hypertarget{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!sqrtCov@{sqrtCov}}
+\index{sqrtCov@{sqrtCov}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtCov()}{sqrtCov()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::sqrt\+Cov (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the square root of the covariance matrix. 
+
+\begin{DoxyReturn}{Returns}
+The square root of the covariance matrix. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_af1ecfcdd9ae8d439d39a555c153d83f6}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_af1ecfcdd9ae8d439d39a555c153d83f6}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_ab1e4ae449123114da73b73cf3c72570e}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!sqrtInfoMat@{sqrtInfoMat}}
+\index{sqrtInfoMat@{sqrtInfoMat}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtInfoMat()}{sqrtInfoMat()}}
+{\footnotesize\ttfamily \label{classGaussianBase_ab1e4ae449123114da73b73cf3c72570e} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+MatrixX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::sqrt\+Info\+Mat (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the square root of the information matrix. 
+
+\begin{DoxyReturn}{Returns}
+The square root of the information matrix. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a1b8c76e48a970b00157cea62db5933bf}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_a1b8c76e48a970b00157cea62db5933bf}{Gaussian\+Info$<$ double $>$}}.
+
+\Hypertarget{classGaussianBase_a2647644ad1f9377081f79c3fa664fb09}\index{GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}!sqrtInfoVec@{sqrtInfoVec}}
+\index{sqrtInfoVec@{sqrtInfoVec}!GaussianBase$<$ Scalar $>$@{GaussianBase$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{sqrtInfoVec()}{sqrtInfoVec()}}
+{\footnotesize\ttfamily \label{classGaussianBase_a2647644ad1f9377081f79c3fa664fb09} 
+template$<$typename Scalar = double$>$ \\
+virtual Eigen\+::\+VectorX$<$ Scalar $>$ \mbox{\hyperlink{classGaussianBase}{Gaussian\+Base}}$<$ Scalar $>$\+::sqrt\+Info\+Vec (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the square root of the information vector. 
+
+\begin{DoxyReturn}{Returns}
+The square root of the information vector. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classGaussianInfo_a36299f8a059f76aa995cfdf43bb97ebb}{Gaussian\+Info$<$ Scalar $>$}}, and \mbox{\hyperlink{classGaussianInfo_a36299f8a059f76aa995cfdf43bb97ebb}{Gaussian\+Info$<$ double $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{GaussianBase_8hpp}{Gaussian\+Base.\+hpp}}\end{DoxyCompactItemize}

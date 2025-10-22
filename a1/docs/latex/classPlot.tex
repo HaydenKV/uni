@@ -1,0 +1,49 @@
+\doxysection{Plot Class Reference}
+\hypertarget{classPlot}{}\label{classPlot}\index{Plot@{Plot}}
+
+
+Main SLAM visualization class -\/ Minimal working version.  
+
+
+
+
+{\ttfamily \#include $<$Plot.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPlot_a50c85ef8e2b84327fcf7ed9e0be49e8f}\label{classPlot_a50c85ef8e2b84327fcf7ed9e0be49e8f} 
+{\bfseries Plot} (const \mbox{\hyperlink{structCamera}{Camera}} \&camera)
+\item 
+\Hypertarget{classPlot_a6418b3037cc8bca4340138a77a7b0f94}\label{classPlot_a6418b3037cc8bca4340138a77a7b0f94} 
+void {\bfseries update\+Image} (const cv\+::\+Mat \&image, const std\+::vector$<$ cv\+::\+Point2f $>$ \&features=\{\}, const std\+::vector$<$ int $>$ \&feature\+Status=\{\})
+\begin{DoxyCompactList}\small\item\em Update the camera image with detected features. \end{DoxyCompactList}\item 
+\Hypertarget{classPlot_a64db03a04b8900e2e9112148b5963cb2}\label{classPlot_a64db03a04b8900e2e9112148b5963cb2} 
+void {\bfseries update\+Scene} (const Eigen\+::\+Vector3d \&camera\+Pos=Eigen\+::\+Vector3d\+::\+Zero(), const Eigen\+::\+Matrix3d \&camera\+Rot=Eigen\+::\+Matrix3d\+::\+Identity(), const Eigen\+::\+Matrix3d \&camera\+Cov=0.\+1 \texorpdfstring{$\ast$}{*}Eigen\+::\+Matrix3d\+::\+Identity(), const std\+::vector$<$ Eigen\+::\+Vector3d $>$ \&landmark\+Positions=\{\}, const std\+::vector$<$ Eigen\+::\+Matrix3d $>$ \&landmark\+Covariances=\{\}, const std\+::vector$<$ int $>$ \&landmark\+Status=\{\})
+\begin{DoxyCompactList}\small\item\em Update 3D scene with SLAM state (simplified) \end{DoxyCompactList}\item 
+\Hypertarget{classPlot_a60d81e634274f29aeeb6f222a77f73c0}\label{classPlot_a60d81e634274f29aeeb6f222a77f73c0} 
+void {\bfseries render} ()
+\begin{DoxyCompactList}\small\item\em Render the visualization. \end{DoxyCompactList}\item 
+\Hypertarget{classPlot_a2510cb2ee00b235c9628d7e2dabdc88f}\label{classPlot_a2510cb2ee00b235c9628d7e2dabdc88f} 
+cv\+::\+Mat {\bfseries get\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Get current visualization frame for video export. \end{DoxyCompactList}\item 
+\Hypertarget{classPlot_ab4ff1d086a8e4d032346098b950648d0}\label{classPlot_ab4ff1d086a8e4d032346098b950648d0} 
+void {\bfseries handle\+Interactivity} (int interactive, bool is\+Last\+Frame=false)
+\begin{DoxyCompactList}\small\item\em Handle interactive modes per assignment spec. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main SLAM visualization class -\/ Minimal working version. 
+
+Provides dual-\/pane visualization\+:
+\begin{DoxyItemize}
+\item Left pane\+: \doxylink{structCamera}{Camera} image + detected features
+\item Right pane\+: 3D world view (simplified for testing)
+\end{DoxyItemize}
+
+Based on Lab 8 VTK patterns 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Plot.\+h\item 
+src/Plot.\+cpp\end{DoxyCompactItemize}

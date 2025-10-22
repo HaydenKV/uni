@@ -1,0 +1,44 @@
+\doxysection{System\+Estimator.\+h}
+\hypertarget{SystemEstimator_8h_source}{}\label{SystemEstimator_8h_source}\index{src/SystemEstimator.h@{src/SystemEstimator.h}}
+\mbox{\hyperlink{SystemEstimator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ SYSTEMESTIMATOR\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ SYSTEMESTIMATOR\_H}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Gaussian_8hpp}{Gaussian.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemBase_8h}{SystemBase.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSystemEstimator_a5affca954084b875c1a5178be1039355}{SystemEstimator}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSystemBase_a83e167c0dc00f221543c06fdf69b846e}{SystemBase}}}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classSystemEstimator_a5affca954084b875c1a5178be1039355}{SystemEstimator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \&\ \mbox{\hyperlink{classSystemEstimator_a6db5323501c2609c2cb34964fbe1db21}{density}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classSystemEstimator_a770511e39405cd56053c78469a9560fb}{\string~SystemEstimator}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSystemEstimator_afdea327c9daacaad2eb496f454b75a8a}{predict}}(\textcolor{keywordtype}{double}\ time)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classSystemEstimator_a6db5323501c2609c2cb34964fbe1db21}{density}};\ \ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemEstimator_a90d91f0f25867921e651e8309501dea6}{dynamicsEst}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemEstimator_a90d91f0f25867921e651e8309501dea6}{dynamicsEst}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00066\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{classSystemEstimator_a679b3f0bf1392323eea3aa1b18eaaa03}{augmentedDynamicsEst}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::MatrixXd\ \&\ X)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00075\ \ \ \ \ Eigen::VectorXd\ \mbox{\hyperlink{classSystemEstimator_a249d9ae42fa67c8a82ad5c9b87491b5a}{RK4SDEHelper}}(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ xdw,\ \textcolor{keywordtype}{double}\ dt,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussian}{Gaussian<double>}}\ \mbox{\hyperlink{classSystemEstimator_a12a1b53d0f9fb78e85ce4252c3b8b0c3}{processNoiseDensity}}(\textcolor{keywordtype}{double}\ dt)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Eigen::Index>\ \mbox{\hyperlink{classSystemEstimator_aa276332cdb668a97daaaeb732bedb706}{processNoiseIndex}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSystemEstimator_a4b6100c438827a6e9c7e4208af5d3724}{dtMaxEst}}\ =\ 1e-\/2;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

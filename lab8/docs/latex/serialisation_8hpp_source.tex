@@ -1,0 +1,30 @@
+\doxysection{serialisation.\+hpp}
+\hypertarget{serialisation_8hpp_source}{}\label{serialisation_8hpp_source}\index{src/serialisation.hpp@{src/serialisation.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SERIALISATION\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SERIALISATION\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <opencv2/core/persistence.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Helper\ templates\ for\ OpenCV\ serialisation}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ read(\textcolor{keyword}{const}\ cv::FileNode\ \&\ node,\ T\ \&\ obj,\ \textcolor{keyword}{const}\ T\ \&\ default\_value\ =\ T())}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordflow}{if}\ (node.empty())}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ obj\ =\ default\_value;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ obj.read(node);}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ write(cv::FileStorage\ \&\ fs,\ \textcolor{keyword}{const}\ std::string\ \&,\ \textcolor{keyword}{const}\ T\ \&\ obj)}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ obj.write(fs);}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,99 @@
+\doxysection{Pose.\+hpp}
+\hypertarget{Pose_8hpp_source}{}\label{Pose_8hpp_source}\index{src/Pose.hpp@{src/Pose.hpp}}
+\mbox{\hyperlink{Pose_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ POSE\_HPP}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ POSE\_HPP}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <opencv2/core/types.hpp>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <opencv2/core/eigen.hpp>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <opencv2/calib3d.hpp>}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{using\ }Matrix3\ =\ Eigen::Matrix3<Scalar>;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{using\ }Vector3\ =\ Eigen::Vector3<Scalar>;}
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ Matrix3\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ Vector3\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};\ \ \ \ \ \ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}()}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}(Matrix3::Identity())}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}(Vector3::Zero())}
+\DoxyCodeLine{00048\ \ \ \ \ \{\}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{structPose_a3f42bbb39b1756a7db61219a5c251243}{Pose}}(\textcolor{keyword}{const}\ Matrix3\ \&\ R,\ \textcolor{keyword}{const}\ Vector3\ \&\ t)}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}(R)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}(t)}
+\DoxyCodeLine{00058\ \ \ \ \ \{\}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{structPose_a358c564e80cc7f481c8ecda4facdab98}{Pose}}(\textcolor{keyword}{const}\ cv::Matx33d\ \&\ R,\ \textcolor{keyword}{const}\ cv::Vec3d\ \&\ t)}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ cv::cv2eigen(R,\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ cv::cv2eigen(t,\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}});}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{structPose_a7f37674fde11e0d6a6b08d6a4b6dc169}{Pose}}(\textcolor{keyword}{const}\ cv::Mat\ \&\ rvec,\ \textcolor{keyword}{const}\ cv::Mat\ \&\ tvec)}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ cv::Mat\ R;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ cv::Rodrigues(rvec,\ R);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ cv::cv2eigen(R,\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ cv::cv2eigen(tvec,\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}});}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ OtherScalar>}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{structPose_aec9445a6e2c8ac2347a87f5e7b2f4684}{Pose}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose<OtherScalar>}}\ \&\ T)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}(T.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}.template\ cast<Scalar>())}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}(T.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}.template\ cast<Scalar>())}
+\DoxyCodeLine{00098\ \ \ \ \ \{\}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}\ \mbox{\hyperlink{structPose_ab302de50911e1986356f667e46408179}{operator*}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}\ \&\ other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00115\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}\ result;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ =\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ *\ other.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}\ =\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ *\ other.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}\ +\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00146\ \ \ \ \ Vector3\ \mbox{\hyperlink{structPose_a434068438bb1b39dc4b06bcc4d7cedda}{operator*}}(\textcolor{keyword}{const}\ Vector3\ \&\ r)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00147\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ *\ r\ +\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00157\ \ \ \ \ cv::Vec3d\ \mbox{\hyperlink{structPose_a0f24467c842c447cdf71f2e0ac374903}{operator*}}(\textcolor{keyword}{const}\ cv::Vec3d\ \&\ r)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00158\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ Vector3\ result\ =\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ *\ Eigen::Map<const\ Vector3>(r.val)\ +\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cv::Vec3d(result[0],\ result[1],\ result[2]);}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}\ \mbox{\hyperlink{structPose_a4d5526e64f5903219a573725cbba1591}{inverse}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00176\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPose_a60f2e141b0e2e38ae58e631106509b68}{Pose}}\ result;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ =\ \mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}.transpose();}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}\ =\ -\/result.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ *\ \mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00181\ \ \ \ \ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00188\ \ \ \ \ cv::Matx33d\ \mbox{\hyperlink{structPose_ad36d4140fd51dfcf4152810ce4ca0293}{rotationMatrixCV}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00189\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ cv::Matx33d\ R;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ cv::eigen2cv(\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}},\ R);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ R;}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00200\ \ \ \ \ cv::Vec3d\ \mbox{\hyperlink{structPose_a0d105e277a947dac223e74f6962b1f8b}{translationVectorCV}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00201\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ cv::Vec3d\ t;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ cv::eigen2cv(\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}},\ t);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ t;}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

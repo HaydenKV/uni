@@ -1,0 +1,38 @@
+\doxysection{rosenbrock.\+h}
+\hypertarget{rosenbrock_8h_source}{}\label{rosenbrock_8h_source}\index{src/rosenbrock.h@{src/rosenbrock.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ROSENBROCK\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ROSENBROCK\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Functors\ for\ Rosenbrock\ function\ and\ its\ derivatives}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Functor\ for\ Rosenbrock\ function\ and\ its\ analytical\ derivatives}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRosenbrockAnalytical}{RosenbrockAnalytical}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x);}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g);}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H);}
+\DoxyCodeLine{00014\ \};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Functor\ for\ Rosenbrock\ function\ and\ its\ derivatives\ using\ forward-\/mode\ autodifferentiation}}
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRosenbrockFwdAutoDiff}{RosenbrockFwdAutoDiff}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g);}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H);}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Functor\ for\ Rosenbrock\ function\ and\ its\ derivatives\ using\ reverse-\/mode\ autodifferentiation}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRosenbrockRevAutoDiff}{RosenbrockRevAutoDiff}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{double}\ operator()(\textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::VectorXd\ \&\ g,\ Eigen::MatrixXd\ \&\ H);}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

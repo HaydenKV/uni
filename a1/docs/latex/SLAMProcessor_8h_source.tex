@@ -1,0 +1,71 @@
+\doxysection{SLAMProcessor.\+h}
+\hypertarget{SLAMProcessor_8h_source}{}\label{SLAMProcessor_8h_source}\index{src/SLAMProcessor.h@{src/SLAMProcessor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SLAMPROCESSOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SLAMPROCESSOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <opencv2/core/types.hpp>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <opencv2/features2d.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <opencv2/aruco.hpp>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }SLAMProcessor\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ SLAMProcessor(\textcolor{keywordtype}{int}\ scenario,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\&\ camera);}
+\DoxyCodeLine{00022\ \ \ \ \ \string~SLAMProcessor()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSLAMProcessor_a07419f8de67d60bf49866921d6c8c55d}{processFrame}}(\textcolor{keyword}{const}\ cv::Mat\&\ frame);}
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Getters\ for\ visualization\ (const\ interface)}}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<cv::Point2f>\ getDetectedFeatures()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ detectedFeatures;\ \}}
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<int>\ getFeatureStatus()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ featureStatus;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ Eigen::Vector3d\ getCameraPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cameraPosition;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ Eigen::Matrix3d\ getCameraRotation()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cameraRotation;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ Eigen::Matrix3d\ getCameraCovariance()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cameraCovariance;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<Eigen::Vector3d>\ getLandmarkPositions()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ landmarkPositions;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<Eigen::Matrix3d>\ getLandmarkCovariances()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ landmarkCovariances;\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ std::vector<int>\ getLandmarkStatus()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ landmarkStatus;\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ getFrameCount()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ frameCount;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ getScenario()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ scenario;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeSLAM();}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ updateSLAMState();}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Scenario-\/specific\ processing\ (to\ be\ extended\ with\ real\ lab\ implementations)}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ processArUcoSLAM();\ \ \ \ \textcolor{comment}{//\ TODO:\ Integrate\ Lab\ 2\ ArUco\ detection}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ processDuckSLAM();\ \ \ \ \ \textcolor{comment}{//\ TODO:\ Integrate\ Lab\ 3\ duck\ detection\ \ }}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ processPointSLAM();\ \ \ \ \textcolor{comment}{//\ TODO:\ Integrate\ Lab\ 2\ corner\ detection}}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Core\ data}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ scenario;}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{structCamera}{Camera}}\ camera;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ frameCount;}
+\DoxyCodeLine{00056\ \ \ \ \ cv::Mat\ currentFrame;}
+\DoxyCodeLine{00057\ \ \ \ \ std::mt19937\ rng;}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Detection\ results\ (for\ visualization)}}
+\DoxyCodeLine{00060\ \ \ \ \ std::vector<cv::Point2f>\ detectedFeatures;}
+\DoxyCodeLine{00061\ \ \ \ \ std::vector<int>\ featureStatus;\ \textcolor{comment}{//\ 0=tracked,\ 1=visible\_undetected}}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ SLAM\ state\ estimates}}
+\DoxyCodeLine{00064\ \ \ \ \ Eigen::Vector3d\ cameraPosition;}
+\DoxyCodeLine{00065\ \ \ \ \ Eigen::Matrix3d\ cameraRotation;}
+\DoxyCodeLine{00066\ \ \ \ \ Eigen::Matrix3d\ cameraCovariance;}
+\DoxyCodeLine{00067\ \ \ \ \ std::vector<Eigen::Vector3d>\ landmarkPositions;}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<Eigen::Matrix3d>\ landmarkCovariances;}
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<int>\ landmarkStatus;\ \textcolor{comment}{//\ 0=tracked,\ 1=visible\_undetected,\ 2=not\_visible}}
+\DoxyCodeLine{00070\ \ \ \ \ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Detector\ instances\ (Lab\ foundations)\ -\/\ Fixed\ for\ OpenCV\ 4.7+\ API}}
+\DoxyCodeLine{00072\ \ \ \ \ cv::Ptr<cv::aruco::ArucoDetector>\ arucoDetector;\ \ \textcolor{comment}{//\ New\ ArUco\ detector\ API}}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SLAMPROCESSOR\_H}}
+
+\end{DoxyCode}

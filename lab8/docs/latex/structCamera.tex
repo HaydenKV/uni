@@ -1,0 +1,77 @@
+\doxysection{Camera Struct Reference}
+\hypertarget{structCamera}{}\label{structCamera}\index{Camera@{Camera}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structCamera_aa670e2c2d0e5416355332791718fadbf}\label{structCamera_aa670e2c2d0e5416355332791718fadbf} 
+void {\bfseries calibrate} (\mbox{\hyperlink{structChessboardData}{Chessboard\+Data}} \&)
+\item 
+\Hypertarget{structCamera_abe05ef67c14bc4632bd7c92f892105ea}\label{structCamera_abe05ef67c14bc4632bd7c92f892105ea} 
+void {\bfseries print\+Calibration} () const
+\item 
+\Hypertarget{structCamera_a7335ea647abc590ea1978dea7919d7ac}\label{structCamera_a7335ea647abc590ea1978dea7919d7ac} 
+{\footnotesize template$<$typename Scalar$>$ }\\\mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$ {\bfseries camera\+To\+Body} (const \mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$ \&Tnc) const
+\item 
+\Hypertarget{structCamera_a1c20b227343ca26cb6ae154e371b7200}\label{structCamera_a1c20b227343ca26cb6ae154e371b7200} 
+{\footnotesize template$<$typename Scalar$>$ }\\\mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$ {\bfseries body\+To\+Camera} (const \mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$ \&Tnb) const
+\item 
+\Hypertarget{structCamera_a6a89c6e5d7bb8fdcf9cf80164ab64b43}\label{structCamera_a6a89c6e5d7bb8fdcf9cf80164ab64b43} 
+cv\+::\+Vec3d {\bfseries world\+To\+Vector} (const cv\+::\+Vec3d \&r\+PNn, const \mbox{\hyperlink{structPose}{Pose}}$<$ double $>$ \&Tnb) const
+\item 
+\Hypertarget{structCamera_ae0d9d8014ce692c57526cbf11916b344}\label{structCamera_ae0d9d8014ce692c57526cbf11916b344} 
+cv\+::\+Vec2d {\bfseries world\+To\+Pixel} (const cv\+::\+Vec3d \&, const \mbox{\hyperlink{structPose}{Pose}}$<$ double $>$ \&) const
+\item 
+\Hypertarget{structCamera_ae7b3613156aa298d1830b01cebc3e308}\label{structCamera_ae7b3613156aa298d1830b01cebc3e308} 
+cv\+::\+Vec2d {\bfseries vector\+To\+Pixel} (const cv\+::\+Vec3d \&) const
+\item 
+\Hypertarget{structCamera_afe14f48adc3b6fc25b6047073b6be1ad}\label{structCamera_afe14f48adc3b6fc25b6047073b6be1ad} 
+{\footnotesize template$<$typename Scalar$>$ }\\Eigen\+::\+Vector2$<$ Scalar $>$ {\bfseries vector\+To\+Pixel} (const Eigen\+::\+Vector3$<$ Scalar $>$ \&) const
+\item 
+\Hypertarget{structCamera_a4efb8fa0eee693f058dca1e2a748b4c8}\label{structCamera_a4efb8fa0eee693f058dca1e2a748b4c8} 
+Eigen\+::\+Vector2d {\bfseries vector\+To\+Pixel} (const Eigen\+::\+Vector3d \&, Eigen\+::\+Matrix23d \&) const
+\item 
+\Hypertarget{structCamera_a9f917c85311e596e02cf0cd7bd9d9d1d}\label{structCamera_a9f917c85311e596e02cf0cd7bd9d9d1d} 
+cv\+::\+Vec3d {\bfseries pixel\+To\+Vector} (const cv\+::\+Vec2d \&) const
+\item 
+\Hypertarget{structCamera_ae460c2ecc2419de325b37745fee24559}\label{structCamera_ae460c2ecc2419de325b37745fee24559} 
+bool {\bfseries is\+World\+Within\+FOV} (const cv\+::\+Vec3d \&r\+PNn, const \mbox{\hyperlink{structPose}{Pose}}$<$ double $>$ \&Tnb) const
+\item 
+\Hypertarget{structCamera_a58ea664e882adfc2d1b1ef25245b48b2}\label{structCamera_a58ea664e882adfc2d1b1ef25245b48b2} 
+bool {\bfseries is\+Vector\+Within\+FOV} (const cv\+::\+Vec3d \&r\+PCc) const
+\item 
+\Hypertarget{structCamera_a5e493807e3319cd4d2b7e25987139e81}\label{structCamera_a5e493807e3319cd4d2b7e25987139e81} 
+void {\bfseries calc\+Field\+Of\+View} ()
+\item 
+\Hypertarget{structCamera_ae53a806f32112cb6e8d54e5790c84094}\label{structCamera_ae53a806f32112cb6e8d54e5790c84094} 
+void {\bfseries write} (cv\+::\+File\+Storage \&) const
+\item 
+\Hypertarget{structCamera_a261725ec873eaf1df71f4a1b4e47391e}\label{structCamera_a261725ec873eaf1df71f4a1b4e47391e} 
+void {\bfseries read} (const cv\+::\+File\+Node \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structCamera_abd841afa4423f2d2c82b715534eda6f6}\label{structCamera_abd841afa4423f2d2c82b715534eda6f6} 
+cv\+::\+Mat {\bfseries camera\+Matrix}
+\item 
+\Hypertarget{structCamera_aa944fd4072b50e56c5500cabcadc47c1}\label{structCamera_aa944fd4072b50e56c5500cabcadc47c1} 
+cv\+::\+Mat {\bfseries dist\+Coeffs}
+\item 
+\Hypertarget{structCamera_aed657eee1af9dbaabd2d7feec2e5650e}\label{structCamera_aed657eee1af9dbaabd2d7feec2e5650e} 
+int {\bfseries flags} = 0
+\item 
+\Hypertarget{structCamera_a219401d77f2e6211ad6c54f0c0d0b895}\label{structCamera_a219401d77f2e6211ad6c54f0c0d0b895} 
+cv\+::\+Size {\bfseries image\+Size}
+\item 
+\Hypertarget{structCamera_a02cae3b4ff7f863627819ebbbe9ef56e}\label{structCamera_a02cae3b4ff7f863627819ebbbe9ef56e} 
+\mbox{\hyperlink{structPose}{Pose}}$<$ double $>$ {\bfseries Tbc}
+\item 
+\Hypertarget{structCamera_a9a2741787327ee677bc2f9a25af16cb3}\label{structCamera_a9a2741787327ee677bc2f9a25af16cb3} 
+std\+::vector$<$ double $>$ {\bfseries cos\+Theta\+Limit\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Camera.\+h\item 
+src/Camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,29 @@
+\doxysection{src/\+Gaussian\+Info.hpp File Reference}
+\hypertarget{GaussianInfo_8hpp}{}\label{GaussianInfo_8hpp}\index{src/GaussianInfo.hpp@{src/GaussianInfo.hpp}}
+
+
+Defines the \doxylink{classGaussianInfo}{Gaussian\+Info} class for representing Gaussian distributions using square-\/root information form.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$numbers$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+{\ttfamily \#include $<$Eigen/\+SVD$>$}\newline
+{\ttfamily \#include $<$Eigen/\+QR$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Cholesky$>$}\newline
+{\ttfamily \#include "{}Gaussian\+Base.\+hpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info$<$ Scalar $>$}}
+\begin{DoxyCompactList}\small\item\em Represents a Gaussian distribution using the information form. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{classGaussianInfo}{Gaussian\+Info} class for representing Gaussian distributions using square-\/root information form. 
+
+This file contains the implementation of the \doxylink{classGaussianInfo}{Gaussian\+Info} class, which represents a multivariate Gaussian (normal) distribution. The class provides various operations such as marginalization, conditioning, and transformation of Gaussian distributions. It also includes methods for computing log-\/likelihoods, gradients, and Hessians, as well as utilities for working with confidence regions.
+
+The \doxylink{classGaussianInfo}{Gaussian\+Info} class is templated on the scalar type, allowing for flexibility in the numeric precision used for calculations and to enable autodiff support. 

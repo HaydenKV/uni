@@ -1,0 +1,257 @@
+\doxysection{Gaussian\+Base.\+hpp}
+\hypertarget{GaussianBase_8hpp_source}{}\label{GaussianBase_8hpp_source}\index{src/GaussianBase.hpp@{src/GaussianBase.hpp}}
+\mbox{\hyperlink{GaussianBase_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ GAUSSIANBASE\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ GAUSSIANBASE\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <numbers>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <boost/random/mersenne\_twister.hpp>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <boost/random/normal\_distribution.hpp>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <boost/math/special\_functions/gamma.hpp>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DensityBase_8hpp}{DensityBase.hpp}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar\ =\ \textcolor{keywordtype}{double}>}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGaussianBase}{GaussianBase}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classDensityBase}{DensityBase}}<Scalar>}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianBase_a942f4c7f2ac6da27992123bbf0300caa}{\string~GaussianBase}}()\ \textcolor{keyword}{override}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::Index\ \mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorX<Scalar>\ \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{mean}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::MatrixX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrtCov}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::MatrixX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a93d9a75118e38b3a0bbbd3c8704593d0}{cov}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::MatrixX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a286e3585f851985c98f3c8a6a2f4dcf3}{infoMat}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a959126cf330d5be69d5ff1a738d333ec}{infoVec}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::MatrixX<Scalar>\ \mbox{\hyperlink{classGaussianBase_ab1e4ae449123114da73b73cf3c72570e}{sqrtInfoMat}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a2647644ad1f9377081f79c3fa664fb09}{sqrtInfoVec}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ Eigen::VectorX<Scalar>\ \mbox{\hyperlink{classGaussianBase_a80dd97c033cc01bbff9a8fec2446aa82}{simulate}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ boost::random::mt19937\ rng(std::time(0));\ \ \ \ \textcolor{comment}{//\ Initialise\ and\ seed\ once}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ boost::random::normal\_distribution<>\ dist;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ w\ \string~\ N(0,\ I)}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ Eigen::VectorX<Scalar>\ w(\mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}}());}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (Eigen::Index\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}}();\ ++i)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ w(i)\ =\ dist(rng);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{mean}}()\ +\ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrtCov}}().transpose()*w;}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6}{chi2inv}}(\textcolor{keywordtype}{double}\ p,\ \textcolor{keywordtype}{double}\ nu)}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ assert(p\ >=\ 0);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ assert(p\ <\ 1);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ assert(nu\ >\ 0.0);\ \textcolor{comment}{//\ added}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ a\ couple\ of\ trivial\ edges}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ ==\ 0.0)\ \textcolor{keywordflow}{return}\ 0.0;\ \textcolor{comment}{//\ F\string^\{-\/1\}(0)=0\ for\ chi-\/square}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ a\ =\ 0.5\ *\ nu;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ shape\ for\ the\ gamma}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Invert\ the\ regularized\ lower\ incomplete\ gamma:}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ P(a,\ x)\ =\ p\ \ =>\ \ x\ =\ gamma\_p\_inv(a,\ p)}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ x\ =\ boost::math::gamma\_p\_inv(a,\ p);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2.0\ *\ x;\ \textcolor{comment}{//\ chi-\/square\ quantile}}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}{normcdf}}(\textcolor{keywordtype}{double}\ w)}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Phi(w)\ =\ 0.5\ *\ erfc(-\/w\ /\ sqrt(2))}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Branch\ by\ sign\ for\ a\ touch\ more\ numerical\ stability\ in\ the\ tails,\ can\ just\ use\ 'return\ 0.5\ *\ std::erfc(-\/w\ /\ s2);'}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ s2\ =\ std::numbers::sqrt2;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (w\ >=\ 0.0)}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ 1.0\ -\/\ 0.5\ *\ std::erfc(w\ /\ s2);}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ 0.5\ *\ std::erfc(-\/w\ /\ s2);}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.5\ *\ std::erfc(-\/w\ /\ s2);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGaussianBase_a340d39f075cf8039a5ad11b239d7a19a}{normcdf}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ mu,\ \textcolor{keywordtype}{double}\ sigma)}
+\DoxyCodeLine{00156\ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}{normcdf}}((x\ -\/\ mu)/sigma);}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}{erfcx}}(\textcolor{keywordtype}{double}\ x)}
+\DoxyCodeLine{00166\ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ https://stackoverflow.com/a/39777361}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ a,\ d,\ e,\ m,\ p,\ q,\ r,\ s,\ t;}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ a\ =\ std::fmax(x,\ 0.0\ -\/\ x);\ \textcolor{comment}{//\ NaN\ preserving\ absolute\ value\ computation}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Compute\ q\ =\ (a-\/4)/(a+4)\ accurately.\ [0,INF)\ -\/>\ [-\/1,1]\ */}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ m\ =\ a\ -\/\ 4.0;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ p\ =\ a\ +\ 4.0;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ r\ =\ 1.0\ /\ p;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ q\ =\ m\ *\ r;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ t\ =\ std::fma(q\ +\ 1.0,\ -\/4.0,\ a);\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ e\ =\ std::fma(q,\ -\/a,\ t);\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ q\ =\ std::fma(r,\ e,\ q);\ }
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Approximate\ (1+2*a)*exp(a*a)*erfc(a)\ as\ p(q)+1\ for\ q\ in\ [-\/1,1]\ */}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ p\ =\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1.edcad78fc8044p-\/31;\ \ \textcolor{comment}{//\ \ 8.9820305531190140e-\/10}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.b1548f14735d1p-\/30);\ \textcolor{comment}{//\ \ 1.5764464777959401e-\/09}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.a1ad2e6c4a7a8p-\/27);\ \textcolor{comment}{//\ -\/1.2155985739342269e-\/08}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.1985b48f08574p-\/26);\ \textcolor{comment}{//\ -\/1.6386753783877791e-\/08}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.c6a8093ac4f83p-\/24);\ \textcolor{comment}{//\ \ 1.0585794011876720e-\/07}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.31c2b2b44b731p-\/24);\ \textcolor{comment}{//\ \ 7.1190423171700940e-\/08}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.b87373facb29fp-\/21);\ \textcolor{comment}{//\ -\/8.2040389712752056e-\/07}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.3fef1358803b7p-\/22);\ \textcolor{comment}{//\ \ 2.9796165315625938e-\/07}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.7eec072bb0be3p-\/18);\ \textcolor{comment}{//\ \ 5.7059822144459833e-\/06}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.78a680a741c4ap-\/17);\ \textcolor{comment}{//\ -\/1.1225056665965572e-\/05}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.9951f39295cf4p-\/16);\ \textcolor{comment}{//\ -\/2.4397380523258482e-\/05}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.3be1255ce180bp-\/13);\ \textcolor{comment}{//\ \ 1.5062307184282616e-\/04}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.a1df71176b791p-\/13);\ \textcolor{comment}{//\ -\/1.9925728768782324e-\/04}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.8d4aaa0099bc8p-\/11);\ \textcolor{comment}{//\ -\/7.5777369791018515e-\/04}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.49c673066c831p-\/8);\ \ \textcolor{comment}{//\ \ 5.0319701025945277e-\/03}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.0962386ea02b7p-\/6);\ \ \textcolor{comment}{//\ -\/1.6197733983519948e-\/02}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.3079edf465cc3p-\/5);\ \ \textcolor{comment}{//\ \ 3.7167515521269866e-\/02}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.0fb06dfedc4ccp-\/4);\ \ \textcolor{comment}{//\ -\/6.6330365820039094e-\/02}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.7fee004e266dfp-\/4);\ \ \textcolor{comment}{//\ \ 9.3732834999538536e-\/02}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.9ddb23c3e14d2p-\/4);\ \ \textcolor{comment}{//\ -\/1.0103906603588378e-\/01}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.16ecefcfa4865p-\/4);\ \ \textcolor{comment}{//\ \ 6.8097054254651804e-\/02}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.f7f5df66fc349p-\/7);\ \ \textcolor{comment}{//\ \ 1.5379652102610957e-\/02}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ -\/0x1.1df1ad154a27fp-\/3);\ \ \textcolor{comment}{//\ -\/1.3962111684056208e-\/01}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ p\ =\ std::fma(p,\ q,\ \ 0x1.dd2c8b74febf6p-\/3);\ \ \textcolor{comment}{//\ \ 2.3299511862555250e-\/01}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Divide\ (1+p)\ by\ (1+2*a)\ ==>\ exp(a*a)*erfc(a)\ */}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ d\ =\ a\ +\ 0.5;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ r\ =\ 1.0\ /\ d;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ r\ =\ r\ *\ 0.5;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ q\ =\ std::fma(p,\ r,\ r);\ \textcolor{comment}{//\ q\ =\ (p+1)/(1+2*a)}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ t\ =\ q\ +\ q;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ e\ =\ (p\ -\/\ q)\ +\ std::fma(t,\ -\/a,\ 1.0);\ \textcolor{comment}{//\ residual:\ (p+1)-\/q*(1+2*a)}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ r\ =\ std::fma(e,\ r,\ q);}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Handle\ argument\ of\ infinity\ */}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\ >\ 0x1.fffffffffffffp1023)\ r\ =\ 0.0;}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Handle\ negative\ arguments:\ erfcx(x)\ =\ 2*exp(x*x)\ -\/\ erfcx(|x|)\ */}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ 0.0)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ x\ *\ x;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ std::fma(x,\ x,\ -\/s);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ std::exp(s);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ e\ -\/\ r;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ std::fma(e,\ d\ +\ d,\ r);\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ r\ +\ e;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (e\ >\ 0x1.fffffffffffffp1023)\ r\ =\ e;\ \textcolor{comment}{//\ avoid\ creating\ NaN}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classGaussianBase_a5f1a37da126fc89dcf7c0457ec6c6ca8}{isWithinConfidenceRegion}}(\textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x,\ \textcolor{keywordtype}{double}\ nSigma\ =\ 3.0)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00251\ \ \ \ \ Eigen::Matrix<Scalar,\ 2,\ Eigen::Dynamic>\ \mbox{\hyperlink{classGaussianBase_a8ae8a883329fc03d4b2fcc30163dd552}{confidenceEllipse}}(\textcolor{keywordtype}{double}\ nSigma\ =\ 3.0,\ \textcolor{keywordtype}{int}\ nSamples\ =\ 100)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00252\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Index\ \&\ n\ =\ \mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}}();}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ assert(n\ ==\ 2);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ assert(nSamples\ >=\ 2);\ \textcolor{comment}{//\ added}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ Eigen::Matrix<Scalar,\ 2,\ Eigen::Dynamic>\ X(2,\ nSamples);}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Probability\ that\ corresponds\ to\ "{}±\ nSigma"{}\ in\ 1D}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ p\ \ \ =\ 2.0\ *\ \mbox{\hyperlink{classGaussianBase_a8437c8ae7f2d45391fc68d0e18e3e5e9}{normcdf}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(nSigma))\ -\/\ 1.0;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Chi-\/square\ threshold\ for\ 2\ DoF,\ then\ radius\ in\ whitened\ coordinates}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ thr\ =\ \mbox{\hyperlink{classGaussianBase_ad7a08a532a4a4bfef50960e1ceae45c6}{chi2inv}}(p,\ 2.0);}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ r\ \ \ =\ \textcolor{keyword}{static\_cast<}Scalar\textcolor{keyword}{>}(std::sqrt(thr));}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::MatrixX<Scalar>\ ST\ =\ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrtCov}}().transpose();\ \textcolor{comment}{//\ S\string^T\ (2x2)}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Angles:\ include\ both\ 0\ and\ 2π\ so\ the\ last\ column\ equals\ the\ first\ (closed\ loop)}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Eigen::Array<Scalar,\ Eigen::Dynamic,\ 1>\ theta\ =}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ Eigen::Array<Scalar,\ Eigen::Dynamic,\ 1>::LinSpaced(nSamples,}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Scalar(0),\ Scalar(2.0\ *\ std::numbers::pi));}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unit\ circle,\ scaled\ by\ r\ \ →\ \ Y\ is\ 2×N}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ Eigen::Matrix<Scalar,\ 2,\ Eigen::Dynamic>\ Y(2,\ nSamples);}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ Y.row(0)\ =\ (r\ *\ theta.cos()).matrix().transpose();\ \textcolor{comment}{//\ r*cos\ θ}}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ Y.row(1)\ =\ (r\ *\ theta.sin()).matrix().transpose();\ \textcolor{comment}{//\ r*sin\ θ}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Affine\ transform:\ x\ =\ μ\ +\ S\string^T\ *\ y\ \ (broadcast\ μ\ over\ columns)}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ X\ =\ \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{mean}}().rowwise().replicate(nSamples)\ +\ ST\ *\ Y;}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ assert(X.cols()\ ==\ nSamples);}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ assert(X.rows()\ ==\ 2);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ X;}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00301\ \ \ \ \ Scalar\ \mbox{\hyperlink{classGaussianBase_aaeec2dd1eb35e0df204bfaf3b820204f}{logIntegral}}(Scalar\ a,\ Scalar\ b)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00302\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ Scalar\ za,\ zb,\ ta,\ tb;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logIntegralImpl(a,\ b,\ za,\ zb,\ ta,\ tb);}
+\DoxyCodeLine{00305\ \ \ \ \ \}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00329\ \ \ \ \ Scalar\ \mbox{\hyperlink{classGaussianBase_a753f3e63e71907cb446c55e64de67aa6}{logIntegral}}(Scalar\ a,\ Scalar\ b,\ Scalar\ \&\ dldmu)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00330\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ Scalar\ za,\ zb,\ ta,\ tb;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ Scalar\ l\ =\ logIntegralImpl(a,\ b,\ za,\ zb,\ ta,\ tb);}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ Scalar\ sigma\ =\ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrtCov}}()(0,\ 0);}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }std::exp,\ std::log;}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ dldmu\ =\ exp(-\/za\ *\ za\ -\/\ l\ -\/\ 0.5\ *\ \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}}(2\ *\ std::numbers::pi\ *\ sigma\ *\ sigma))\ -\/\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exp(-\/zb\ *\ zb\ -\/\ l\ -\/\ 0.5\ *\ \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}}(2\ *\ std::numbers::pi\ *\ sigma\ *\ sigma));}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ l;}
+\DoxyCodeLine{00339\ \ \ \ \ \}}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00352\ \ \ \ \ Scalar\ logIntegralImpl(Scalar\ a,\ Scalar\ b,\ Scalar\ \&\ za,\ Scalar\ \&\ zb,\ Scalar\ \&\ ta,\ Scalar\ \&\ tb)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00353\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ assert(\mbox{\hyperlink{classGaussianBase_a95301f98075e0a6f9d26dab060d298f7}{dim}}()\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Expected\ univariate\ Gaussian\ to\ compute\ the\ log-\/integral"{}});}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ assert(b\ >=\ a\ \&\&\ \textcolor{stringliteral}{"{}Expected\ integral\ to\ be\ non-\/negative\ so\ that\ the\ log\ exists"{}});}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }std::abs,\ std::exp,\ std::log,\ std::log1p;}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ Scalar\ mu\ =\ \mbox{\hyperlink{classGaussianBase_aea1e81723c3f3402cd60b11f838b8325}{mean}}()(0);}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ Scalar\ sigma\ =\ \mbox{\hyperlink{classGaussianBase_a89b0b3c7a1b6d938b0f2d88d02343235}{sqrtCov}}()(0,\ 0);}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ za\ =\ -\/(std::numbers::sqrt2\ /\ 2.0)\ *\ (a\ -\/\ mu)\ /\ sigma;}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ zb\ =\ -\/(std::numbers::sqrt2\ /\ 2.0)\ *\ (b\ -\/\ mu)\ /\ sigma;}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ ta\ =\ \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}}(0.5\ *\ \mbox{\hyperlink{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}{erfcx}}(abs(za)))\ -\/\ za\ *\ za;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ tb\ =\ \mbox{\hyperlink{classDensityBase_a422b4da9a772c51c689ea44d23134ef7}{log}}(0.5\ *\ \mbox{\hyperlink{classGaussianBase_a4187029ae32273600bc54c5d6b40835b}{erfcx}}(abs(zb)))\ -\/\ zb\ *\ zb;}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (za\ >=\ 0)}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (zb\ >=\ 0)}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tb\ +\ log1p(-\/exp(ta\ -\/\ tb));}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \textcolor{comment}{//\ zb\ <\ 0}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ log1p(-\/exp(ta)\ -\/\ exp(tb));}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ \ \ \ \ \ \ \textcolor{comment}{//\ za\ <\ 0}}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ assert(zb\ <\ 0\ \&\&\ "{}Case\ forbidden,\ since\ b\ >=\ a\ implies\ 0\ <=\ zb\ <=\ za\ <\ 0\textcolor{stringliteral}{"{});}}
+\DoxyCodeLine{00381\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ return\ ta\ +\ log1p(-\/exp(tb\ -\/\ ta));}}
+\DoxyCodeLine{00382\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00383\ \textcolor{stringliteral}{\ \ \ \ \}}}
+\DoxyCodeLine{00384\ \textcolor{stringliteral}{\};}}
+\DoxyCodeLine{00385\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{00386\ \textcolor{stringliteral}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,252 @@
+\doxysection{System\+Ballistic Class Reference}
+\hypertarget{classSystemBallistic}{}\label{classSystemBallistic}\index{SystemBallistic@{SystemBallistic}}
+
+
+Class for ballistic system state estimation.  
+
+
+
+
+{\ttfamily \#include $<$System\+Ballistic.\+h$>$}
+
+Inheritance diagram for System\+Ballistic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSystemBallistic}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSystemBallistic_adb6b36cb4e873be604471916e261a90f}{System\+Ballistic}} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemBallistic}{System\+Ballistic} object with initial density. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics for the ballistic system. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBallistic_a46a0ba6bd3a5c6b798b92e4da5dfda9d}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u, Eigen\+::\+Matrix\+Xd \&J) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics and its Jacobian for the ballistic system. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBallistic_ac68c66f327a50a897cbe0feb09a711a1}{input}} (double t, const Eigen\+::\+Vector\+Xd \&x) const override
+\begin{DoxyCompactList}\small\item\em Compute the system input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSystemEstimator_ad83d8c162de6eae4c5574dca76fd640a}{System\+Estimator}} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemEstimator}{System\+Estimator} object with initial density. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Estimator} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemEstimator}{System\+Estimator} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSystemEstimator_afdea327c9daacaad2eb496f454b75a8a}{predict}} (double time) override
+\begin{DoxyCompactList}\small\item\em Predict the system state at a given time. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a90d91f0f25867921e651e8309501dea6}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_ada815e3dd0b16aeabb3a21bc9fc2a7ce}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics and its Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \mbox{\hyperlink{classSystemBallistic_add3723cc9586f38b768566ef9b63f9b7}{process\+Noise\+Density}} (double dt) const override
+\begin{DoxyCompactList}\small\item\em Compute the process noise density for the ballistic system. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ Eigen\+::\+Index $>$ \mbox{\hyperlink{classSystemBallistic_a62d10dfa945004877f99a42ece1e9ca2}{process\+Noise\+Index}} () const override
+\begin{DoxyCompactList}\small\item\em Get the indices of state variables affected by process noise in the ballistic system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classSystemEstimator_a679b3f0bf1392323eea3aa1b18eaaa03}{augmented\+Dynamics\+Est}} (double t, const Eigen\+::\+Matrix\+Xd \&X) const
+\begin{DoxyCompactList}\small\item\em Compute the augmented dynamics estimate. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a249d9ae42fa67c8a82ad5c9b87491b5a}{RK4\+SDEHelper}} (const Eigen\+::\+Vector\+Xd \&xdw, double dt, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Helper function for Runge-\/\+Kutta 4th order method for SDEs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemBallistic_a37ff82ff0a3d1867f45925882450046e}\label{classSystemBallistic_a37ff82ff0a3d1867f45925882450046e} 
+static const double {\bfseries p0} = 101.\+325e3
+\begin{DoxyCompactList}\small\item\em Sea level atmospheric pressure (Pa) \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBallistic_afd55811b89606ac7e364b3f9a3920573}\label{classSystemBallistic_afd55811b89606ac7e364b3f9a3920573} 
+static const double {\bfseries M} = 0.\+0289644
+\begin{DoxyCompactList}\small\item\em Molar mass of air (kg/mol) \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBallistic_a28098f72cc100580a8785ed2c079e36e}\label{classSystemBallistic_a28098f72cc100580a8785ed2c079e36e} 
+static const double {\bfseries R} = 8.\+31447
+\begin{DoxyCompactList}\small\item\em Universal gas constant (J/(mol·K)) \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBallistic_a4c47eb680f9a574624c82ff6b26772f7}\label{classSystemBallistic_a4c47eb680f9a574624c82ff6b26772f7} 
+static const double {\bfseries L} = 0.\+0065
+\begin{DoxyCompactList}\small\item\em Temperature lapse rate (K/m) \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBallistic_adf025d3f8cb9a4a2c5a708910ccb23fc}\label{classSystemBallistic_adf025d3f8cb9a4a2c5a708910ccb23fc} 
+static const double {\bfseries T0} = 288.\+15
+\begin{DoxyCompactList}\small\item\em Sea level standard temperature (K) \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBallistic_aebdb2b886ae3594d1bd821e48ac006af}\label{classSystemBallistic_aebdb2b886ae3594d1bd821e48ac006af} 
+static const double {\bfseries g} = 9.\+81
+\begin{DoxyCompactList}\small\item\em Gravitational acceleration (m/s\texorpdfstring{$^\wedge$}{\string^}2) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries density}
+\begin{DoxyCompactList}\small\item\em The current state density estimate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries dt\+Max\+Est} = 1e-\/2
+\begin{DoxyCompactList}\small\item\em Maximum time step for process model prediction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current system time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for ballistic system state estimation. 
+
+This class extends \doxylink{classSystemEstimator}{System\+Estimator} to provide functionality specific to ballistic trajectories. 
+
+\label{doc-constructors}
+\Hypertarget{classSystemBallistic_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSystemBallistic_adb6b36cb4e873be604471916e261a90f}\index{SystemBallistic@{SystemBallistic}!SystemBallistic@{SystemBallistic}}
+\index{SystemBallistic@{SystemBallistic}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{SystemBallistic()}{SystemBallistic()}}
+{\footnotesize\ttfamily \label{classSystemBallistic_adb6b36cb4e873be604471916e261a90f} 
+System\+Ballistic\+::\+System\+Ballistic (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&}]{density}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \doxylink{classSystemBallistic}{System\+Ballistic} object with initial density. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em density} & Initial state density. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classSystemBallistic_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b}\index{SystemBallistic@{SystemBallistic}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b} 
+Eigen\+::\+Vector\+Xd System\+Ballistic\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system dynamics for the ballistic system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time. \\
+\hline
+{\em x} & State vector. \\
+\hline
+{\em u} & Input vector. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Eigen\+::\+Vector\+Xd The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe}{System\+Base}}.
+
+\Hypertarget{classSystemBallistic_a46a0ba6bd3a5c6b798b92e4da5dfda9d}\index{SystemBallistic@{SystemBallistic}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSystemBallistic_a46a0ba6bd3a5c6b798b92e4da5dfda9d} 
+Eigen\+::\+Vector\+Xd System\+Ballistic\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{, }\item[{Eigen\+::\+Matrix\+Xd \&}]{J}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system dynamics and its Jacobian for the ballistic system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Time. \\
+\hline
+{\em x} & State vector. \\
+\hline
+{\em u} & Input vector. \\
+\hline
+{\em J} & Output parameter for the Jacobian matrix (w.\+r.\+t. x). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Eigen\+::\+Vector\+Xd The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8}{System\+Base}}.
+
+\Hypertarget{classSystemBallistic_ac68c66f327a50a897cbe0feb09a711a1}\index{SystemBallistic@{SystemBallistic}!input@{input}}
+\index{input@{input}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily \label{classSystemBallistic_ac68c66f327a50a897cbe0feb09a711a1} 
+Eigen\+::\+Vector\+Xd System\+Ballistic\+::input (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Compute the system input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the input at. \\
+\hline
+{\em x} & The state to evaluate the input at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed input signal. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f}{System\+Base}}.
+
+\Hypertarget{classSystemBallistic_add3723cc9586f38b768566ef9b63f9b7}\index{SystemBallistic@{SystemBallistic}!processNoiseDensity@{processNoiseDensity}}
+\index{processNoiseDensity@{processNoiseDensity}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{processNoiseDensity()}{processNoiseDensity()}}
+{\footnotesize\ttfamily \label{classSystemBallistic_add3723cc9586f38b768566ef9b63f9b7} 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ System\+Ballistic\+::process\+Noise\+Density (\begin{DoxyParamCaption}\item[{double}]{dt}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Compute the process noise density for the ballistic system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & The time step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The process noise density. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemEstimator_af89b075a120ff794abd6a42fe95c44a6}{System\+Estimator}}.
+
+\Hypertarget{classSystemBallistic_a62d10dfa945004877f99a42ece1e9ca2}\index{SystemBallistic@{SystemBallistic}!processNoiseIndex@{processNoiseIndex}}
+\index{processNoiseIndex@{processNoiseIndex}!SystemBallistic@{SystemBallistic}}
+\doxysubsubsection{\texorpdfstring{processNoiseIndex()}{processNoiseIndex()}}
+{\footnotesize\ttfamily \label{classSystemBallistic_a62d10dfa945004877f99a42ece1e9ca2} 
+std\+::vector$<$ Eigen\+::\+Index $>$ System\+Ballistic\+::process\+Noise\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Get the indices of state variables affected by process noise in the ballistic system. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Eigen\+::\+Index$>$ The indices of affected state variables. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSystemEstimator_aa276332cdb668a97daaaeb732bedb706}{System\+Estimator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{SystemBallistic_8h}{System\+Ballistic.\+h}}\item 
+src/System\+Ballistic.\+cpp\end{DoxyCompactItemize}

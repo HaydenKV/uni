@@ -1,0 +1,41 @@
+\doxysection{Chessboard\+Image Struct Reference}
+\hypertarget{structChessboardImage}{}\label{structChessboardImage}\index{ChessboardImage@{ChessboardImage}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structChessboardImage_a8fd52e19f65427f632a8be0e29fc4231}\label{structChessboardImage_a8fd52e19f65427f632a8be0e29fc4231} 
+{\bfseries Chessboard\+Image} (const cv\+::\+Mat \&, const \mbox{\hyperlink{structChessboard}{Chessboard}} \&, const std\+::filesystem\+::path \&="{}"{})
+\item 
+\Hypertarget{structChessboardImage_aba41b951f24f1a95af74e7fd93ebaa4d}\label{structChessboardImage_aba41b951f24f1a95af74e7fd93ebaa4d} 
+void {\bfseries draw\+Corners} (const \mbox{\hyperlink{structChessboard}{Chessboard}} \&)
+\item 
+\Hypertarget{structChessboardImage_af461bbaa48077705fb03077bf06e9cc4}\label{structChessboardImage_af461bbaa48077705fb03077bf06e9cc4} 
+void {\bfseries draw\+Box} (const \mbox{\hyperlink{structChessboard}{Chessboard}} \&, const \mbox{\hyperlink{structCamera}{Camera}} \&)
+\item 
+\Hypertarget{structChessboardImage_a3e85192aa023bc68ab1ca44e5340edef}\label{structChessboardImage_a3e85192aa023bc68ab1ca44e5340edef} 
+void {\bfseries recover\+Pose} (const \mbox{\hyperlink{structChessboard}{Chessboard}} \&, const \mbox{\hyperlink{structCamera}{Camera}} \&)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structChessboardImage_ac286f08ad010e31d8142e068378fa156}\label{structChessboardImage_ac286f08ad010e31d8142e068378fa156} 
+cv\+::\+Mat {\bfseries image}
+\item 
+\Hypertarget{structChessboardImage_a3351a3743a30d5c2a5fa9de383c58bb7}\label{structChessboardImage_a3351a3743a30d5c2a5fa9de383c58bb7} 
+std\+::filesystem\+::path {\bfseries filename}
+\item 
+\Hypertarget{structChessboardImage_af56831cb6d7673fd7a8dde9964620b32}\label{structChessboardImage_af56831cb6d7673fd7a8dde9964620b32} 
+\mbox{\hyperlink{structPose}{Pose}}$<$ double $>$ {\bfseries Tnc}
+\item 
+\Hypertarget{structChessboardImage_ae8504f2465e09080d2c787807c3577c3}\label{structChessboardImage_ae8504f2465e09080d2c787807c3577c3} 
+std\+::vector$<$ cv\+::\+Point2f $>$ {\bfseries corners}
+\item 
+\Hypertarget{structChessboardImage_a611bc4c97b316d10479f39382b1cd114}\label{structChessboardImage_a611bc4c97b316d10479f39382b1cd114} 
+bool {\bfseries is\+Found}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Camera.\+h\item 
+src/Camera.\+cpp\end{DoxyCompactItemize}

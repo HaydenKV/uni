@@ -1,0 +1,153 @@
+\doxysection{System\+Base Class Reference}
+\hypertarget{classSystemBase}{}\label{classSystemBase}\index{SystemBase@{SystemBase}}
+
+
+Base class for system representation.  
+
+
+
+
+{\ttfamily \#include $<$System\+Base.\+h$>$}
+
+Inheritance diagram for System\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classSystemBase}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemBase_a83e167c0dc00f221543c06fdf69b846e}\label{classSystemBase_a83e167c0dc00f221543c06fdf69b846e} 
+{\bfseries System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\item 
+\Hypertarget{classSystemBase_a4959bd9849715e69f0387214e3a7f356}\label{classSystemBase_a4959bd9849715e69f0387214e3a7f356} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSystemBase_a9645cf56eee3efdb7ef397fcfa3fb4f4}{predict}} (double time)=0
+\begin{DoxyCompactList}\small\item\em Predict the system state at a given time. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u) const =0
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u, Eigen\+::\+Matrix\+Xd \&J) const =0
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics and its Jacobian. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f}{input}} (double t, const Eigen\+::\+Vector\+Xd \&x) const =0
+\begin{DoxyCompactList}\small\item\em Compute the system input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemBase_a7362e3ac2dcc51acefcaf68dcc087f90}\label{classSystemBase_a7362e3ac2dcc51acefcaf68dcc087f90} 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current system time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for system representation. 
+
+This class provides a basic interface for system dynamics and prediction. 
+
+\label{doc-func-members}
+\Hypertarget{classSystemBase_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe}\index{SystemBase@{SystemBase}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemBase@{SystemBase}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classSystemBase_a1d07dc3316390544ac3999dd8ac03bfe} 
+virtual Eigen\+::\+Vector\+Xd System\+Base\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute the system dynamics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the dynamics at. \\
+\hline
+{\em x} & The state to evaluate the dynamics at. \\
+\hline
+{\em u} & The input to evaluate the dynamics at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSystemBallistic_a5e12216cf06350bf8f43d36bea7b339b}{System\+Ballistic}}.
+
+\Hypertarget{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8}\index{SystemBase@{SystemBase}!dynamics@{dynamics}}
+\index{dynamics@{dynamics}!SystemBase@{SystemBase}}
+\doxysubsubsection{\texorpdfstring{dynamics()}{dynamics()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classSystemBase_aa32a0f68b5f624f93f57057d529bc3a8} 
+virtual Eigen\+::\+Vector\+Xd System\+Base\+::dynamics (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{u}{, }\item[{Eigen\+::\+Matrix\+Xd \&}]{J}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute the system dynamics and its Jacobian. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the dynamics at. \\
+\hline
+{\em x} & The state to evaluate the dynamics at. \\
+\hline
+{\em u} & The input to evaluate the dynamics at. \\
+\hline
+{\em J} & Output parameter for the Jacobian matrix. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed dynamics (state derivative). 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSystemBallistic_a46a0ba6bd3a5c6b798b92e4da5dfda9d}{System\+Ballistic}}.
+
+\Hypertarget{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f}\index{SystemBase@{SystemBase}!input@{input}}
+\index{input@{input}!SystemBase@{SystemBase}}
+\doxysubsubsection{\texorpdfstring{input()}{input()}}
+{\footnotesize\ttfamily \label{classSystemBase_ab6b31e9f08f5033d7a8875097f81166f} 
+virtual Eigen\+::\+Vector\+Xd System\+Base\+::input (\begin{DoxyParamCaption}\item[{double}]{t}{, }\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Compute the system input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & The time to evaluate the input at. \\
+\hline
+{\em x} & The state to evaluate the input at. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed input signal. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classSystemBallistic_ac68c66f327a50a897cbe0feb09a711a1}{System\+Ballistic}}.
+
+\Hypertarget{classSystemBase_a9645cf56eee3efdb7ef397fcfa3fb4f4}\index{SystemBase@{SystemBase}!predict@{predict}}
+\index{predict@{predict}!SystemBase@{SystemBase}}
+\doxysubsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily \label{classSystemBase_a9645cf56eee3efdb7ef397fcfa3fb4f4} 
+virtual void System\+Base\+::predict (\begin{DoxyParamCaption}\item[{double}]{time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Predict the system state at a given time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & The time to predict the system state for. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classSystemEstimator_afdea327c9daacaad2eb496f454b75a8a}{System\+Estimator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{SystemBase_8h}{System\+Base.\+h}}\item 
+src/System\+Base.\+cpp\end{DoxyCompactItemize}

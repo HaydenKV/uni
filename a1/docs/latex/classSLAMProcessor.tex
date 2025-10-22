@@ -1,0 +1,80 @@
+\doxysection{SLAMProcessor Class Reference}
+\hypertarget{classSLAMProcessor}{}\label{classSLAMProcessor}\index{SLAMProcessor@{SLAMProcessor}}
+
+
+SLAM processor for all three assignment scenarios.  
+
+
+
+
+{\ttfamily \#include $<$SLAMProcessor.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSLAMProcessor_aa2ade95eae698bd445baf358137ae1be}\label{classSLAMProcessor_aa2ade95eae698bd445baf358137ae1be} 
+{\bfseries SLAMProcessor} (int scenario, const \mbox{\hyperlink{structCamera}{Camera}} \&camera)
+\item 
+void \mbox{\hyperlink{classSLAMProcessor_a07419f8de67d60bf49866921d6c8c55d}{process\+Frame}} (const cv\+::\+Mat \&frame)
+\begin{DoxyCompactList}\small\item\em Process a single video frame. \end{DoxyCompactList}\item 
+\Hypertarget{classSLAMProcessor_a20b5bdf4c2ac33dd3e067b7fb7e8fed5}\label{classSLAMProcessor_a20b5bdf4c2ac33dd3e067b7fb7e8fed5} 
+std\+::vector$<$ cv\+::\+Point2f $>$ {\bfseries get\+Detected\+Features} () const
+\item 
+\Hypertarget{classSLAMProcessor_a12bbdccf86c2c080c6e4f01ee1f3cb9b}\label{classSLAMProcessor_a12bbdccf86c2c080c6e4f01ee1f3cb9b} 
+std\+::vector$<$ int $>$ {\bfseries get\+Feature\+Status} () const
+\item 
+\Hypertarget{classSLAMProcessor_acfeffd9cad04b9c4573c46eac643f089}\label{classSLAMProcessor_acfeffd9cad04b9c4573c46eac643f089} 
+Eigen\+::\+Vector3d {\bfseries get\+Camera\+Position} () const
+\item 
+\Hypertarget{classSLAMProcessor_a4ba90d2daf01f104a1f1dafbc1e1378a}\label{classSLAMProcessor_a4ba90d2daf01f104a1f1dafbc1e1378a} 
+Eigen\+::\+Matrix3d {\bfseries get\+Camera\+Rotation} () const
+\item 
+\Hypertarget{classSLAMProcessor_a6439a69d98ece05fff34ce382baf748f}\label{classSLAMProcessor_a6439a69d98ece05fff34ce382baf748f} 
+Eigen\+::\+Matrix3d {\bfseries get\+Camera\+Covariance} () const
+\item 
+\Hypertarget{classSLAMProcessor_ad504027253422f73b64852145221ed34}\label{classSLAMProcessor_ad504027253422f73b64852145221ed34} 
+std\+::vector$<$ Eigen\+::\+Vector3d $>$ {\bfseries get\+Landmark\+Positions} () const
+\item 
+\Hypertarget{classSLAMProcessor_a89369a3673e874e910f58f41a8d089cb}\label{classSLAMProcessor_a89369a3673e874e910f58f41a8d089cb} 
+std\+::vector$<$ Eigen\+::\+Matrix3d $>$ {\bfseries get\+Landmark\+Covariances} () const
+\item 
+\Hypertarget{classSLAMProcessor_a2cd4df77e47a04e3375f284a589afb75}\label{classSLAMProcessor_a2cd4df77e47a04e3375f284a589afb75} 
+std\+::vector$<$ int $>$ {\bfseries get\+Landmark\+Status} () const
+\item 
+\Hypertarget{classSLAMProcessor_aee5b2263ea96907f8e72aba0613ecdc1}\label{classSLAMProcessor_aee5b2263ea96907f8e72aba0613ecdc1} 
+int {\bfseries get\+Frame\+Count} () const
+\item 
+\Hypertarget{classSLAMProcessor_aa7c6d3a4bb4032320bde596f8acf29fa}\label{classSLAMProcessor_aa7c6d3a4bb4032320bde596f8acf29fa} 
+int {\bfseries get\+Scenario} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SLAM processor for all three assignment scenarios. 
+
+Integrates Lab 2 (Ar\+Uco/corners) and Lab 3 (duck detection) foundations Provides clean interface for visual navigation main loop 
+
+\label{doc-func-members}
+\Hypertarget{classSLAMProcessor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSLAMProcessor_a07419f8de67d60bf49866921d6c8c55d}\index{SLAMProcessor@{SLAMProcessor}!processFrame@{processFrame}}
+\index{processFrame@{processFrame}!SLAMProcessor@{SLAMProcessor}}
+\doxysubsubsection{\texorpdfstring{processFrame()}{processFrame()}}
+{\footnotesize\ttfamily \label{classSLAMProcessor_a07419f8de67d60bf49866921d6c8c55d} 
+void SLAMProcessor\+::process\+Frame (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{frame}{}\end{DoxyParamCaption})}
+
+
+
+Process a single video frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & Input camera frame \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/SLAMProcessor.\+h\item 
+src/SLAMProcessor.\+cpp\end{DoxyCompactItemize}

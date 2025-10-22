@@ -1,0 +1,89 @@
+\doxysection{src/funcmin.hpp File Reference}
+\hypertarget{funcmin_8hpp}{}\label{funcmin_8hpp}\index{src/funcmin.hpp@{src/funcmin.hpp}}
+
+
+Function minimization algorithms.  
+
+
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$print$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Core$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Sparse\+Core$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Sparse\+QR$>$}\newline
+{\ttfamily \#include $<$Eigen/\+Eigenvalues$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacefuncmin}{funcmin}}
+\begin{DoxyCompactList}\small\item\em Namespace containing function minimization algorithms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{namespacefuncmin_a07939512747e3786b6a1c38ebc0ebecf}{funcmin\+::trs\+Eig}} (const Eigen\+::\+Matrix\+Xd \&H, const Eigen\+::\+Vector\+Xd \&g, double D, Eigen\+::\+Vector\+Xd \&p)
+\begin{DoxyCompactList}\small\item\em Solve trust-\/region subproblem. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacefuncmin_a07454c34d31cc7a3d436630645c29314}{funcmin\+::trs\+Eig}} (const Eigen\+::\+Matrix\+Xd \&Q, const Eigen\+::\+Vector\+Xd \&v, const Eigen\+::\+Vector\+Xd \&g, double D, Eigen\+::\+Vector\+Xd \&p)
+\begin{DoxyCompactList}\small\item\em Solve trust-\/region subproblem with pre-\/computed eigendecomposition. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacefuncmin_aafd08c8cf500feab0ebf4a452c0a88be}{funcmin\+::trs\+Sqrt}} (const Eigen\+::\+Matrix\+Xd \&Xi, const Eigen\+::\+Vector\+Xd \&g, double D, Eigen\+::\+Vector\+Xd \&p)
+\begin{DoxyCompactList}\small\item\em Solve trust-\/region subproblem with square-\/root Hessian. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacefuncmin_a4efa83f70a0a4d1da8401dde4a558b97}{funcmin\+::trs\+Sqrt\+Sparse}} (const Eigen\+::\+Sparse\+Matrix$<$ double $>$ \&Xi, const Eigen\+::\+Permutation\+Matrix$<$ Eigen\+::\+Dynamic $>$ \&Pi, const Eigen\+::\+Vector\+Xd \&g, double D, Eigen\+::\+Vector\+Xd \&p)
+\begin{DoxyCompactList}\small\item\em Solve trust-\/region subproblem with sparse square-\/root Hessian. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacefuncmin_ac35752d9f2d6d61e5df0ba0542d5910d}{funcmin\+::trs\+Sqrt\+Inv}} (const Eigen\+::\+Matrix\+Xd \&S, const Eigen\+::\+Vector\+Xd \&g, double D, Eigen\+::\+Vector\+Xd \&p)
+\begin{DoxyCompactList}\small\item\em Solve trust-\/region subproblem with square-\/root inverse Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a177ce87c99954482d2836fb7ec0ec8d1}{funcmin\+::\+Newton\+Trust\+Eig}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&Q, Eigen\+::\+Vector\+Xd \&v, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region Newton method with eigendecomposition. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a7610fb352ec73e4da5add06ab144d139}{funcmin\+::\+Newton\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region Newton method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a345194296ea671b071e1ec040efef32e}{funcmin\+::\+Newton\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region Newton method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a6ab4305064c9339f40232d606e5693a6}{funcmin\+::\+Newton\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region Newton method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a90123447966b46b5a0861a34b68f16dc}{funcmin\+::sgn}} (T val)
+\begin{DoxyCompactList}\small\item\em Sign function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a5bce3224539c2de39f587273194b07f9}{funcmin\+::\+SR1\+Trust\+Eig}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&Q, Eigen\+::\+Vector\+Xd \&v, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton SR1 method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a6b7cf99bbc1aef61696e16452998f81c}{funcmin\+::\+SR1\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton SR1 method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a06c21cb0ac4a81c59005ea2ac4eb618b}{funcmin\+::\+SR1\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton SR1 method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_adffedbd691dce92b26edfb6d56c8c96f}{funcmin\+::\+SR1\+Trust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton SR1 method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_ac1f73e1e0cf8ec583ff407b4db1bc470}{funcmin\+::\+BFGSTrust\+Sqrt}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&Xi, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with square-\/root Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a50c78b531d01ee12ab57fac2fa026c64}{funcmin\+::\+BFGSTrust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a7b84b4d95417401f7872c1c2d44d06fd}{funcmin\+::\+BFGSTrust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a0f028cd54a9e280ba9f798d463a2489d}{funcmin\+::\+BFGSTrust}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a002b08f44db1089b601526b027f35e45}{funcmin\+::\+BFGSTrust\+Sqrt\+Sparse}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Sparse\+Matrix$<$ double $>$ \&Xi, Eigen\+::\+Permutation\+Matrix$<$ Eigen\+::\+Dynamic $>$ \&Pi, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with sparse square-\/root Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a29960a3385a5a312048d348491ca5830}{funcmin\+::\+BFGSTrust\+Sparse}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with sparse matrices. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a4d2d5d03bbf4f6461c3580a0dc436d92}{funcmin\+::\+BFGSTrust\+Sparse}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with sparse matrices. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a0d2dae1ed415dec481e46614765045f4}{funcmin\+::\+BFGSTrust\+Sparse}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with sparse matrices. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a1f4d972989b5a583f5fdc8e70d87ebaa}{funcmin\+::\+BFGSTrust\+Sqrt\+Inv}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&S, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using trust-\/region quasi-\/\+Newton BFGS method with square-\/root inverse Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a4bba38561b6514f722b6878fdf9381a0}{funcmin\+::\+BFGSTrust\+Inv}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method with inverse Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_ac27869fdf9c701651280265739faba63}{funcmin\+::\+BFGSTrust\+Inv}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method with inverse Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_af20e21a733457f03ccffe0cbfb14f0ba}{funcmin\+::\+BFGSTrust\+Inv}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS trust-\/region method with inverse Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_aa0ef432f7bf2f373a36fe1a0a5ed986f}{funcmin\+::\+BFGSLMSqrt}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&Xi, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using Levenberg-\/\+Marquardt quasi-\/\+Newton BFGS method with square-\/root Hessian. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a867b4540fa51827a73fe33a6e9ff09de}{funcmin\+::\+BFGSLM}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS Levenberg-\/\+Marquardt method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_a00ba900dd12b931cca42c9440c400e19}{funcmin\+::\+BFGSLM}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Vector\+Xd \&g, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS Levenberg-\/\+Marquardt method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func$>$ }\\int \mbox{\hyperlink{namespacefuncmin_aa7255f9a4333476845bc6527fd280ecb}{funcmin\+::\+BFGSLM}} (Func cost\+Func, Eigen\+::\+Vector\+Xd \&x, int verbosity=0)
+\begin{DoxyCompactList}\small\item\em Minimize f(x) using BFGS Levenberg-\/\+Marquardt method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Function minimization algorithms. 
+
+This file contains various optimization algorithms for function minimization, including Newton\textquotesingle{}s method, BFGS, and Levenberg-\/\+Marquardt variants. 

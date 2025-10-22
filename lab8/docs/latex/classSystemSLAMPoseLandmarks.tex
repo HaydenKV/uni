@@ -1,0 +1,155 @@
+\doxysection{System\+SLAMPose\+Landmarks Class Reference}
+\hypertarget{classSystemSLAMPoseLandmarks}{}\label{classSystemSLAMPoseLandmarks}\index{SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}}
+Inheritance diagram for System\+SLAMPose\+Landmarks\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classSystemSLAMPoseLandmarks}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSystemSLAMPoseLandmarks_a0a2ba56271fb28952f563d239b45f12b}\label{classSystemSLAMPoseLandmarks_a0a2ba56271fb28952f563d239b45f12b} 
+{\bfseries System\+SLAMPose\+Landmarks} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\item 
+\mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classSystemSLAMPoseLandmarks_a38ff8e9cca8701f46573a767b28af9ae}{clone}} () const override
+\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{classSystemSLAMPoseLandmarks_a88a4084ab6052d16a77ccba1b46d4595}{number\+Landmarks}} () const override
+\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{classSystemSLAMPoseLandmarks_aa8783b4695bc1393e2994ad955ad5b37}{landmark\+Position\+Index}} (std\+::size\+\_\+t idx\+Landmark) const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries System\+SLAM} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemSLAM_a18118ffd021d3b4f43c3468b0339c7f4}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemSLAM_a0b46ac29ea2501004dab20ebfa986118}{dynamics}} (double t, const Eigen\+::\+Vector\+Xd \&x, const Eigen\+::\+Vector\+Xd \&u, Eigen\+::\+Matrix\+Xd \&J) const override
+\begin{DoxyCompactList}\small\item\em Compute the system dynamics and its Jacobian. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemSLAM_a6b136850c61320b77cd5fdbea09f2af4}{input}} (double t, const Eigen\+::\+Vector\+Xd \&x) const override
+\begin{DoxyCompactList}\small\item\em Compute the system input. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \mbox{\hyperlink{classSystemSLAM_a4258d544d44ad19a0c8ebc4d3a97c0ca}{process\+Noise\+Density}} (double dt) const override
+\begin{DoxyCompactList}\small\item\em Compute the process noise density. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ Eigen\+::\+Index $>$ \mbox{\hyperlink{classSystemSLAM_a21be1262b942ad302b8fef3efdf68a75}{process\+Noise\+Index}} () const override
+\begin{DoxyCompactList}\small\item\em Get the indices of state variables affected by process noise. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Position\+Density} () const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Orientation\+Density} () const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Translational\+Velocity\+Density} () const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries body\+Angular\+Velocity\+Density} () const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries camera\+Position\+Density} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam) const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries camera\+Orientation\+Euler\+Density} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam) const
+\item 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries landmark\+Position\+Density} (std\+::size\+\_\+t idx\+Landmark) const
+\item 
+cv\+::\+Mat \& {\bfseries view} ()
+\item 
+const cv\+::\+Mat \& {\bfseries view} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSystemEstimator_ad83d8c162de6eae4c5574dca76fd640a}{System\+Estimator}} (const \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ \&\mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}})
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemEstimator}{System\+Estimator} object with initial density. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Estimator} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemEstimator}{System\+Estimator} object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classSystemEstimator_afdea327c9daacaad2eb496f454b75a8a}{predict}} (double time) override
+\begin{DoxyCompactList}\small\item\em Predict the system state at a given time. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a90d91f0f25867921e651e8309501dea6}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics. \end{DoxyCompactList}\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_ada815e3dd0b16aeabb3a21bc9fc2a7ce}{dynamics\+Est}} (double t, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Compute the estimated system dynamics and its Jacobian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+System\+Base} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classSystemBase}{System\+Base} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Vector3$<$ Scalar $>$ {\bfseries camera\+Position} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+static Eigen\+::\+Vector3d {\bfseries camera\+Position} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J)
+\item 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Matrix3$<$ Scalar $>$ {\bfseries camera\+Orientation} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+{\footnotesize template$<$typename Scalar$>$ }\\static Eigen\+::\+Vector3$<$ Scalar $>$ {\bfseries camera\+Orientation\+Euler} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+VectorX$<$ Scalar $>$ \&x)
+\item 
+static Eigen\+::\+Vector3d {\bfseries camera\+Orientation\+Euler} (const \mbox{\hyperlink{structCamera}{Camera}} \&cam, const Eigen\+::\+Vector\+Xd \&x, Eigen\+::\+Matrix\+Xd \&J)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries density}
+\begin{DoxyCompactList}\small\item\em The current state density estimate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+Eigen\+::\+Matrix\+Xd \mbox{\hyperlink{classSystemEstimator_a679b3f0bf1392323eea3aa1b18eaaa03}{augmented\+Dynamics\+Est}} (double t, const Eigen\+::\+Matrix\+Xd \&X) const
+\begin{DoxyCompactList}\small\item\em Compute the augmented dynamics estimate. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classSystemEstimator_a249d9ae42fa67c8a82ad5c9b87491b5a}{RK4\+SDEHelper}} (const Eigen\+::\+Vector\+Xd \&xdw, double dt, Eigen\+::\+Matrix\+Xd \&J) const
+\begin{DoxyCompactList}\small\item\em Helper function for Runge-\/\+Kutta 4th order method for SDEs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Mat {\bfseries view\+\_\+}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries dt\+Max\+Est} = 1e-\/2
+\begin{DoxyCompactList}\small\item\em Maximum time step for process model prediction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classSystemBase}{System\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The current system time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classSystemSLAMPoseLandmarks_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSystemSLAMPoseLandmarks_a38ff8e9cca8701f46573a767b28af9ae}\index{SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}!clone@{clone}}
+\index{clone@{clone}!SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classSystemSLAMPoseLandmarks_a38ff8e9cca8701f46573a767b28af9ae} 
+\mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \texorpdfstring{$\ast$}{*} System\+SLAMPose\+Landmarks\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}.
+
+\Hypertarget{classSystemSLAMPoseLandmarks_aa8783b4695bc1393e2994ad955ad5b37}\index{SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}!landmarkPositionIndex@{landmarkPositionIndex}}
+\index{landmarkPositionIndex@{landmarkPositionIndex}!SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}}
+\doxysubsubsection{\texorpdfstring{landmarkPositionIndex()}{landmarkPositionIndex()}}
+{\footnotesize\ttfamily \label{classSystemSLAMPoseLandmarks_aa8783b4695bc1393e2994ad955ad5b37} 
+std\+::size\+\_\+t System\+SLAMPose\+Landmarks\+::landmark\+Position\+Index (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{idx\+Landmark}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}.
+
+\Hypertarget{classSystemSLAMPoseLandmarks_a88a4084ab6052d16a77ccba1b46d4595}\index{SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}!numberLandmarks@{numberLandmarks}}
+\index{numberLandmarks@{numberLandmarks}!SystemSLAMPoseLandmarks@{SystemSLAMPoseLandmarks}}
+\doxysubsubsection{\texorpdfstring{numberLandmarks()}{numberLandmarks()}}
+{\footnotesize\ttfamily \label{classSystemSLAMPoseLandmarks_a88a4084ab6052d16a77ccba1b46d4595} 
+std\+::size\+\_\+t System\+SLAMPose\+Landmarks\+::number\+Landmarks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/System\+SLAMPose\+Landmarks.\+h\item 
+src/System\+SLAMPose\+Landmarks.\+cpp\end{DoxyCompactItemize}

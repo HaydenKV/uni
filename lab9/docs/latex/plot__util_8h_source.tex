@@ -1,0 +1,23 @@
+\doxysection{plot\+\_\+util.\+h}
+\hypertarget{plot__util_8h_source}{}\label{plot__util_8h_source}\index{src/plot\_util.h@{src/plot\_util.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PLOT\_UTIL\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PLOT\_UTIL\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}image\_features.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Function\ prototypes}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ plotGaussianConfidenceEllipse(cv::Mat\ \&\ img,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ prQOi,\ \textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ color);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ plotAllFeatures(cv::Mat\ \&\ img,\ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ Y);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ plotMatchedFeatures(cv::Mat\ \&\ img,\ \textcolor{keyword}{const}\ std::vector<int>\ \&\ idx,\ \textcolor{keyword}{const}\ Eigen::Matrix<double,\ 2,\ Eigen::Dynamic>\ \&\ Y);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ plotLandmarkIndex(cv::Mat\ \&\ img,\ \textcolor{keyword}{const}\ Eigen::Vector2d\ \&\ murQOi,\ \textcolor{keyword}{const}\ Eigen::Vector3d\ \&\ colour,\ \textcolor{keywordtype}{int}\ idxLandmark);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -105,3 +105,8 @@ lab3/python/.venv/
 .DS_Store
 Thumbs.db
 EOF
+
+# Exported output videos
+/MCHA4400_Assignment1/a1/out/
+*.MOV
+

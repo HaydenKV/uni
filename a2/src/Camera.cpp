@@ -9,7 +9,6 @@
 #include <regex>
 #include <algorithm>
 #include <print>
-#include <bitset>
 #include <Eigen/Core>
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/core/types.hpp>
@@ -23,6 +22,7 @@
 #include "rotation.hpp"
 #include "Pose.hpp"
 #include "Camera.h"
+#include <bitset>
 
 void Chessboard::write(cv::FileStorage & fs) const
 {
@@ -78,12 +78,12 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
         gray = image.clone();
     }
 
-    // Corner detection (robust flags)
+    // Corner detection
     std::vector<cv::Point2f> detected;
     const int findFlags =
         cv::CALIB_CB_ADAPTIVE_THRESH |
         cv::CALIB_CB_NORMALIZE_IMAGE |
-        cv::CALIB_CB_FAST_CHECK;
+        cv::CALIB_CB_FAST_CHECK;   // quick reject for frames with no board
 
     isFound = cv::findChessboardCorners(gray, chessboard.boardSize, detected, findFlags);
 
@@ -93,6 +93,7 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
         const cv::Size  zeroZone(-1, -1);
         const auto term = cv::TermCriteria(cv::TermCriteria::EPS | cv::TermCriteria::COUNT, 30, 1e-3);
 
+        // OpenCV expects an 8-bit grayscale image for cornerSubPix
         cv::Mat gray8;
         if (gray.type() != CV_8U) {
             gray.convertTo(gray8, CV_8U);
@@ -105,6 +106,7 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
     } else {
         corners.clear();
     }
+
 }
 
 
@@ -370,7 +372,7 @@ Camera::calibrate():
 Calibrates intrinsics (K,dist) from multiple chessboard views.
 - Object points: gridPoints() in world frame (Z=0 plane).
 - Image points: per-image inner corners.
-- Flags enable rational, thin-prism, and tilted distortion models.
+- Flags enable rational, thin-prism distortion models.
 Post-step: calcFieldOfView() precomputes FoV and an azimuth LUT used in visibility tests.
 */
 void Camera::calibrate(ChessboardData & chessboardData)
@@ -387,26 +389,32 @@ void Camera::calibrate(ChessboardData & chessboardData)
     // image geometry
     imageSize = chessboardData.chessboardImages[0].image.size();
     
-    // distortion model selection
-    flags = cv::CALIB_RATIONAL_MODEL | cv::CALIB_THIN_PRISM_MODEL | cv::CALIB_TILTED_MODEL;
-    // flags = cv::CALIB_RATIONAL_MODEL | cv::CALIB_THIN_PRISM_MODEL;
+    // distortion model
+    // increased precision in corners with tilted model included
+    flags = cv::CALIB_RATIONAL_MODEL | cv::CALIB_THIN_PRISM_MODEL; // | cv::CALIB_TILTED_MODEL;
 
-    // initialise outputs
+    // Find intrinsic and extrinsic camera parameters
     cameraMatrix = cv::Mat::eye(3, 3, CV_64F);
-    distCoeffs   = cv::Mat::zeros(12, 1, CV_64F);
-
+    distCoeffs = cv::Mat::zeros(12, 1, CV_64F);
     std::vector<cv::Mat> Thetacn_all, rNCc_all;
     double rms;
     std::print("Calibrating camera...");
 
     // Prepare object points replicated per image
     std::vector<std::vector<cv::Point3f>> objectPoints(rQOi_all.size(), rPNn_all);
-    rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize,
-                              cameraMatrix, distCoeffs,
-                              Thetacn_all, rNCc_all, flags);
+        rms = cv::calibrateCamera(
+        objectPoints,            // 3D points per image
+        rQOi_all,                 // 2D detected corners per image
+        imageSize,
+        cameraMatrix,
+        distCoeffs,
+        Thetacn_all,              // output rvecs (Rcn)
+        rNCc_all,                 // output tvecs (rNCc)
+        flags
+    );
     std::println(" done");
     
-    // Pre-compute FOV/LUT used by FOV checks
+    // Pre-compute constants used in isVectorWithinFOV
     calcFieldOfView();
 
     // Save extrinsics per image: build T^n_C by inverting OpenCV's T^c_n
@@ -465,15 +473,17 @@ void Camera::calcFieldOfView()
         return std::acos(c);
     };
 
-    // FoV angles from unit vectors on the image border
+    // Horizontal FOV: left vs right at image mid-row
     cv::Vec3d uLeft  = pixelToVector(cv::Vec2d(0.0,   midy));
     cv::Vec3d uRight = pixelToVector(cv::Vec2d(W-1.0, midy));
     hFOV = angle_between(uLeft, uRight);
 
+    // Vertical FOV: top vs bottom at image mid-col
     cv::Vec3d uTop    = pixelToVector(cv::Vec2d(midx, 0.0));
     cv::Vec3d uBottom = pixelToVector(cv::Vec2d(midx, H-1.0));
     vFOV = angle_between(uTop, uBottom);
 
+    // Diagonal FOV: top-left vs bottom-right
     cv::Vec3d uTL = pixelToVector(cv::Vec2d(0.0,   0.0));
     cv::Vec3d uBR = pixelToVector(cv::Vec2d(W-1.0, H-1.0));
     dFOV = angle_between(uTL, uBR);
@@ -483,6 +493,7 @@ void Camera::calcFieldOfView()
     for (int deg = 0; deg < 360; ++deg) {
         double maxTheta = 0.0;
         double radAz = deg * CV_PI / 180.0;
+        // sample along border in this azimuth direction
         for (int rstep = 0; rstep < 2; ++rstep) {
             double r = 0.499 - 0.002 * rstep; // slightly inside
             double u = (W - 1) * (0.5 + r * std::cos(radAz));
@@ -531,8 +542,18 @@ cv::Vec2d Camera::vectorToPixel(const cv::Vec3d & rPCc) const
 
     cv::projectPoints(obj, rvec, tvec, cameraMatrix, distCoeffs, img);
 
-    return cv::Vec2d(img[0].x, img[0].y);
+    cv::Vec2d rQOi(img[0].x, img[0].y);
+
+    return rQOi;
+
 }
+
+// Eigen::Vector2d Camera::vectorToPixel(const Eigen::Vector3d & rPCc, Eigen::Matrix23d & J) const
+// {
+//     Eigen::Vector2d rQOi;
+//     // TODO: Lab 8 (optional)
+//     return rQOi;
+// }
 
 cv::Vec3d Camera::pixelToVector(const cv::Vec2d & rQOi) const
 {
@@ -568,18 +589,21 @@ bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
     const cv::Vec3d z(0,0,1);
    
     // azimuth-based check
-    double az = std::atan2(dir[1], dir[0]) * 180.0 / CV_PI; // degrees
+    // Compares angle of direction vector to optical axis using a lookup table
+    // cosThetaLimit_[bin] gives the minimum allowed cos(angle) at this azimuth
+    double az = std::atan2(dir[1], dir[0]) * 180.0 / CV_PI; // deg
     int bin = static_cast<int>(std::lround(az));
-    bin = (bin % 360 + 360) % 360;                          // wrap to [0,359]
+    bin = (bin % 360 + 360) % 360; // wrap to [0,359]
     double cosang = dir.dot(z);
     if (cosang < cosThetaLimit_[bin])
         return false;
 
-    // projection+bounds
+    // project ray with distortion to pixel space and reject if not finite (maps to valid pixel)
     cv::Vec3d P(rPCc[0]/rPCc[2], rPCc[1]/rPCc[2], 1.0);
     cv::Vec2d px = vectorToPixel(P);
     if (!std::isfinite(px[0]) || !std::isfinite(px[1])) return false;
 
+    // In-bounds (can add margin here)
     return (px[0] >= 0.0 && px[0] < imageSize.width &&
             px[1] >= 0.0 && px[1] < imageSize.height);
 }
@@ -590,7 +614,7 @@ bool Camera::isWorldWithinFOV(const cv::Vec3d & rPNn, const Posed & Tnb) const
     return isVectorWithinFOV(worldToVector(rPNn, Tnb));
 }
 
-
+// ----------------------------------- Extra Assignment helpers below -----------------------------------
 /*
 Pixel-bound helpers with optional margin (default from CamDefaults::BorderMarginPx).
 */
@@ -647,6 +671,133 @@ bool Camera::isVectorWithinFOVConservative(const cv::Vec3d& rPCc, int margin) co
                                      static_cast<float>(px[1])), margin);
 }
 
+// ----------------------------------- Extra Assignment helpers above -----------------------------------
+Eigen::Matrix<double, 2, Eigen::Dynamic> Camera::undistort(const Eigen::Matrix<double, 2, Eigen::Dynamic> & rQOi) const
+{
+    // Task 4f: Implement Camera::undistort member function
+    // Input: r^i_{Q/O} - distorted pixel coordinates (2xN matrix)
+    // Output: r^i_{Q/O}_bar - undistorted pixel coordinates (2xN matrix)
+
+    // Convert from Eigen matrix to std::vector of cv::Point2d
+    std::vector<cv::Point2d> rQOi_cv(rQOi.cols());
+    for (int i = 0; i < rQOi.cols(); ++i)
+    {
+        rQOi_cv[i] = cv::Point2d(rQOi(0, i), rQOi(1, i));
+    }
+
+    // Undistort points
+    std::vector<cv::Point2d> rQbarOi_cv;
+    // TODO: Lab 10
+    // Apply lens distortion removal using OpenCV
+    // Key: Pass cameraMatrix as 6th parameter (P) to get pixel coords instead of normalized coords
+    // Parameters: input, output, K, distCoeffs, R (no rotation), P (projection matrix)
+    cv::undistortPoints(rQOi_cv, rQbarOi_cv, cameraMatrix, distCoeffs, cv::noArray(), cameraMatrix);
+
+    // Convert from std::vector of cv::Point2d to Eigen matrix
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQbarOi(2, rQOi.cols());
+    for (int i = 0; i < rQbarOi_cv.size(); ++i)
+    {
+        rQbarOi(0, i) = rQbarOi_cv[i].x;
+        rQbarOi(1, i) = rQbarOi_cv[i].y;
+    }
+
+    return rQbarOi;
+}
+
+Eigen::Matrix<double, 3, Eigen::Dynamic> Camera::undistort(const Eigen::Matrix<double, 3, Eigen::Dynamic> & pQOi) const
+{
+    // Extract the Euclidean points from the homogeneous coordinates
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQOi = pQOi.topRows<2>().array().rowwise() / pQOi.row(2).array();
+
+    // Call the Euclidean undistort function
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQbarOi = undistort(rQOi);
+
+    // Create the output matrix with homogeneous coordinates
+    Eigen::Matrix<double, 3, Eigen::Dynamic> pQbarOi(3, pQOi.cols());
+    pQbarOi.topRows<2>() = rQbarOi;
+    pQbarOi.row(2).setOnes();
+
+    return pQbarOi;
+}
+
+Eigen::Matrix<double, 2, Eigen::Dynamic> Camera::distort(const Eigen::Matrix<double, 2, Eigen::Dynamic> & rQbarOi) const
+{
+    // Task 4f: Implement Camera::distort member function (inverse of undistort)
+    // Input: r^i_{Q/O}_bar - undistorted pixel coordinates (2xN matrix)
+    // Output: r^i_{Q/O} - distorted pixel coordinates (2xN matrix)
+    
+    double fx = cameraMatrix.at<double>( 0,  0);
+    double fy = cameraMatrix.at<double>( 1,  1);
+    double cx = cameraMatrix.at<double>( 0,  2);
+    double cy = cameraMatrix.at<double>( 1,  2);
+
+    // Convert from Euclidean coordinates to homogeneous coordinates
+    // Adds w=1 component: [u, v] -> [u, v, 1]
+    Eigen::Matrix<double, 3, Eigen::Dynamic> pQbarOi(3, rQbarOi.cols());
+    pQbarOi.topRows<2>() = rQbarOi;
+    pQbarOi.row(2).setOnes();
+
+    // Solve K*rPCc = pQbarOi for rPCc
+    Eigen::Matrix<double, 3, Eigen::Dynamic> rPCc;
+
+    // Task 4f: Solve K*r^c_{P/C} = p_{Q/O}_bar for r^c_{P/C}
+    // Step 1: Convert undistorted pixel coords to normalized image coordinates using K^-1
+    // TODO: Lab 10
+    rPCc.resize(3, pQbarOi.cols());
+    for (int i = 0; i < pQbarOi.cols(); ++i) {
+        double u_bar = pQbarOi(0, i);  // Undistorted pixel u-coordinate
+        double v_bar = pQbarOi(1, i);  // Undistorted pixel v-coordinate
+        
+        // Apply inverse camera matrix K^-1: normalized = K^-1 * pixel
+        // This gives us the bearing vector direction in normalized image plane
+        double x_norm = (u_bar - cx) / fx;
+        double y_norm = (v_bar - cy) / fy;
+        
+        // Store as 3D ray with z=1 (arbitrary non-zero magnitude)
+        rPCc(0, i) = x_norm;
+        rPCc(1, i) = y_norm;
+        rPCc(2, i) = 1.0;
+    }
+
+    // Step 2: Apply lens distortion model using vectorToPixel
+    // vectorToPixel applies the full distortion model (radial + tangential + thin-prism)
+    // and projects back to pixel coordinates
+
+    // Use camera model (with lens distortion) to get pixel coordinates
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQOi;
+    // TODO: Lab 10
+    rQOi.resize(2, rPCc.cols());
+    for (int i = 0; i < rPCc.cols(); ++i) {
+        // Convert Eigen to OpenCV format
+        cv::Vec3d rPCc_cv(rPCc(0, i), rPCc(1, i), rPCc(2, i));
+        
+        // Apply distortion model π(K, dist): normalized coords -> distorted pixels
+        cv::Vec2d pixel = vectorToPixel(rPCc_cv);
+        
+        // Store result
+        rQOi(0, i) = pixel(0);
+        rQOi(1, i) = pixel(1);
+    }
+    
+    return rQOi;
+}
+
+Eigen::Matrix<double, 3, Eigen::Dynamic> Camera::distort(const Eigen::Matrix<double, 3, Eigen::Dynamic> & pQbarOi) const
+{
+    // Convert from homogeneous coordinates to Euclidean coordinates
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQbarOi = pQbarOi.topRows<2>().array().rowwise() / pQbarOi.row(2).array();
+
+    // Call the Euclidean distort function
+    Eigen::Matrix<double, 2, Eigen::Dynamic> rQOi = distort(rQbarOi);
+
+    // Convert from Euclidean coordinates to homogeneous coordinates
+    Eigen::Matrix<double, 3, Eigen::Dynamic> pQOi(3, pQbarOi.cols());
+    pQOi.topRows<2>() = rQOi;
+    pQOi.row(2).setOnes();
+
+    return pQOi;
+}
+
 
 void Camera::write(cv::FileStorage & fs) const
 {
@@ -658,13 +809,50 @@ void Camera::write(cv::FileStorage & fs) const
        << "}";
 }
 
+// Upgrading to openCV 4.12 will fix this apparently
+// void Camera::read(const cv::FileNode & node)
+// {
+//     node["camera_matrix"]           >> cameraMatrix;
+//     node["distortion_coefficients"] >> distCoeffs;
+//     node["flags"]                   >> flags;
+//     node["imageSize"]               >> imageSize;
+
+//     // Pre-compute constants used in isVectorWithinFOV
+//     calcFieldOfView();
+
+//     assert(cameraMatrix.cols == 3);
+//     assert(cameraMatrix.rows == 3);
+//     assert(cameraMatrix.type() == CV_64F);
+//     assert(distCoeffs.cols == 1);
+//     assert(distCoeffs.type() == CV_64F);
+// }
 
 void Camera::read(const cv::FileNode & node)
 {
-    node["camera_matrix"]           >> cameraMatrix;
-    node["distortion_coefficients"] >> distCoeffs;
-    node["flags"]                   >> flags;
-    node["imageSize"]               >> imageSize;
+    // Read camera_matrix manually from nested structure
+    cv::FileNode Knode = node["camera_matrix"];
+    int rows = (int)Knode["rows"];
+    int cols = (int)Knode["cols"];
+    cameraMatrix.create(rows, cols, CV_64F);
+    
+    cv::FileNode data = Knode["data"];
+    auto it = data.begin();
+    for (int r = 0; r < rows; ++r) {
+        for (int c = 0; c < cols; ++c, ++it) {
+            cameraMatrix.at<double>(r, c) = (*it).isInt() ? (double)(int)(*it) : (double)(*it);
+        }
+    }
+
+    // Read distortion_coefficients
+    cv::FileNode Dnode = node["distortion_coefficients"];
+    cv::Mat Dtmp;
+    Dnode >> Dtmp;
+    Dtmp.convertTo(distCoeffs, CV_64F);
+    distCoeffs = distCoeffs.reshape(1, distCoeffs.total());
+
+    // Read optional fields
+    if (!node["flags"].empty())     node["flags"]     >> flags;
+    if (!node["imageSize"].empty()) node["imageSize"] >> imageSize;
 
     // Pre-compute constants used in isVectorWithinFOV
     calcFieldOfView();
@@ -675,4 +863,3 @@ void Camera::read(const cv::FileNode & node)
     assert(distCoeffs.cols == 1);
     assert(distCoeffs.type() == CV_64F);
 }
-

@@ -12,7 +12,7 @@
 #include "Pose.hpp"
 
 namespace CamDefaults {
-    inline int BorderMarginPx = 15;   // <-- change once here
+    inline int BorderMarginPx = 15;   // for the conserative functions in assignment
 }
 
 struct Chessboard
@@ -77,6 +77,11 @@ struct Camera
     bool isWorldWithinFOV(const cv::Vec3d & rPNn, const Posed & Tnb) const;
     bool isVectorWithinFOV(const cv::Vec3d & rPCc) const;
 
+    Eigen::Matrix<double, 2, Eigen::Dynamic> undistort(const Eigen::Matrix<double, 2, Eigen::Dynamic> & rQOi) const;
+    Eigen::Matrix<double, 3, Eigen::Dynamic> undistort(const Eigen::Matrix<double, 3, Eigen::Dynamic> & pQOi) const;
+    Eigen::Matrix<double, 2, Eigen::Dynamic> distort(const Eigen::Matrix<double, 2, Eigen::Dynamic> & rQbarOi) const;
+    Eigen::Matrix<double, 3, Eigen::Dynamic> distort(const Eigen::Matrix<double, 3, Eigen::Dynamic> & pQbarOi) const;
+
     void calcFieldOfView();
     void write(cv::FileStorage &) const;                    // OpenCV serialisation
     void read(const cv::FileNode &);                        // OpenCV serialisation
@@ -109,22 +114,73 @@ private:
 };
 
 #include <cmath>
+#include <stdexcept>
 #include <opencv2/calib3d.hpp>
 
 /*
 Template projection π(K,dist):
 Given r^c_{P/C} = (X,Y,Z), compute normalised (x,y) = (X/Z,Y/Z),
-apply rational radial + tangential + thin-prism distortion, then map to pixels
+apply rational + thin-prism distortion, then map to pixels
 [u,v]^T = [fx*xd + cx, fy*yd + cy]^T. Used by autodiff paths in measurement models.
 */
 template <typename Scalar>
 Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc) const
 {
-    bool isRationalModel    = (flags & cv::CALIB_RATIONAL_MODEL) == cv::CALIB_RATIONAL_MODEL;
-    bool isThinPrismModel   = (flags & cv::CALIB_THIN_PRISM_MODEL) == cv::CALIB_THIN_PRISM_MODEL;
-    assert(isRationalModel && isThinPrismModel);
+    bool isRationalModel    = (flags & cv::CALIB_RATIONAL_MODEL)    == cv::CALIB_RATIONAL_MODEL;
+    bool isThinPrismModel   = (flags & cv::CALIB_THIN_PRISM_MODEL)  == cv::CALIB_THIN_PRISM_MODEL;
+    bool isTiltedModel      = (flags & cv::CALIB_TILTED_MODEL)      == cv::CALIB_TILTED_MODEL;
+
+    if (isTiltedModel)
+    {
+        throw std::logic_error("Tilted camera model not currently implemented.");
+    }
+
+    // Camera matrix parameters
+    double fx = cameraMatrix.at<double>(0, 0);
+    double fy = cameraMatrix.at<double>(1, 1);
+    double cx = cameraMatrix.at<double>(0, 2);
+    double cy = cameraMatrix.at<double>(1, 2);
+
+    // Lens distortion coefficients
+    // theta = k1, k2, p1, p2[, k3[, k4, k5, k6[, s1, s2, s3, s4[, taux, tauy]]]] has 4, 5, 8, 12 or 14 elements
+
+    // Radial and tangential distortion coefficients
+    double k1 = distCoeffs.at<double>(0, 0);
+    double k2 = distCoeffs.at<double>(1, 0);
+    double p1 = distCoeffs.at<double>(2, 0);
+    double p2 = distCoeffs.at<double>(3, 0);
+    double k3 = distCoeffs.at<double>(4, 0);
+
+    // Rational distortion coefficients
+    double k4, k5, k6;
+    if (isRationalModel)
+    {
+        k4 = distCoeffs.at<double>(5, 0);
+        k5 = distCoeffs.at<double>(6, 0);
+        k6 = distCoeffs.at<double>(7, 0);
+    }
+    else
+    {
+        k4 = k5 = k6 = 0.0;
+    }
+
+    // Thin prism distortion coefficients
+    double s1, s2, s3, s4;
+    if (isThinPrismModel)
+    {
+        s1 = distCoeffs.at<double>(8, 0);
+        s2 = distCoeffs.at<double>(9, 0);
+        s3 = distCoeffs.at<double>(10, 0);
+        s4 = distCoeffs.at<double>(11, 0);
+    }
+    else
+    {
+        s1 = s2 = s3 = s4 = 0.0;
+    }
+
 
     Eigen::Vector2<Scalar> rQOi;
+    // iii) Auto diff ONLY ----------------------------------------------------------------
     // Normalised image coords
     const Scalar X = rPCc(0), Y = rPCc(1), Z = rPCc(2);
     const Scalar invZ = Scalar(1) / Z;
@@ -134,21 +190,6 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
     const Scalar r2 = x*x + y*y;
     const Scalar r4 = r2*r2;
     const Scalar r6 = r4*r2;
-
-    // Intrinsics (double -> Scalar)
-    const Scalar fx = static_cast<Scalar>(cameraMatrix.at<double>(0,0));
-    const Scalar fy = static_cast<Scalar>(cameraMatrix.at<double>(1,1));
-    const Scalar cx = static_cast<Scalar>(cameraMatrix.at<double>(0,2));
-    const Scalar cy = static_cast<Scalar>(cameraMatrix.at<double>(1,2));
-
-    // Distortion coeff access
-    auto dc = [&](int i)->Scalar {
-        if (i < distCoeffs.rows * distCoeffs.cols) return static_cast<Scalar>(distCoeffs.at<double>(i,0));
-        return Scalar(0);
-    };
-    const Scalar k1 = dc(0),  k2 = dc(1),  p1 = dc(2),  p2 = dc(3),  k3 = dc(4);
-    const Scalar k4 = dc(5),  k5 = dc(6),  k6 = dc(7),  s1 = dc(8),  s2 = dc(9);
-    const Scalar s3 = dc(10), s4 = dc(11);
 
     // Rational radial
     const Scalar num   = Scalar(1) + k1*r2 + k2*r4 + k3*r6;
@@ -169,6 +210,7 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
 
     // Pixels
     rQOi << fx*xd + cx, fy*yd + cy;
+
     return rQOi;
 }
 

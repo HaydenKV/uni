@@ -180,7 +180,6 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
 
 
     Eigen::Vector2<Scalar> rQOi;
-    // TODO: Lab 8 (optional)
     // iii) Auto diff ONLY ----------------------------------------------------------------
     // Normalised image coords
     const Scalar X = rPCc(0), Y = rPCc(1), Z = rPCc(2);

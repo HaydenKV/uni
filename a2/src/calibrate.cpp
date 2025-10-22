@@ -67,6 +67,16 @@ void calibrateCamera(const std::filesystem::path & configPath, const std::filesy
     if (shouldExport)
     {
         std::cout << "Exporting validation images to: " << outputDirectory.string() << std::endl;
+
+        // Determine dataset type (indoor/outdoor) from config path
+        std::string datasetType;
+        std::string configStr = configPath.string();
+        if (configStr.find("indoor") != std::string::npos)
+            datasetType = "indoor";
+        else if (configStr.find("outdoor") != std::string::npos)
+            datasetType = "outdoor";
+        else
+            datasetType = "unknown";
         
         // Export all calibration images with validation overlays
         for (size_t i = 0; i < chessboardData.chessboardImages.size(); ++i)
@@ -74,7 +84,7 @@ void calibrateCamera(const std::filesystem::path & configPath, const std::filesy
             const auto& img = chessboardData.chessboardImages[i];
             
             // Create filename for export
-            std::string exportName = std::format("calibration_validation_{:03d}.png", i);
+            std::string exportName = std::format("calibration_{}_{:03d}.png", datasetType, i);
             std::filesystem::path exportPath = outputDirectory / exportName;
             
             // Save the image with overlays

@@ -1,0 +1,92 @@
+\doxysection{System\+SLAM.\+h}
+\hypertarget{SystemSLAM_8h_source}{}\label{SystemSLAM_8h_source}\index{src/SystemSLAM.h@{src/SystemSLAM.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYSTEMSLAM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYSTEMSLAM\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GaussianInfo_8hpp}{GaussianInfo.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{SystemEstimator_8h}{SystemEstimator.h}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ State\ contains\ body\ velocities,\ body\ pose\ and\ landmark\ states}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ \ \ \ \ [\ vBNb\ \ \ \ \ ]\ \ Body\ translational\ velocity\ (body-\/fixed)}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ \ \ \ \ [\ omegaBNb\ ]\ \ Body\ angular\ velocity\ (body-\/fixed)}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ x\ =\ [\ rBNn\ \ \ \ \ ]\ \ Body\ position\ (world-\/fixed)}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ \ \ [\ Thetanb\ \ ]\ \ Body\ orientation\ (world-\/fixed)}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ \ \ \ [\ m\ \ \ \ \ \ \ \ ]\ \ Landmark\ map\ states\ (undefined\ in\ this\ class)}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }SystemSLAM\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classSystemEstimator_ad83d8c162de6eae4c5574dca76fd640a}{SystemEstimator}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{explicit}\ SystemSLAM(\textcolor{keyword}{const}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \&\ \mbox{\hyperlink{classSystemEstimator_a3459a820d965e53e8984ffdf800ef790}{density}});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ SystemSLAM\ *\ clone()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemSLAM_a18118ffd021d3b4f43c3468b0339c7f4}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemSLAM_a18118ffd021d3b4f43c3468b0339c7f4}{dynamics}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ u,\ Eigen::MatrixXd\ \&\ J)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ Eigen::VectorXd\ \mbox{\hyperlink{classSystemSLAM_a6b136850c61320b77cd5fdbea09f2af4}{input}}(\textcolor{keywordtype}{double}\ t,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ \mbox{\hyperlink{classSystemSLAM_a4258d544d44ad19a0c8ebc4d3a97c0ca}{processNoiseDensity}}(\textcolor{keywordtype}{double}\ dt)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<Eigen::Index>\ \mbox{\hyperlink{classSystemSLAM_a21be1262b942ad302b8fef3efdf68a75}{processNoiseIndex}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ bodyPositionDensity()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ bodyOrientationDensity()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ bodyTranslationalVelocityDensity()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ bodyAngularVelocityDensity()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ \textcolor{keyword}{static}\ Eigen::Vector3<Scalar>\ cameraPosition(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ Eigen::Vector3d\ cameraPosition(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::MatrixXd\ \&\ J);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ \textcolor{keyword}{static}\ Eigen::Matrix3<Scalar>\ cameraOrientation(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>\ \textcolor{keyword}{static}\ Eigen::Vector3<Scalar>\ cameraOrientationEuler(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ Eigen::Vector3d\ cameraOrientationEuler(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam,\ \textcolor{keyword}{const}\ Eigen::VectorXd\ \&\ x,\ Eigen::MatrixXd\ \&\ J);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ cameraPositionDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ cameraOrientationEulerDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ cam)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ std::size\_t\ numberLandmarks()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ landmarkPositionDensity(std::size\_t\ idxLandmark)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{virtual}\ std::size\_t\ landmarkPositionIndex(std::size\_t\ idxLandmark)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ cv::Mat\ \&\ view();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{const}\ cv::Mat\ \&\ view()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00053\ \ \ \ \ cv::Mat\ view\_;}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}rotation.hpp"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Pose_8hpp}{Pose.hpp}}"{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#include\ <opencv2/core/eigen.hpp>}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00061\ Eigen::Vector3<Scalar>\ SystemSLAM::cameraPosition(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x)}
+\DoxyCodeLine{00062\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnb;}
+\DoxyCodeLine{00064\ \ \ \ \ Tnb.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ =\ rpy2rot(x.template\ segment<3>(9));\ \textcolor{comment}{//\ Rnb}}
+\DoxyCodeLine{00065\ \ \ \ \ Tnb.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}\ =\ x.template\ segment<3>(6);\ \ \ \ \ \ \ \textcolor{comment}{//\ rBNn}}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{structPose}{Pose<Scalar>}}\ Tnc\ =\ camera.bodyToCamera(Tnb);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ Tnc.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rCNn}}
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00071\ Eigen::Matrix3<Scalar>\ SystemSLAM::cameraOrientation(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x)}
+\DoxyCodeLine{00072\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ Pose<Scalar>\ Tnb;}
+\DoxyCodeLine{00074\ \ \ \ \ Tnb.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}}\ =\ rpy2rot(x.template\ segment<3>(9));\ \textcolor{comment}{//\ Rnb}}
+\DoxyCodeLine{00075\ \ \ \ \ Tnb.\mbox{\hyperlink{structPose_a82049e6f7167af41a80c29631ae9a9d3}{translationVector}}\ =\ x.template\ segment<3>(6);\ \ \ \ \ \ \ \textcolor{comment}{//\ rBNn}}
+\DoxyCodeLine{00076\ \ \ \ \ Pose<Scalar>\ Tnc\ =\ camera.bodyToCamera(Tnb);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ Tnc.\mbox{\hyperlink{structPose_a9e7f838356fc6b576abaf2faef09f2b0}{rotationMatrix}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Rnc}}
+\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Scalar>}
+\DoxyCodeLine{00081\ Eigen::Vector3<Scalar>\ SystemSLAM::cameraOrientationEuler(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera,\ \textcolor{keyword}{const}\ Eigen::VectorX<Scalar>\ \&\ x)}
+\DoxyCodeLine{00082\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{return}\ rot2rpy(cameraOrientation(camera,\ x));}
+\DoxyCodeLine{00084\ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

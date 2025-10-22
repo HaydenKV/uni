@@ -1,0 +1,60 @@
+\doxysection{Buffered\+Video.\+h}
+\hypertarget{BufferedVideo_8h_source}{}\label{BufferedVideo_8h_source}\index{src/BufferedVideo.h@{src/BufferedVideo.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BUFFEREDVIDEO\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BUFFEREDVIDEO\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <opencv2/core/mat.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <opencv2/videoio.hpp>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }BufferedVideoReader}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{explicit}\ BufferedVideoReader(\textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00018\ \ \ \ \ \string~BufferedVideoReader();}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{void}\ start(cv::VideoCapture\ \&\ cap);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{void}\ stop();}
+\DoxyCodeLine{00021\ \ \ \ \ cv::Mat\ read();}
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00023\ \ \ \ \ std::size\_t\ readBufferSize;}
+\DoxyCodeLine{00024\ \ \ \ \ std::queue<cv::Mat>\ readBuffer;}
+\DoxyCodeLine{00025\ \ \ \ \ std::mutex\ readBufferMutex;}
+\DoxyCodeLine{00026\ \ \ \ \ std::atomic\_bool\ readFinished;}
+\DoxyCodeLine{00027\ \ \ \ \ std::condition\_variable\ readBufferNotEmpty;}
+\DoxyCodeLine{00028\ \ \ \ \ std::condition\_variable\ readBufferNotFull;}
+\DoxyCodeLine{00029\ \ \ \ \ std::thread\ videoReaderThread;}
+\DoxyCodeLine{00030\ \ \ \ \ cv::VideoCapture\ *pCap;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ videoReader(cv::VideoCapture\ \&\ cap);}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }BufferedVideoWriter}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{explicit}\ BufferedVideoWriter(\textcolor{keywordtype}{int}\ bufferSize);}
+\DoxyCodeLine{00038\ \ \ \ \ \string~BufferedVideoWriter();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ start(cv::VideoWriter\ \&\ video);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ stop();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ write(\textcolor{keyword}{const}\ cv::Mat\ \&\ frame);}
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ std::size\_t\ writeBufferSize;}
+\DoxyCodeLine{00044\ \ \ \ \ std::queue<cv::Mat>\ writeBuffer;}
+\DoxyCodeLine{00045\ \ \ \ \ std::mutex\ writeBufferMutex;}
+\DoxyCodeLine{00046\ \ \ \ \ std::atomic\_bool\ writeFinished;}
+\DoxyCodeLine{00047\ \ \ \ \ std::condition\_variable\ writeBufferNotEmpty;}
+\DoxyCodeLine{00048\ \ \ \ \ std::condition\_variable\ writeBufferNotFull;}
+\DoxyCodeLine{00049\ \ \ \ \ std::thread\ videoWriterThread;}
+\DoxyCodeLine{00050\ \ \ \ \ cv::VideoWriter\ *pVideo;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ videoWriter(cv::VideoWriter\ \&\ video);}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

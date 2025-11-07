@@ -8,7 +8,7 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstddef>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}SystemSLAM.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}SystemVisualNav.h"{}}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Measurement_8h}{Measurement.h}}"{}}}
 \DoxyCodeLine{00009\ }
 \DoxyCodeLine{00010\ \textcolor{keyword}{class\ }MeasurementSLAM\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classMeasurement_af524d8e57d33c6b748c27a5059cbcf63}{Measurement}}}
@@ -18,9 +18,9 @@
 \DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{virtual}\ MeasurementSLAM\ *\ clone()\ \textcolor{keyword}{const}\ =\ 0;}
 \DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~MeasurementSLAM()\ \textcolor{keyword}{override};}
 \DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ predictFeatureDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemSLAM}{SystemSLAM}}\ \&\ system,\ std::size\_t\ idxLandmark)\ \textcolor{keyword}{const}\ =\ 0;}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ predictFeatureBundleDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemSLAM}{SystemSLAM}}\ \&\ system,\ \textcolor{keyword}{const}\ std::vector<std::size\_t>\ \&\ idxLandmarks)\ \textcolor{keyword}{const}\ =\ 0;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::vector<int>\ \&\ associate(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemSLAM}{SystemSLAM}}\ \&\ system,\ \textcolor{keyword}{const}\ std::vector<std::size\_t>\ \&\ idxLandmarks)\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ predictFeatureDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemVisualNav}{SystemVisualNav}}\ \&\ system,\ std::size\_t\ idxLandmark)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classGaussianInfo}{GaussianInfo<double>}}\ predictFeatureBundleDensity(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemVisualNav}{SystemVisualNav}}\ \&\ system,\ \textcolor{keyword}{const}\ std::vector<std::size\_t>\ \&\ idxLandmarks)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::vector<int>\ \&\ associate(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSystemVisualNav}{SystemVisualNav}}\ \&\ system,\ \textcolor{keyword}{const}\ std::vector<std::size\_t>\ \&\ idxLandmarks)\ =\ 0;}
 \DoxyCodeLine{00020\ }
 \DoxyCodeLine{00021\ \textcolor{keyword}{protected}:}
 \DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}\ \&\ camera\_;}

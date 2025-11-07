@@ -1,0 +1,95 @@
+\doxysection{Measurement\+Outdoor\+Flow\+Bundle.\+h}
+\hypertarget{MeasurementOutdoorFlowBundle_8h_source}{}\label{MeasurementOutdoorFlowBundle_8h_source}\index{src/MeasurementOutdoorFlowBundle.h@{src/MeasurementOutdoorFlowBundle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <Eigen/Core>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <opencv2/core.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Forward\ declarations\ (keep\ compile\ units\ light)}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSystemEstimator}{SystemEstimator}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCamera}{Camera}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ A\ compact\ outdoor\ optical-\/flow\ measurement\ bundle.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Tracks\ k-\/1\ -\/>\ k\ with\ LK;\ exposes\ predicted\ features\ plus}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ odometry\ cost\ with\ finite-\/difference\ g/H\ (no\ autodiff).}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }MeasurementOutdoorFlowBundle\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{using\ }Matrix2X\ =\ Eigen::Matrix<double,2,Eigen::Dynamic>;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{using\ }VectorX\ \ =\ Eigen::VectorXd;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMeasurementOutdoorFlowBundle_1_1TrackData}{TrackData}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Matrix2X\ prev\_px;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2xN\ pixel\ coords\ at\ frame\ (k-\/1)}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Matrix2X\ curr\_px;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2xN\ pixel\ coords\ at\ frame\ (k)}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ std::vector<uint8\_t>\ inlier;\ \textcolor{comment}{//\ 1\ =\ good\ LK\ track}}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ MeasurementOutdoorFlowBundle()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Build\ from\ two\ grayscale\ images;\ camera\ pointer\ kept\ for\ symmetry\ (unused\ here).}}
+\DoxyCodeLine{00028\ \ \ \ \ MeasurementOutdoorFlowBundle(\textcolor{keyword}{const}\ cv::Mat\&\ img\_km1\_gray,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ cv::Mat\&\ img\_k\_gray,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCamera}{Camera}}*\ cam\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Accessors}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structMeasurementOutdoorFlowBundle_1_1TrackData}{TrackData}}\&\ tracks()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tracks\_;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ numPoints()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(tracks\_.prev\_px.cols());\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Predict\ feature\ pixel\ locations\ given\ a\ state.\ For\ the\ VO\ demo,}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ we\ simply\ echo\ the\ current\ observations\ (keeps\ prototype\ simple).}}
+\DoxyCodeLine{00038\ \ \ \ \ Matrix2X\ predictedFeatures(\textcolor{keyword}{const}\ VectorX\&\ etak,\ \textcolor{keyword}{const}\ SystemEstimator\&\ est)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Odometry\ costs:\ SSE/2\ with\ optional\ finite-\/diff\ g\ and\ H.}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ VectorX\&\ etak,\ \textcolor{keyword}{const}\ VectorX\&\ etakm1)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ VectorX\&\ etak,\ \textcolor{keyword}{const}\ VectorX\&\ etakm1,\ VectorX\&\ g)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{double}\ costOdometry(\textcolor{keyword}{const}\ VectorX\&\ etak,\ \textcolor{keyword}{const}\ VectorX\&\ etakm1,\ VectorX\&\ g,\ Eigen::MatrixXd\&\ H)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{structMeasurementOutdoorFlowBundle_1_1TrackData}{TrackData}}\ tracks\_;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Sum\ of\ squared\ 2D\ displacements\ between\ matched\ pixels.}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{double}\ sseDisplacement()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ Lightweight\ forward\ finite\ differences\ (kept\ internal\ and\ generic).}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ F>}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ finiteDiff(\textcolor{keyword}{const}\ VectorX\&\ x,\ \textcolor{keyword}{const}\ F\&\ func,\ VectorX\&\ g,\ Eigen::MatrixXd*\ H,\ \textcolor{keywordtype}{double}\ eps\ =\ 1e-\/6)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(x.size());}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ g.setZero(n);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (H)\ H-\/>setZero(n,n);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ f0\ =\ func(x);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gradient}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;i<n;++i)\{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ VectorX\ xi\ =\ x;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ xi[i]\ +=\ eps;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fi\ =\ func(xi);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ g[i]\ =\ (fi\ -\/\ f0)/eps;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!H)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Hessian\ via\ gradient\ differences}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;i<n;++i)\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ VectorX\ xi\ =\ x;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ xi[i]\ +=\ eps;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ grad\ at\ xi}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ VectorX\ gi(n);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fxi\ =\ func(xi);\ (void)fxi;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j=0;j<n;++j)\{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VectorX\ xij\ =\ xi;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xij[j]\ +=\ eps;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fij\ =\ func(xij);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gi[j]\ =\ (fij\ -\/\ fxi)/eps;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ H-\/>col(i)\ =\ (gi\ -\/\ g)/eps;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Symmetrise\ to\ keep\ it\ neat}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ *H\ =\ 0.5\ *\ (\ (*H)\ +\ H-\/>transpose()\ );}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \};}
+
+\end{DoxyCode}

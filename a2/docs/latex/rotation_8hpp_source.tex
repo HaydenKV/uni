@@ -138,6 +138,20 @@
 \DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{return}\ Theta;}
 \DoxyCodeLine{00135\ \}}
 \DoxyCodeLine{00136\ }
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00137\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived>}
+\DoxyCodeLine{00138\ Eigen::Matrix3<typename\ Derived::Scalar>\ hatSO3(\textcolor{keyword}{const}\ Eigen::MatrixBase<Derived>\ \&\ u)}
+\DoxyCodeLine{00139\ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{using\ }Scalar\ =\ \textcolor{keyword}{typename}\ Derived::Scalar;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ \&\ u1\ =\ u(0);}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ \&\ u2\ =\ u(1);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{const}\ Scalar\ \&\ u3\ =\ u(2);}
+\DoxyCodeLine{00144\ \ \ \ \ Eigen::Matrix3<Scalar>\ S;}
+\DoxyCodeLine{00145\ \ \ \ \ S\ <<\ \ \ \ \ 0,\ -\/u3,\ \ u2,}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ u3,\ \ \ 0,\ -\/u1,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ -\/u2,\ \ u1,\ \ \ 0;}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ S;}
+\DoxyCodeLine{00149\ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

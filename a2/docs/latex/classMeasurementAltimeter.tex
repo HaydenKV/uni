@@ -1,0 +1,224 @@
+\doxysection{Measurement\+Altimeter Class Reference}
+\hypertarget{classMeasurementAltimeter}{}\label{classMeasurementAltimeter}\index{MeasurementAltimeter@{MeasurementAltimeter}}
+Inheritance diagram for Measurement\+Altimeter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classMeasurementAltimeter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurementAltimeter_a1ab65b77bfadce59a7a5364b6a639699}\label{classMeasurementAltimeter_a1ab65b77bfadce59a7a5364b6a639699} 
+{\bfseries Measurement\+Altimeter} (double time, double altitude, double sigma\+Alt, const \mbox{\hyperlink{structCamera}{Camera}} \&camera)
+\item 
+\Hypertarget{classMeasurementAltimeter_a93d74d80854c54c3d426deae35f66912}\label{classMeasurementAltimeter_a93d74d80854c54c3d426deae35f66912} 
+virtual \mbox{\hyperlink{classMeasurementAltimeter}{Measurement\+Altimeter}} \texorpdfstring{$\ast$}{*} {\bfseries clone} () const
+\item 
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classMeasurementAltimeter_ab36521978e16983b2a90410524d9d92c}{simulate}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const override
+\begin{DoxyCompactList}\small\item\em Simulate a measurement given a state and system. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementAltimeter_a7b816be8caa2c7fd9e14b2eb86b0147f}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood of a measurement. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementAltimeter_a3295819c05edd16f4c63cacbfc897b65}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood and its gradient. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classMeasurementAltimeter_acafcf69cf14f0095b7e6030b7fbf8880}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const override
+\begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood, its gradient, and Hessian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMeasurement_af524d8e57d33c6b748c27a5059cbcf63}{Measurement}} (double time)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMeasurement_a9165a85599c8e49e4d0ee6f614cc6772}{Measurement}} (double time, int verbosity)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Measurement} () override
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEvent_aebd4c54256dbf46040053babdfcdf987}{Event}} (double time)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEvent_a74d66e95b362dc9cca69269fc91fe041}{Event}} (double time, int verbosity)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classEvent}{Event} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEvent_a0a4e814f472c519ace0a22f1a23acb0a}{process}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system)
+\begin{DoxyCompactList}\small\item\em Process the event in the given system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classMeasurementAltimeter_a1fa01e88e6a634c1f82e5bc8730485d2}{update}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system) override
+\begin{DoxyCompactList}\small\item\em Update the system based on this measurement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classMeasurement_a3e2ef4fbb8d8eeb71940f5ffd6848ea6}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMeasurement_aaea34bb7e795a1c29a28f37b7e252ecf}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density and its gradient. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classMeasurement_aeae3ef416c7110a2041fdfb320a57559}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const
+\begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density, its gradient, and Hessian. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classEvent_a5610e63185ccb47c969fe2f8796921a7}{get\+Process\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get a string representation of the event processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Types inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurement_af49d21e894f7502251497eabcf1f2dff}\label{classMeasurement_af49d21e894f7502251497eabcf1f2dff} 
+enum class \mbox{\hyperlink{classMeasurement_af49d21e894f7502251497eabcf1f2dff}{Update\+Method}} \{ \newline
+{\bfseries BFGSTRUSTSQRT}
+, {\bfseries BFGSLMSQRT}
+, {\bfseries SR1\+TRUSTEIG}
+, {\bfseries NEWTONTRUSTEIG}
+, \newline
+{\bfseries AFFINE}
+, {\bfseries GAUSSNEWTON}
+, {\bfseries LEVENBERGMARQUARDT}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of update methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMeasurement_af49d21e894f7502251497eabcf1f2dff}{Update\+Method}} {\bfseries update\+Method\+\_\+}
+\begin{DoxyCompactList}\small\item\em The method used for updating the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classEvent}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries time\+\_\+}
+\begin{DoxyCompactList}\small\item\em The time at which the event occurs. \end{DoxyCompactList}\item 
+int {\bfseries verbosity\+\_\+}
+\begin{DoxyCompactList}\small\item\em Verbosity level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classMeasurementAltimeter_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMeasurementAltimeter_a7b816be8caa2c7fd9e14b2eb86b0147f}\index{MeasurementAltimeter@{MeasurementAltimeter}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementAltimeter@{MeasurementAltimeter}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classMeasurementAltimeter_a7b816be8caa2c7fd9e14b2eb86b0147f} 
+double Measurement\+Altimeter\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&}]{system}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood of a measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_a9b1d5256fcc2df3e1b103d0d47ea340b}{Measurement}}.
+
+\Hypertarget{classMeasurementAltimeter_a3295819c05edd16f4c63cacbfc897b65}\index{MeasurementAltimeter@{MeasurementAltimeter}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementAltimeter@{MeasurementAltimeter}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classMeasurementAltimeter_a3295819c05edd16f4c63cacbfc897b65} 
+double Measurement\+Altimeter\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&}]{system}{, }\item[{Eigen\+::\+Vector\+Xd \&}]{g}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood and its gradient. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+{\em g} & Output parameter for the gradient. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_aad051d0b0f3194e26d2742d828b0f088}{Measurement}}.
+
+\Hypertarget{classMeasurementAltimeter_acafcf69cf14f0095b7e6030b7fbf8880}\index{MeasurementAltimeter@{MeasurementAltimeter}!logLikelihood@{logLikelihood}}
+\index{logLikelihood@{logLikelihood}!MeasurementAltimeter@{MeasurementAltimeter}}
+\doxysubsubsection{\texorpdfstring{logLikelihood()}{logLikelihood()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classMeasurementAltimeter_acafcf69cf14f0095b7e6030b7fbf8880} 
+double Measurement\+Altimeter\+::log\+Likelihood (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&}]{system}{, }\item[{Eigen\+::\+Vector\+Xd \&}]{g}{, }\item[{Eigen\+::\+Matrix\+Xd \&}]{H}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate the log-\/likelihood, its gradient, and Hessian. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+{\em g} & Output parameter for the gradient. \\
+\hline
+{\em H} & Output parameter for the Hessian. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The log-\/likelihood value. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_a1dc788a547ed31405e10e895ccbbaf87}{Measurement}}.
+
+\Hypertarget{classMeasurementAltimeter_ab36521978e16983b2a90410524d9d92c}\index{MeasurementAltimeter@{MeasurementAltimeter}!simulate@{simulate}}
+\index{simulate@{simulate}!MeasurementAltimeter@{MeasurementAltimeter}}
+\doxysubsubsection{\texorpdfstring{simulate()}{simulate()}}
+{\footnotesize\ttfamily \label{classMeasurementAltimeter_ab36521978e16983b2a90410524d9d92c} 
+Eigen\+::\+Vector\+Xd Measurement\+Altimeter\+::simulate (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xd \&}]{x}{, }\item[{const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&}]{system}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Simulate a measurement given a state and system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The state vector. \\
+\hline
+{\em system} & The system estimator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The simulated measurement. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classMeasurement_ad83df4a48099d53eb3af99241974f605}{Measurement}}.
+
+\Hypertarget{classMeasurementAltimeter_a1fa01e88e6a634c1f82e5bc8730485d2}\index{MeasurementAltimeter@{MeasurementAltimeter}!update@{update}}
+\index{update@{update}!MeasurementAltimeter@{MeasurementAltimeter}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{classMeasurementAltimeter_a1fa01e88e6a634c1f82e5bc8730485d2} 
+void Measurement\+Altimeter\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSystemBase}{System\+Base}} \&}]{system}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Update the system based on this measurement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em system} & The system to update. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classMeasurement_a30df1dcc9aac6e9d25e54498ca11758a}{Measurement}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Measurement\+Altimeter.\+h\item 
+src/Measurement\+Altimeter.\+cpp\end{DoxyCompactItemize}

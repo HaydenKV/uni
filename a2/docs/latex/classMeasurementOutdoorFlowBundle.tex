@@ -1,0 +1,46 @@
+\doxysection{Measurement\+Outdoor\+Flow\+Bundle Class Reference}
+\hypertarget{classMeasurementOutdoorFlowBundle}{}\label{classMeasurementOutdoorFlowBundle}\index{MeasurementOutdoorFlowBundle@{MeasurementOutdoorFlowBundle}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMeasurementOutdoorFlowBundle_1_1TrackData}{Track\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_afcfd8914e2efdbe6a4c472667db92410}\label{classMeasurementOutdoorFlowBundle_afcfd8914e2efdbe6a4c472667db92410} 
+using {\bfseries Matrix2X} = Eigen\+::\+Matrix$<$double,2,Eigen\+::\+Dynamic$>$
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a95c931b28e30fa1664889b6d3136857b}\label{classMeasurementOutdoorFlowBundle_a95c931b28e30fa1664889b6d3136857b} 
+using {\bfseries VectorX} = Eigen\+::\+Vector\+Xd
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a6e4048ad24be0b5709417177ce1946c3}\label{classMeasurementOutdoorFlowBundle_a6e4048ad24be0b5709417177ce1946c3} 
+{\bfseries Measurement\+Outdoor\+Flow\+Bundle} (const cv\+::\+Mat \&img\+\_\+km1\+\_\+gray, const cv\+::\+Mat \&img\+\_\+k\+\_\+gray, const \mbox{\hyperlink{structCamera}{Camera}} \texorpdfstring{$\ast$}{*}cam=nullptr)
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a9aa88bca4f15522a9bdf031c228720ea}\label{classMeasurementOutdoorFlowBundle_a9aa88bca4f15522a9bdf031c228720ea} 
+const \mbox{\hyperlink{structMeasurementOutdoorFlowBundle_1_1TrackData}{Track\+Data}} \& {\bfseries tracks} () const
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_ad46e5feae438871e93c87422c66ce7e8}\label{classMeasurementOutdoorFlowBundle_ad46e5feae438871e93c87422c66ce7e8} 
+int {\bfseries num\+Points} () const
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a2071a4263f5eb6335b80e0c0384d7a22}\label{classMeasurementOutdoorFlowBundle_a2071a4263f5eb6335b80e0c0384d7a22} 
+Matrix2X {\bfseries predicted\+Features} (const VectorX \&etak, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&est) const
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a6c53b124255f87693a6a96251d10b67e}\label{classMeasurementOutdoorFlowBundle_a6c53b124255f87693a6a96251d10b67e} 
+double {\bfseries cost\+Odometry} (const VectorX \&etak, const VectorX \&etakm1) const
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_aa3468b78082d6a4f3d743f33762c2ad1}\label{classMeasurementOutdoorFlowBundle_aa3468b78082d6a4f3d743f33762c2ad1} 
+double {\bfseries cost\+Odometry} (const VectorX \&etak, const VectorX \&etakm1, VectorX \&g) const
+\item 
+\Hypertarget{classMeasurementOutdoorFlowBundle_a9b35f297d96670621a3c1ecf6b3f8888}\label{classMeasurementOutdoorFlowBundle_a9b35f297d96670621a3c1ecf6b3f8888} 
+double {\bfseries cost\+Odometry} (const VectorX \&etak, const VectorX \&etakm1, VectorX \&g, Eigen\+::\+Matrix\+Xd \&H) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Measurement\+Outdoor\+Flow\+Bundle.\+h\item 
+src/Measurement\+Outdoor\+Flow\+Bundle.\+cpp\end{DoxyCompactItemize}

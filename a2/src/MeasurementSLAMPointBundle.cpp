@@ -6,7 +6,7 @@
 #include "GaussianInfo.hpp"
 #include "SystemBase.h"
 #include "SystemEstimator.h"
-#include "SystemSLAM.h"
+#include "SystemVisualNav.h"
 #include "Camera.h"
 #include "Measurement.h"
 #include "MeasurementSLAM.h"
@@ -21,7 +21,7 @@ namespace {
     thread_local std::vector<std::size_t> tl_idxUseLandmarks;
     thread_local std::vector<int>         tl_idxUseFeatures;
 
-    inline void ensureAssociatedOnce(const SystemSLAM& sys,
+    inline void ensureAssociatedOnce(const SystemVisualNav& sys,
                                      const Eigen::Matrix<double,2,Eigen::Dynamic>& Y,
                                      const std::vector<int>& idxFeatures)
     {
@@ -80,7 +80,7 @@ Eigen::VectorXd MeasurementPointBundle::simulate(const Eigen::VectorXd & x, cons
 double MeasurementPointBundle::logLikelihood(const Eigen::VectorXd & x,
                                              const SystemEstimator & system) const
 {
-    const SystemSLAM & sys = dynamic_cast<const SystemSLAM &>(system);
+    const SystemVisualNav & sys = dynamic_cast<const SystemVisualNav &>(system);
 
     // Build selection once per evaluation chain
     ensureAssociatedOnce(sys, Y_, idxFeatures_);
@@ -115,7 +115,7 @@ double MeasurementPointBundle::logLikelihood(const Eigen::VectorXd & x,
                                              const SystemEstimator & system,
                                              Eigen::VectorXd & g) const
 {
-    const SystemSLAM & sys = dynamic_cast<const SystemSLAM &>(system);
+    const SystemVisualNav & sys = dynamic_cast<const SystemVisualNav &>(system);
 
     // Build selection once per evaluation chain (no-op if already done)
     ensureAssociatedOnce(sys, Y_, idxFeatures_);
@@ -150,7 +150,7 @@ double MeasurementPointBundle::logLikelihood(const Eigen::VectorXd & x,
                                              Eigen::VectorXd & g,
                                              Eigen::MatrixXd & H) const
 {
-    const SystemSLAM & sys = dynamic_cast<const SystemSLAM &>(system);
+    const SystemVisualNav & sys = dynamic_cast<const SystemVisualNav &>(system);
 
     // Build selection once per evaluation chain (no-op if already done)
     ensureAssociatedOnce(sys, Y_, idxFeatures_);
@@ -183,7 +183,7 @@ double MeasurementPointBundle::logLikelihood(const Eigen::VectorXd & x,
 
 void MeasurementPointBundle::update(SystemBase & system)
 {
-    SystemSLAM & systemSLAM = dynamic_cast<SystemSLAM &>(system);
+    SystemVisualNav & systemSLAM = dynamic_cast<SystemVisualNav &>(system);
 
     // Identify landmarks with matching features (data association)
     // Remove failed landmarks from map (consecutive failures to match)
@@ -207,7 +207,7 @@ void MeasurementPointBundle::update(SystemBase & system)
 }
 
 // Image feature location for a given landmark and Jacobian
-Eigen::Vector2d MeasurementPointBundle::predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemSLAM & system, std::size_t idxLandmark) const
+Eigen::Vector2d MeasurementPointBundle::predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemVisualNav & system, std::size_t idxLandmark) const
 {
     // Set elements of J
     //return predictFeature(x, system, idxLandmark);
@@ -242,7 +242,7 @@ Eigen::Vector2d MeasurementPointBundle::predictFeature(const Eigen::VectorXd & x
 }
 
 // Density of image feature location for a given landmark
-GaussianInfo<double> MeasurementPointBundle::predictFeatureDensity(const SystemSLAM & system, std::size_t idxLandmark) const
+GaussianInfo<double> MeasurementPointBundle::predictFeatureDensity(const SystemVisualNav & system, std::size_t idxLandmark) const
 {
     const std::size_t & nx = system.density.dim();
     const std::size_t ny = 2;
@@ -270,7 +270,7 @@ GaussianInfo<double> MeasurementPointBundle::predictFeatureDensity(const SystemS
 }
 
 // Image feature locations for a bundle of landmarks
-Eigen::VectorXd MeasurementPointBundle::predictFeatureBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const
+Eigen::VectorXd MeasurementPointBundle::predictFeatureBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const
 {
     const std::size_t & nL = idxLandmarks.size();
     const std::size_t & nx = system.density.dim();
@@ -291,7 +291,7 @@ Eigen::VectorXd MeasurementPointBundle::predictFeatureBundle(const Eigen::Vector
 }
 
 // Density of image features for a set of landmarks
-GaussianInfo<double> MeasurementPointBundle::predictFeatureBundleDensity(const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const
+GaussianInfo<double> MeasurementPointBundle::predictFeatureBundleDensity(const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const
 {
     const std::size_t & nx = system.density.dim();
     const std::size_t ny = 2*idxLandmarks.size();
@@ -319,7 +319,7 @@ GaussianInfo<double> MeasurementPointBundle::predictFeatureBundleDensity(const S
 }
 
 #include "association_util.h"
-const std::vector<int> & MeasurementPointBundle::associate(const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks)
+const std::vector<int> & MeasurementPointBundle::associate(const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks)
 {
     GaussianInfo<double> featureBundleDensity = predictFeatureBundleDensity(system, idxLandmarks);
     snn(system, featureBundleDensity, idxLandmarks, Y_, camera_, idxFeatures_);

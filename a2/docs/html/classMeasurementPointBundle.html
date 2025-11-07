@@ -129,27 +129,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad3e9a288190a3ebcc09b61cea2ca79cf" id="r_ad3e9a288190a3ebcc09b61cea2ca79cf"><td class="memItemLeft" align="right" valign="top"><a id="ad3e9a288190a3ebcc09b61cea2ca79cf" name="ad3e9a288190a3ebcc09b61cea2ca79cf"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MeasurementPointBundle</b> (double time, const Eigen::Matrix&lt; double, 2, Eigen::Dynamic &gt; &amp;Y, const <a class="el" href="structCamera.html">Camera</a> &amp;camera)</td></tr>
 <tr class="memitem:a1197747d409eba23ec8985cd375defd9" id="r_a1197747d409eba23ec8985cd375defd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeasurementSLAM.html">MeasurementSLAM</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1197747d409eba23ec8985cd375defd9">clone</a> () const override</td></tr>
-<tr class="memitem:ac368052d6c6700daba2676c8c7f767c1" id="r_ac368052d6c6700daba2676c8c7f767c1"><td class="memItemLeft" align="right" valign="top">virtual Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac368052d6c6700daba2676c8c7f767c1">simulate</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system) const override</td></tr>
+<tr class="memitem:ac368052d6c6700daba2676c8c7f767c1" id="r_ac368052d6c6700daba2676c8c7f767c1"><td class="memItemLeft" align="right" valign="top">virtual Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac368052d6c6700daba2676c8c7f767c1">simulate</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system) const override</td></tr>
 <tr class="memdesc:ac368052d6c6700daba2676c8c7f767c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate a measurement given a state and system.  <br /></td></tr>
-<tr class="memitem:abc7d69eed60bab5f63982e25888ca1c5" id="r_abc7d69eed60bab5f63982e25888ca1c5"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc7d69eed60bab5f63982e25888ca1c5">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system) const override</td></tr>
+<tr class="memitem:abc7d69eed60bab5f63982e25888ca1c5" id="r_abc7d69eed60bab5f63982e25888ca1c5"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc7d69eed60bab5f63982e25888ca1c5">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system) const override</td></tr>
 <tr class="memdesc:abc7d69eed60bab5f63982e25888ca1c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the log-likelihood of a measurement.  <br /></td></tr>
-<tr class="memitem:ab7bda57787c76493a60b52f02e9c254f" id="r_ab7bda57787c76493a60b52f02e9c254f"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7bda57787c76493a60b52f02e9c254f">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g) const override</td></tr>
+<tr class="memitem:ab7bda57787c76493a60b52f02e9c254f" id="r_ab7bda57787c76493a60b52f02e9c254f"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7bda57787c76493a60b52f02e9c254f">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g) const override</td></tr>
 <tr class="memdesc:ab7bda57787c76493a60b52f02e9c254f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the log-likelihood and its gradient.  <br /></td></tr>
-<tr class="memitem:ae2b8fad7d79ec97b0afd7cf1d216d2bd" id="r_ae2b8fad7d79ec97b0afd7cf1d216d2bd"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2b8fad7d79ec97b0afd7cf1d216d2bd">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g, Eigen::MatrixXd &amp;H) const override</td></tr>
+<tr class="memitem:ae2b8fad7d79ec97b0afd7cf1d216d2bd" id="r_ae2b8fad7d79ec97b0afd7cf1d216d2bd"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2b8fad7d79ec97b0afd7cf1d216d2bd">logLikelihood</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g, Eigen::MatrixXd &amp;H) const override</td></tr>
 <tr class="memdesc:ae2b8fad7d79ec97b0afd7cf1d216d2bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the log-likelihood, its gradient, and Hessian.  <br /></td></tr>
-<tr class="memitem:ade71ff4ffba3274ae39c9c4e01385ff5" id="r_ade71ff4ffba3274ae39c9c4e01385ff5"><td class="memTemplParams" colspan="2"><a id="ade71ff4ffba3274ae39c9c4e01385ff5" name="ade71ff4ffba3274ae39c9c4e01385ff5"></a>
+<tr class="memitem:a31d815f98d5d287b9ddb9007e9af71c3" id="r_a31d815f98d5d287b9ddb9007e9af71c3"><td class="memTemplParams" colspan="2"><a id="a31d815f98d5d287b9ddb9007e9af71c3" name="a31d815f98d5d287b9ddb9007e9af71c3"></a>
 template&lt;typename Scalar&gt; </td></tr>
-<tr class="memitem:ade71ff4ffba3274ae39c9c4e01385ff5 template"><td class="memItemLeft" align="right" valign="top">Eigen::Vector2&lt; Scalar &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeature</b> (const Eigen::VectorX&lt; Scalar &gt; &amp;x, const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, std::size_t idxLandmark) const</td></tr>
-<tr class="memitem:a913dcd5d93af1a834a15d9c1f2708ace" id="r_a913dcd5d93af1a834a15d9c1f2708ace"><td class="memItemLeft" align="right" valign="top"><a id="a913dcd5d93af1a834a15d9c1f2708ace" name="a913dcd5d93af1a834a15d9c1f2708ace"></a>
-Eigen::Vector2d&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeature</b> (const Eigen::VectorXd &amp;x, Eigen::MatrixXd &amp;J, const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, std::size_t idxLandmark) const</td></tr>
-<tr class="memitem:ae56ca5b448cdc37c7e95646488d3fbda" id="r_ae56ca5b448cdc37c7e95646488d3fbda"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56ca5b448cdc37c7e95646488d3fbda">predictFeatureDensity</a> (const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, std::size_t idxLandmark) const override</td></tr>
-<tr class="memitem:a074ad6d546c188b3c966ffd5e56890dc" id="r_a074ad6d546c188b3c966ffd5e56890dc"><td class="memTemplParams" colspan="2"><a id="a074ad6d546c188b3c966ffd5e56890dc" name="a074ad6d546c188b3c966ffd5e56890dc"></a>
+<tr class="memitem:a31d815f98d5d287b9ddb9007e9af71c3 template"><td class="memItemLeft" align="right" valign="top">Eigen::Vector2&lt; Scalar &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeature</b> (const Eigen::VectorX&lt; Scalar &gt; &amp;x, const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, std::size_t idxLandmark) const</td></tr>
+<tr class="memitem:ae8ab1849d19d080d46a0a6cf876039fa" id="r_ae8ab1849d19d080d46a0a6cf876039fa"><td class="memItemLeft" align="right" valign="top"><a id="ae8ab1849d19d080d46a0a6cf876039fa" name="ae8ab1849d19d080d46a0a6cf876039fa"></a>
+Eigen::Vector2d&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeature</b> (const Eigen::VectorXd &amp;x, Eigen::MatrixXd &amp;J, const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, std::size_t idxLandmark) const</td></tr>
+<tr class="memitem:aef8adcb70c2678d0ded5502843a74bd7" id="r_aef8adcb70c2678d0ded5502843a74bd7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef8adcb70c2678d0ded5502843a74bd7">predictFeatureDensity</a> (const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, std::size_t idxLandmark) const override</td></tr>
+<tr class="memitem:af25666375d65f97f5fa67e8faa8e49a8" id="r_af25666375d65f97f5fa67e8faa8e49a8"><td class="memTemplParams" colspan="2"><a id="af25666375d65f97f5fa67e8faa8e49a8" name="af25666375d65f97f5fa67e8faa8e49a8"></a>
 template&lt;typename Scalar&gt; </td></tr>
-<tr class="memitem:a074ad6d546c188b3c966ffd5e56890dc template"><td class="memItemLeft" align="right" valign="top">Eigen::VectorX&lt; Scalar &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeatureBundle</b> (const Eigen::VectorX&lt; Scalar &gt; &amp;x, const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const</td></tr>
-<tr class="memitem:a60189a5119bd961a2828bbc0f17027fe" id="r_a60189a5119bd961a2828bbc0f17027fe"><td class="memItemLeft" align="right" valign="top"><a id="a60189a5119bd961a2828bbc0f17027fe" name="a60189a5119bd961a2828bbc0f17027fe"></a>
-Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeatureBundle</b> (const Eigen::VectorXd &amp;x, Eigen::MatrixXd &amp;J, const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const</td></tr>
-<tr class="memitem:a721625a147f92659a905fc6687642c3e" id="r_a721625a147f92659a905fc6687642c3e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a721625a147f92659a905fc6687642c3e">predictFeatureBundleDensity</a> (const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const override</td></tr>
-<tr class="memitem:a7d66e44af75c2e6b53e5957f21c19568" id="r_a7d66e44af75c2e6b53e5957f21c19568"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d66e44af75c2e6b53e5957f21c19568">associate</a> (const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) override</td></tr>
+<tr class="memitem:af25666375d65f97f5fa67e8faa8e49a8 template"><td class="memItemLeft" align="right" valign="top">Eigen::VectorX&lt; Scalar &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeatureBundle</b> (const Eigen::VectorX&lt; Scalar &gt; &amp;x, const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const</td></tr>
+<tr class="memitem:ae379aa881d6f9004febb2bf8a18f594b" id="r_ae379aa881d6f9004febb2bf8a18f594b"><td class="memItemLeft" align="right" valign="top"><a id="ae379aa881d6f9004febb2bf8a18f594b" name="ae379aa881d6f9004febb2bf8a18f594b"></a>
+Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><b>predictFeatureBundle</b> (const Eigen::VectorXd &amp;x, Eigen::MatrixXd &amp;J, const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const</td></tr>
+<tr class="memitem:ab14b9e88977caf76030b5a5b388ba7fd" id="r_ab14b9e88977caf76030b5a5b388ba7fd"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab14b9e88977caf76030b5a5b388ba7fd">predictFeatureBundleDensity</a> (const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) const override</td></tr>
+<tr class="memitem:a453baac25b91abb3361a17f44fe50b79" id="r_a453baac25b91abb3361a17f44fe50b79"><td class="memItemLeft" align="right" valign="top">virtual const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a453baac25b91abb3361a17f44fe50b79">associate</a> (const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;system, const std::vector&lt; std::size_t &gt; &amp;idxLandmarks) override</td></tr>
 <tr class="memitem:a7aaf45de719eb1930575e83295a9caf1" id="r_a7aaf45de719eb1930575e83295a9caf1"><td class="memItemLeft" align="right" valign="top"><a id="a7aaf45de719eb1930575e83295a9caf1" name="a7aaf45de719eb1930575e83295a9caf1"></a>
 const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>idxFeatures</b> () const</td></tr>
 <tr class="memitem:a399f13dbd7e78d8d05c6ec85c9ede678" id="r_a399f13dbd7e78d8d05c6ec85c9ede678"><td class="memItemLeft" align="right" valign="top"><a id="a399f13dbd7e78d8d05c6ec85c9ede678" name="a399f13dbd7e78d8d05c6ec85c9ede678"></a>
@@ -181,11 +181,11 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a4d7ec2ad6e6fe05ffffe8e537f551365" id="r_a4d7ec2ad6e6fe05ffffe8e537f551365"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d7ec2ad6e6fe05ffffe8e537f551365">update</a> (<a class="el" href="classSystemBase.html">SystemBase</a> &amp;system) override</td></tr>
 <tr class="memdesc:a4d7ec2ad6e6fe05ffffe8e537f551365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the system based on this measurement.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classMeasurement"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classMeasurement')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classMeasurement.html">Measurement</a></td></tr>
-<tr class="memitem:a3e2ef4fbb8d8eeb71940f5ffd6848ea6 inherit pro_methods_classMeasurement" id="r_a3e2ef4fbb8d8eeb71940f5ffd6848ea6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#a3e2ef4fbb8d8eeb71940f5ffd6848ea6">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system) const</td></tr>
+<tr class="memitem:a3e2ef4fbb8d8eeb71940f5ffd6848ea6 inherit pro_methods_classMeasurement" id="r_a3e2ef4fbb8d8eeb71940f5ffd6848ea6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#a3e2ef4fbb8d8eeb71940f5ffd6848ea6">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system) const</td></tr>
 <tr class="memdesc:a3e2ef4fbb8d8eeb71940f5ffd6848ea6 inherit pro_methods_classMeasurement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the cost of the joint density.  <br /></td></tr>
-<tr class="memitem:aaea34bb7e795a1c29a28f37b7e252ecf inherit pro_methods_classMeasurement" id="r_aaea34bb7e795a1c29a28f37b7e252ecf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#aaea34bb7e795a1c29a28f37b7e252ecf">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g) const</td></tr>
+<tr class="memitem:aaea34bb7e795a1c29a28f37b7e252ecf inherit pro_methods_classMeasurement" id="r_aaea34bb7e795a1c29a28f37b7e252ecf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#aaea34bb7e795a1c29a28f37b7e252ecf">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g) const</td></tr>
 <tr class="memdesc:aaea34bb7e795a1c29a28f37b7e252ecf inherit pro_methods_classMeasurement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the cost of the joint density and its gradient.  <br /></td></tr>
-<tr class="memitem:aeae3ef416c7110a2041fdfb320a57559 inherit pro_methods_classMeasurement" id="r_aeae3ef416c7110a2041fdfb320a57559"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#aeae3ef416c7110a2041fdfb320a57559">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g, Eigen::MatrixXd &amp;H) const</td></tr>
+<tr class="memitem:aeae3ef416c7110a2041fdfb320a57559 inherit pro_methods_classMeasurement" id="r_aeae3ef416c7110a2041fdfb320a57559"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeasurement.html#aeae3ef416c7110a2041fdfb320a57559">costJointDensity</a> (const Eigen::VectorXd &amp;x, const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;system, Eigen::VectorXd &amp;g, Eigen::MatrixXd &amp;H) const</td></tr>
 <tr class="memdesc:aeae3ef416c7110a2041fdfb320a57559 inherit pro_methods_classMeasurement"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the cost of the joint density, its gradient, and Hessian.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classEvent"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classEvent')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classEvent.html">Event</a></td></tr>
 <tr class="memitem:a5610e63185ccb47c969fe2f8796921a7 inherit pro_methods_classEvent" id="r_a5610e63185ccb47c969fe2f8796921a7"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvent.html#a5610e63185ccb47c969fe2f8796921a7">getProcessString</a> () const</td></tr>
@@ -231,8 +231,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:af49d21e894f7502251497eabcf1f2dff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of update methods. <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a7d66e44af75c2e6b53e5957f21c19568" name="a7d66e44af75c2e6b53e5957f21c19568"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d66e44af75c2e6b53e5957f21c19568">&#9670;&#160;</a></span>associate()</h2>
+<a id="a453baac25b91abb3361a17f44fe50b79" name="a453baac25b91abb3361a17f44fe50b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a453baac25b91abb3361a17f44fe50b79">&#9670;&#160;</a></span>associate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,7 +243,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">const std::vector&lt; int &gt; &amp; MeasurementPointBundle::associate </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -306,7 +306,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>&#160;) const</td>
+          <td class="paramtype">const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -347,7 +347,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -394,7 +394,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -430,8 +430,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a721625a147f92659a905fc6687642c3e" name="a721625a147f92659a905fc6687642c3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a721625a147f92659a905fc6687642c3e">&#9670;&#160;</a></span>predictFeatureBundleDensity()</h2>
+<a id="ab14b9e88977caf76030b5a5b388ba7fd" name="ab14b9e88977caf76030b5a5b388ba7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab14b9e88977caf76030b5a5b388ba7fd">&#9670;&#160;</a></span>predictFeatureBundleDensity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -442,7 +442,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt; MeasurementPointBundle::predictFeatureBundleDensity </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -461,8 +461,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ae56ca5b448cdc37c7e95646488d3fbda" name="ae56ca5b448cdc37c7e95646488d3fbda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae56ca5b448cdc37c7e95646488d3fbda">&#9670;&#160;</a></span>predictFeatureDensity()</h2>
+<a id="aef8adcb70c2678d0ded5502843a74bd7" name="aef8adcb70c2678d0ded5502843a74bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef8adcb70c2678d0ded5502843a74bd7">&#9670;&#160;</a></span>predictFeatureDensity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,7 +473,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classGaussianInfo.html">GaussianInfo</a>&lt; double &gt; MeasurementPointBundle::predictFeatureDensity </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSystemSLAM.html">SystemSLAM</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="classSystemVisualNav.html">SystemVisualNav</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -509,7 +509,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>&#160;) const</td>
+          <td class="paramtype">const <a class="el" href="structSystemEstimator.html">SystemEstimator</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>system</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>

@@ -15,14 +15,14 @@ Inheritance diagram for Measurement\+SLAM\+:\begin{figure}[H]
 \Hypertarget{classMeasurementSLAM_a81647ae81600c374da68062f46dc4e11}\label{classMeasurementSLAM_a81647ae81600c374da68062f46dc4e11} 
 virtual \mbox{\hyperlink{classMeasurementSLAM}{Measurement\+SLAM}} \texorpdfstring{$\ast$}{*} {\bfseries clone} () const =0
 \item 
-\Hypertarget{classMeasurementSLAM_a0b075967ae394826e57b5e266755586f}\label{classMeasurementSLAM_a0b075967ae394826e57b5e266755586f} 
-virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries predict\+Feature\+Density} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, std\+::size\+\_\+t idx\+Landmark) const =0
+\Hypertarget{classMeasurementSLAM_a832147f198fbe015559d9620fa402046}\label{classMeasurementSLAM_a832147f198fbe015559d9620fa402046} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries predict\+Feature\+Density} (const \mbox{\hyperlink{classSystemVisualNav}{System\+Visual\+Nav}} \&system, std\+::size\+\_\+t idx\+Landmark) const =0
 \item 
-\Hypertarget{classMeasurementSLAM_a36ee97478d759796de3898398f1c8944}\label{classMeasurementSLAM_a36ee97478d759796de3898398f1c8944} 
-virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries predict\+Feature\+Bundle\+Density} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) const =0
+\Hypertarget{classMeasurementSLAM_a5db47e2b648e4351a9cbae1c1dc7044f}\label{classMeasurementSLAM_a5db47e2b648e4351a9cbae1c1dc7044f} 
+virtual \mbox{\hyperlink{classGaussianInfo}{Gaussian\+Info}}$<$ double $>$ {\bfseries predict\+Feature\+Bundle\+Density} (const \mbox{\hyperlink{classSystemVisualNav}{System\+Visual\+Nav}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks) const =0
 \item 
-\Hypertarget{classMeasurementSLAM_a67c2b400dd266680c182e7e80f674060}\label{classMeasurementSLAM_a67c2b400dd266680c182e7e80f674060} 
-virtual const std\+::vector$<$ int $>$ \& {\bfseries associate} (const \mbox{\hyperlink{classSystemSLAM}{System\+SLAM}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks)=0
+\Hypertarget{classMeasurementSLAM_a47d3f631bfb472963a9f0297951017f5}\label{classMeasurementSLAM_a47d3f631bfb472963a9f0297951017f5} 
+virtual const std\+::vector$<$ int $>$ \& {\bfseries associate} (const \mbox{\hyperlink{classSystemVisualNav}{System\+Visual\+Nav}} \&system, const std\+::vector$<$ std\+::size\+\_\+t $>$ \&idx\+Landmarks)=0
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
 \begin{DoxyCompactItemize}
@@ -33,13 +33,13 @@ virtual const std\+::vector$<$ int $>$ \& {\bfseries associate} (const \mbox{\hy
 \begin{DoxyCompactList}\small\item\em Construct a new \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
 virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Measurement} () override
 \begin{DoxyCompactList}\small\item\em Destroy the \doxylink{classMeasurement}{Measurement} object. \end{DoxyCompactList}\item 
-virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classMeasurement_ad83df4a48099d53eb3af99241974f605}{simulate}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const =0
+virtual Eigen\+::\+Vector\+Xd \mbox{\hyperlink{classMeasurement_ad83df4a48099d53eb3af99241974f605}{simulate}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const =0
 \begin{DoxyCompactList}\small\item\em Simulate a measurement given a state and system. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classMeasurement_a9b1d5256fcc2df3e1b103d0d47ea340b}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const =0
+virtual double \mbox{\hyperlink{classMeasurement_a9b1d5256fcc2df3e1b103d0d47ea340b}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const =0
 \begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood of a measurement. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classMeasurement_aad051d0b0f3194e26d2742d828b0f088}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const =0
+virtual double \mbox{\hyperlink{classMeasurement_aad051d0b0f3194e26d2742d828b0f088}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const =0
 \begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood and its gradient. \end{DoxyCompactList}\item 
-virtual double \mbox{\hyperlink{classMeasurement_a1dc788a547ed31405e10e895ccbbaf87}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const =0
+virtual double \mbox{\hyperlink{classMeasurement_a1dc788a547ed31405e10e895ccbbaf87}{log\+Likelihood}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const =0
 \begin{DoxyCompactList}\small\item\em Calculate the log-\/likelihood, its gradient, and Hessian. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classEvent}{Event}}}
 \begin{DoxyCompactItemize}
@@ -89,11 +89,11 @@ enum class \mbox{\hyperlink{classMeasurement_af49d21e894f7502251497eabcf1f2dff}{
 \doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classMeasurement}{Measurement}}}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{classMeasurement_a3e2ef4fbb8d8eeb71940f5ffd6848ea6}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system) const
+double \mbox{\hyperlink{classMeasurement_a3e2ef4fbb8d8eeb71940f5ffd6848ea6}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system) const
 \begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classMeasurement_aaea34bb7e795a1c29a28f37b7e252ecf}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const
+double \mbox{\hyperlink{classMeasurement_aaea34bb7e795a1c29a28f37b7e252ecf}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g) const
 \begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density and its gradient. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{classMeasurement_aeae3ef416c7110a2041fdfb320a57559}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{classSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const
+double \mbox{\hyperlink{classMeasurement_aeae3ef416c7110a2041fdfb320a57559}{cost\+Joint\+Density}} (const Eigen\+::\+Vector\+Xd \&x, const \mbox{\hyperlink{structSystemEstimator}{System\+Estimator}} \&system, Eigen\+::\+Vector\+Xd \&g, Eigen\+::\+Matrix\+Xd \&H) const
 \begin{DoxyCompactList}\small\item\em Calculate the cost of the joint density, its gradient, and Hessian. \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classMeasurement_a30df1dcc9aac6e9d25e54498ca11758a}{update}} (\mbox{\hyperlink{classSystemBase}{System\+Base}} \&system) override
 \begin{DoxyCompactList}\small\item\em Update the system based on this measurement. \end{DoxyCompactList}\end{DoxyCompactItemize}

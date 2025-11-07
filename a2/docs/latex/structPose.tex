@@ -17,6 +17,9 @@ using {\bfseries Matrix3} = Eigen\+::\+Matrix3$<$Scalar$>$
 \item 
 \Hypertarget{structPose_a4f3a26abf25681787a42b78d91f5facf}\label{structPose_a4f3a26abf25681787a42b78d91f5facf} 
 using {\bfseries Vector3} = Eigen\+::\+Vector3$<$Scalar$>$
+\item 
+\Hypertarget{structPose_a08f3a227dbb203e69f577476ba3b191a}\label{structPose_a08f3a227dbb203e69f577476ba3b191a} 
+using {\bfseries Vector6} = Eigen\+::\+Matrix$<$Scalar, 6, 1$>$
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -26,6 +29,8 @@ using {\bfseries Vector3} = Eigen\+::\+Vector3$<$Scalar$>$
 \begin{DoxyCompactList}\small\item\em Default constructor ( $\mathbf{R} = \mathbf{I}$, $\mathbf{r} = \mathbf{0}$) \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structPose_a3f42bbb39b1756a7db61219a5c251243}{Pose}} (const Matrix3 \&R, const Vector3 \&t)
 \begin{DoxyCompactList}\small\item\em Constructor from Eigen rotation matrix and translation vector. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structPose_af17a7d12c26ab2156ec821dc59321a21}{Pose}} (const Vector6 \&eta)
+\begin{DoxyCompactList}\small\item\em Constructor from 6D pose vector. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structPose_a358c564e80cc7f481c8ecda4facdab98}{Pose}} (const cv\+::\+Matx33d \&R, const cv\+::\+Vec3d \&t)
 \begin{DoxyCompactList}\small\item\em Constructor from Open\+CV rotation matrix and translation vector. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structPose_a7f37674fde11e0d6a6b08d6a4b6dc169}{Pose}} (const cv\+::\+Mat \&rvec, const cv\+::\+Mat \&tvec)
@@ -75,7 +80,7 @@ Represents a pose as a transformation matrix $\mathbf{T} \in \mathsf{SE}(3)$\+: 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{structPose_a3f42bbb39b1756a7db61219a5c251243}\index{Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}!Pose@{Pose}}
 \index{Pose@{Pose}!Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}}
-\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
 {\footnotesize\ttfamily \label{structPose_a3f42bbb39b1756a7db61219a5c251243} 
 template$<$typename Scalar = double$>$ \\
 \mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$\mbox{\hyperlink{structPose}{\+::\+Pose}} (\begin{DoxyParamCaption}\item[{const Matrix3 \&}]{R}{, }\item[{const Vector3 \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
@@ -91,9 +96,27 @@ Constructor from Eigen rotation matrix and translation vector.
 {\em t} & Translation vector \\
 \hline
 \end{DoxyParams}
+\Hypertarget{structPose_af17a7d12c26ab2156ec821dc59321a21}\index{Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}!Pose@{Pose}}
+\index{Pose@{Pose}!Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}}
+\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{structPose_af17a7d12c26ab2156ec821dc59321a21} 
+template$<$typename Scalar = double$>$ \\
+\mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$\mbox{\hyperlink{structPose}{\+::\+Pose}} (\begin{DoxyParamCaption}\item[{const Vector6 \&}]{eta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor from 6D pose vector. 
+
+Constructs a \doxylink{structPose}{Pose} object from a 6D vector representation, where the first three elements represent the translation and the last three elements represent the rotation in roll-\/pitch-\/yaw (RPY) angles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em eta} & 6D pose vector \mbox{[}N, E, D, phi, theta, psi\mbox{]} \\
+\hline
+\end{DoxyParams}
 \Hypertarget{structPose_a358c564e80cc7f481c8ecda4facdab98}\index{Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}!Pose@{Pose}}
 \index{Pose@{Pose}!Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}}
-\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
 {\footnotesize\ttfamily \label{structPose_a358c564e80cc7f481c8ecda4facdab98} 
 template$<$typename Scalar = double$>$ \\
 \mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$\mbox{\hyperlink{structPose}{\+::\+Pose}} (\begin{DoxyParamCaption}\item[{const cv\+::\+Matx33d \&}]{R}{, }\item[{const cv\+::\+Vec3d \&}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
@@ -111,7 +134,7 @@ Constructor from Open\+CV rotation matrix and translation vector.
 \end{DoxyParams}
 \Hypertarget{structPose_a7f37674fde11e0d6a6b08d6a4b6dc169}\index{Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}!Pose@{Pose}}
 \index{Pose@{Pose}!Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}}
-\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
 {\footnotesize\ttfamily \label{structPose_a7f37674fde11e0d6a6b08d6a4b6dc169} 
 template$<$typename Scalar = double$>$ \\
 \mbox{\hyperlink{structPose}{Pose}}$<$ Scalar $>$\mbox{\hyperlink{structPose}{\+::\+Pose}} (\begin{DoxyParamCaption}\item[{const cv\+::\+Mat \&}]{rvec}{, }\item[{const cv\+::\+Mat \&}]{tvec}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
@@ -129,7 +152,7 @@ Constructor from Open\+CV rotation vector and translation vector.
 \end{DoxyParams}
 \Hypertarget{structPose_aec9445a6e2c8ac2347a87f5e7b2f4684}\index{Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}!Pose@{Pose}}
 \index{Pose@{Pose}!Pose$<$ Scalar $>$@{Pose$<$ Scalar $>$}}
-\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+\doxysubsubsection{\texorpdfstring{Pose()}{Pose()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
 {\footnotesize\ttfamily \label{structPose_aec9445a6e2c8ac2347a87f5e7b2f4684} 
 template$<$typename Scalar = double$>$ \\
 template$<$typename Other\+Scalar$>$ \\

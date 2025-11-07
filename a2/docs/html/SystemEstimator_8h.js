@@ -1,4 +1,4 @@
 var SystemEstimator_8h =
 [
-    [ "SystemEstimator", "classSystemEstimator.html", "classSystemEstimator" ]
+    [ "SystemEstimator", "structSystemEstimator.html", "structSystemEstimator" ]
 ];

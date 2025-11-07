@@ -134,4 +134,18 @@ Eigen::Vector3<typename Derived::Scalar> rot2rpy(const Eigen::MatrixBase<Derived
     return Theta;
 }
 
+template <typename Derived>
+Eigen::Matrix3<typename Derived::Scalar> hatSO3(const Eigen::MatrixBase<Derived> & u)
+{
+    using Scalar = typename Derived::Scalar;
+    const Scalar & u1 = u(0);
+    const Scalar & u2 = u(1);
+    const Scalar & u3 = u(2);
+    Eigen::Matrix3<Scalar> S;
+    S <<     0, -u3,  u2,
+            u3,   0, -u1,
+           -u2,  u1,   0;
+    return S;
+}
+
 #endif

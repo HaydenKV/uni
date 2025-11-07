@@ -8,16 +8,17 @@ var annotated_dup =
     [ "ChessboardData", "structChessboardData.html", null ],
     [ "ChessboardImage", "structChessboardImage.html", null ],
     [ "DensityBase", "classDensityBase.html", "classDensityBase" ],
+    [ "DJIVideoCaption", "structDJIVideoCaption.html", null ],
     [ "Event", "classEvent.html", "classEvent" ],
     [ "GaussianBase", "classGaussianBase.html", "classGaussianBase" ],
     [ "GaussianInfo", "classGaussianInfo.html", "classGaussianInfo" ],
     [ "Measurement", "classMeasurement.html", "classMeasurement" ],
+    [ "MeasurementAltimeter", "classMeasurementAltimeter.html", "classMeasurementAltimeter" ],
+    [ "MeasurementOutdoorFlowBundle", "classMeasurementOutdoorFlowBundle.html", "classMeasurementOutdoorFlowBundle" ],
     [ "MeasurementPointBundle", "classMeasurementPointBundle.html", "classMeasurementPointBundle" ],
     [ "MeasurementSLAM", "classMeasurementSLAM.html", null ],
     [ "Pose", "structPose.html", "structPose" ],
     [ "SystemBase", "classSystemBase.html", "classSystemBase" ],
-    [ "SystemEstimator", "classSystemEstimator.html", "classSystemEstimator" ],
-    [ "SystemSLAM", "classSystemSLAM.html", "classSystemSLAM" ],
-    [ "SystemSLAMPointLandmarks", "classSystemSLAMPointLandmarks.html", null ],
-    [ "SystemSLAMPoseLandmarks", "classSystemSLAMPoseLandmarks.html", null ]
+    [ "SystemEstimator", "structSystemEstimator.html", "structSystemEstimator" ],
+    [ "SystemVisualNav", "classSystemVisualNav.html", "classSystemVisualNav" ]
 ];

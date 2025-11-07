@@ -15,20 +15,21 @@ var hierarchy =
       ] ],
       [ "GaussianBase< Scalar >", "classGaussianBase.html", null ]
     ] ],
+    [ "DJIVideoCaption", "structDJIVideoCaption.html", null ],
     [ "Event", "classEvent.html", [
       [ "Measurement", "classMeasurement.html", [
+        [ "MeasurementAltimeter", "classMeasurementAltimeter.html", null ],
         [ "MeasurementSLAM", "classMeasurementSLAM.html", [
           [ "MeasurementPointBundle", "classMeasurementPointBundle.html", null ]
         ] ]
       ] ]
     ] ],
+    [ "MeasurementOutdoorFlowBundle", "classMeasurementOutdoorFlowBundle.html", null ],
     [ "Pose< Scalar >", "structPose.html", null ],
     [ "SystemBase", "classSystemBase.html", [
-      [ "SystemEstimator", "classSystemEstimator.html", [
-        [ "SystemSLAM", "classSystemSLAM.html", [
-          [ "SystemSLAMPointLandmarks", "classSystemSLAMPointLandmarks.html", null ],
-          [ "SystemSLAMPoseLandmarks", "classSystemSLAMPoseLandmarks.html", null ]
-        ] ]
+      [ "SystemEstimator", "structSystemEstimator.html", [
+        [ "SystemVisualNav", "classSystemVisualNav.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "MeasurementOutdoorFlowBundle::TrackData", "structMeasurementOutdoorFlowBundle_1_1TrackData.html", null ]
 ];

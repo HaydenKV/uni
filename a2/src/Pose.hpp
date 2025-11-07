@@ -18,6 +18,7 @@
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/calib3d.hpp>
+#include "rotation.hpp"
 
 /**
  * @brief Helper class for working with elements of \f$\mathsf{SE}(3)\f$
@@ -35,6 +36,7 @@ struct Pose
 {
     using Matrix3 = Eigen::Matrix3<Scalar>;
     using Vector3 = Eigen::Vector3<Scalar>;
+    using Vector6 = Eigen::Matrix<Scalar, 6, 1>;
     
     Matrix3 rotationMatrix;         ///< \f$\mathbf{R} \in \mathsf{SO}(3)\f$
     Vector3 translationVector;      ///< \f$\mathbf{r} \in \mathbb{R}^3\f$
@@ -55,6 +57,21 @@ struct Pose
     Pose(const Matrix3 & R, const Vector3 & t)
         : rotationMatrix(R)
         , translationVector(t)
+    {}
+
+    /**
+     * @brief Constructor from 6D pose vector
+     * 
+     * Constructs a Pose object from a 6D vector representation,
+     * where the first three elements represent the translation
+     * and the last three elements represent the rotation in
+     * roll-pitch-yaw (RPY) angles.
+     * 
+     * @param eta 6D pose vector [N, E, D, phi, theta, psi]
+     */
+    Pose(const Vector6 & eta)
+        : rotationMatrix(rpy2rot(eta.template tail<3>()))
+        , translationVector(eta.template head<3>())
     {}
 
     /**
@@ -205,7 +222,6 @@ struct Pose
     }
 };
 
-// Type aliases for common use cases
 using Posed = Pose<double>;
 using Posef = Pose<float>;
 

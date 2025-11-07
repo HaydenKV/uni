@@ -12,11 +12,11 @@
 #include <opencv2/features2d.hpp>
 
 #include "GaussianInfo.hpp"
-#include "SystemSLAM.h"
+#include "SystemVisualNav.h"
 #include "Camera.h"
 #include "association_util.h"
 
-double snn(const SystemSLAM & system, const GaussianInfo<double> & featureBundleDensity, const std::vector<std::size_t> & idxLandmarks, const Eigen::Matrix<double, 2, Eigen::Dynamic> & Y, const Camera & camera, std::vector<int> & idxFeatures, bool enforceJointCompatibility)
+double snn(const SystemVisualNav & system, const GaussianInfo<double> & featureBundleDensity, const std::vector<std::size_t> & idxLandmarks, const Eigen::Matrix<double, 2, Eigen::Dynamic> & Y, const Camera & camera, std::vector<int> & idxFeatures, bool enforceJointCompatibility)
 {
     double nSigma = 3.0;  // Number of standard deviations for confidence region
 

@@ -2,6 +2,7 @@ var structPose =
 [
     [ "Pose", "structPose.html#a60f2e141b0e2e38ae58e631106509b68", null ],
     [ "Pose", "structPose.html#a3f42bbb39b1756a7db61219a5c251243", null ],
+    [ "Pose", "structPose.html#af17a7d12c26ab2156ec821dc59321a21", null ],
     [ "Pose", "structPose.html#a358c564e80cc7f481c8ecda4facdab98", null ],
     [ "Pose", "structPose.html#a7f37674fde11e0d6a6b08d6a4b6dc169", null ],
     [ "Pose", "structPose.html#aec9445a6e2c8ac2347a87f5e7b2f4684", null ],

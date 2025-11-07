@@ -18,15 +18,15 @@ public:
     virtual double logLikelihood(const Eigen::VectorXd & x, const SystemEstimator & system, Eigen::VectorXd & g) const override;
     virtual double logLikelihood(const Eigen::VectorXd & x, const SystemEstimator & system, Eigen::VectorXd & g, Eigen::MatrixXd & H) const override;
 
-    template <typename Scalar> Eigen::Vector2<Scalar> predictFeature(const Eigen::VectorX<Scalar> & x, const SystemSLAM & system, std::size_t idxLandmark) const;
-    Eigen::Vector2d predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemSLAM & system, std::size_t idxLandmark) const;
-    virtual GaussianInfo<double> predictFeatureDensity(const SystemSLAM & system, std::size_t idxLandmark) const override;
+    template <typename Scalar> Eigen::Vector2<Scalar> predictFeature(const Eigen::VectorX<Scalar> & x, const SystemVisualNav & system, std::size_t idxLandmark) const;
+    Eigen::Vector2d predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemVisualNav & system, std::size_t idxLandmark) const;
+    virtual GaussianInfo<double> predictFeatureDensity(const SystemVisualNav & system, std::size_t idxLandmark) const override;
 
-    template <typename Scalar> Eigen::VectorX<Scalar> predictFeatureBundle(const Eigen::VectorX<Scalar> & x, const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const;
-    Eigen::VectorXd predictFeatureBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const;
-    virtual GaussianInfo<double> predictFeatureBundleDensity(const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const override;
+    template <typename Scalar> Eigen::VectorX<Scalar> predictFeatureBundle(const Eigen::VectorX<Scalar> & x, const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const;
+    Eigen::VectorXd predictFeatureBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const;
+    virtual GaussianInfo<double> predictFeatureBundleDensity(const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const override;
 
-    virtual const std::vector<int> & associate(const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) override;
+    virtual const std::vector<int> & associate(const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) override;
 
     const std::vector<int>& idxFeatures() const { return idxFeatures_; }
     const Eigen::Matrix<double,2,Eigen::Dynamic>& Y() const { return Y_; }
@@ -39,7 +39,7 @@ protected:
 
 // Image feature location for a given landmark
 template <typename Scalar>
-Eigen::Vector2<Scalar> MeasurementPointBundle::predictFeature(const Eigen::VectorX<Scalar> & x, const SystemSLAM & system, std::size_t idxLandmark) const
+Eigen::Vector2<Scalar> MeasurementPointBundle::predictFeature(const Eigen::VectorX<Scalar> & x, const SystemVisualNav & system, std::size_t idxLandmark) const
 {
     // Obtain camera pose from state
     Pose<Scalar> Tnc;
@@ -62,7 +62,7 @@ Eigen::Vector2<Scalar> MeasurementPointBundle::predictFeature(const Eigen::Vecto
 
 // Image feature locations for a bundle of landmarks
 template <typename Scalar>
-Eigen::VectorX<Scalar> MeasurementPointBundle::predictFeatureBundle(const Eigen::VectorX<Scalar> & x, const SystemSLAM & system, const std::vector<std::size_t> & idxLandmarks) const
+Eigen::VectorX<Scalar> MeasurementPointBundle::predictFeatureBundle(const Eigen::VectorX<Scalar> & x, const SystemVisualNav & system, const std::vector<std::size_t> & idxLandmarks) const
 {
     assert(x.size() == system.density.dim());
 

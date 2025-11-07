@@ -4,6 +4,7 @@
 #include <opencv2/core/mat.hpp>
 #include "BufferedVideo.h"
 #include "visualNavigation.h"
+#include "visual_odometry.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -57,7 +58,15 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
     // Visual navigation
 
-    // Initialisation
+    // Scenario 4: flight / outdoor visual odometry path — delegate to the existing implementation
+    if (scenario == 4)
+    {
+        std::println("Running Scenario 4: visual odometry");
+        runVisualOdometryFromVideo(videoPath, cameraPath, doExport ? outputDirectory : std::filesystem::path{});
+        return;
+    }
+
+    // Initialisation for other scenarios
 
     while (true)
     {
